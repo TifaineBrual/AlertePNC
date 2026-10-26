@@ -344,6 +344,15 @@
    "title": "Contrôleur équipements avioniques F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25690&idOrigine=502&LCID=1036&offerReference=2026-25690"
   },
+  "hop::2026-25692": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "La Barigoude",
+   "title": "STAGE DATA ENGINEER – EXPLORATION DES DONNÉES DE PERFOPS PAR UN AGENT CONVERSATIONNEL F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25692&idOrigine=502&LCID=1036&offerReference=2026-25692"
+  },
   "hop::2026-25707": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -845,7 +854,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-10-26",
-   "new_week": 0
+   "new_week": 1
   },
   "transavia": {
    "count": 40,
