@@ -2,14 +2,14 @@
 
 Ce dépôt surveille automatiquement les offres d'emploi **PNC** (hôtesse de l'air, steward, personnel navigant
 commercial) des compagnies aériennes basées en France et en outre-mer. Il vous prévient **en moins de 20 minutes**
-sur votre téléphone, Discord, Telegram et/ou par e-mail, avec un score qui indique si l'offre correspond à votre profil.
+sur votre téléphone (ntfy), sur Discord et/ou par e-mail, **à chaque nouvelle offre PNC publiée**.
 
 - Tout tourne gratuitement sur **GitHub Actions** : pas de serveur, rien à installer sur votre ordinateur.
 - Toutes les 15 minutes, la veille relit les sites des compagnies, repère les nouvelles offres, garde celles qui
-  concernent un poste PNC, leur donne une note sur 100 et vous les envoie.
+  concernent un poste PNC et vous les envoie, sans exception.
 - Elle vous prévient aussi si un site change au point de ne plus pouvoir être lu (« source en panne »).
 
-> 🔒 Le dépôt est **public**. Vos informations personnelles (profil, adresses, jetons) ne vont **jamais** dans les
+> 🔒 Le dépôt est **public**. Vos informations personnelles (adresses, jetons) ne vont **jamais** dans les
 > fichiers du dépôt : elles se rangent dans les **secrets** GitHub, invisibles pour les visiteurs.
 
 ---
@@ -19,14 +19,13 @@ sur votre téléphone, Discord, Telegram et/ou par e-mail, avec un score qui ind
 1. [Autoriser le workflow à enregistrer son état](#1-autoriser-le-workflow-à-enregistrer-son-état)
 2. [Créer vos canaux de notification](#2-créer-vos-canaux-de-notification)
 3. [Ajouter les secrets dans GitHub](#3-ajouter-les-secrets-dans-github)
-4. [Remplir votre profil (PROFILE_YAML)](#4-remplir-votre-profil-profile_yaml)
-5. [Lancer le premier run à la main](#5-lancer-le-premier-run-à-la-main)
-6. [Lire le résumé d'un run](#6-lire-le-résumé-dun-run)
-7. [Comprendre les notifications et le score](#7-comprendre-les-notifications-et-le-score)
-8. [Vérifier que tout marche](#8-vérifier-que-tout-marche)
-9. [Sources surveillées](#9-sources-surveillées)
-10. [Dépannage](#10-dépannage)
-11. [Pour les développeurs](#11-pour-les-développeurs)
+4. [Lancer le premier run à la main](#4-lancer-le-premier-run-à-la-main)
+5. [Lire le résumé d'un run](#5-lire-le-résumé-dun-run)
+6. [Comprendre les notifications](#6-comprendre-les-notifications)
+7. [Vérifier que tout marche](#7-vérifier-que-tout-marche)
+8. [Sources surveillées](#8-sources-surveillées)
+9. [Dépannage](#9-dépannage)
+10. [Pour les développeurs](#10-pour-les-développeurs)
 
 ---
 
@@ -59,8 +58,7 @@ ntfy est une application gratuite qui affiche une notification dès qu'un messag
 3. Dans l'application : **+** → **Subscribe to topic** → collez ce nom → **Subscribe**.
 4. Valeur à garder : le nom du sujet → secret `NTFY_TOPIC`.
 
-Les offres « 🟢 Très pertinent » arrivent en priorité haute (son + bannière), les « 🟡 À regarder » en priorité
-normale. Chaque notification a un bouton **Ouvrir l'offre**.
+Les nouvelles offres PNC arrivent en priorité haute (son + bannière), avec un bouton **Voir l'offre**.
 
 ### 💬 Discord
 
@@ -68,17 +66,6 @@ normale. Chaque notification a un bouton **Ouvrir l'offre**.
    droit sur le salon qui recevra les offres → **Modifier le salon**.
 2. **Intégrations** → **Webhooks** → **Nouveau webhook** → donnez-lui un nom (« Veille PNC »).
 3. **Copier l'URL du webhook**. Valeur à garder → secret `DISCORD_WEBHOOK_URL`.
-
-### ✈️ Telegram
-
-1. Dans Telegram, ouvrez une conversation avec **@BotFather** (le compte officiel, avec la coche bleue).
-2. Envoyez `/newbot`, choisissez un nom puis un identifiant se terminant par `bot` (ex. `ma_veille_pnc_bot`).
-3. BotFather répond avec un **jeton** du type `123456789:AAH...` → secret `TELEGRAM_BOT_TOKEN`.
-4. Ouvrez la conversation avec **votre** bot (lien donné par BotFather) et envoyez-lui un message, par exemple
-   « bonjour ».
-5. Dans un navigateur, ouvrez `https://api.telegram.org/bot<JETON>/getUpdates` en remplaçant `<JETON>` par votre
-   jeton. Repérez `"chat":{"id":` suivi d'un nombre (ex. `"chat":{"id":987654321`). Ce nombre → secret
-   `TELEGRAM_CHAT_ID`.
 
 ### 📧 E-mail (Gmail)
 
@@ -102,48 +89,22 @@ Si plusieurs offres arrivent pendant le même run, vous recevez **un seul e-mail
 
 | Canal | Nom du secret | Valeur |
 |---|---|---|
-| Profil | `PROFILE_YAML` | votre profil (étape 4) — facultatif mais conseillé |
 | ntfy | `NTFY_TOPIC` | le nom de votre sujet |
 | ntfy | `NTFY_SERVER` | facultatif, `https://ntfy.sh` par défaut |
 | Discord | `DISCORD_WEBHOOK_URL` | l'URL du webhook |
-| Telegram | `TELEGRAM_BOT_TOKEN` | le jeton donné par BotFather |
-| Telegram | `TELEGRAM_CHAT_ID` | le nombre trouvé dans `getUpdates` |
 | E-mail | `SMTP_HOST` | `smtp.gmail.com` |
 | E-mail | `SMTP_PORT` | `465` |
 | E-mail | `SMTP_USER` | votre adresse Gmail |
 | E-mail | `SMTP_PASSWORD` | le mot de passe d'application (16 lettres) |
 | E-mail | `EMAIL_TO` | l'adresse qui reçoit les alertes |
+| Alerte Google | `GOOGLE_ALERT_FRENCHBEE` | adresse du flux de l'alerte French Bee (section 8) |
+| Alerte Google | `GOOGLE_ALERT_AIRAUSTRAL` | adresse du flux de l'alerte Air Austral (section 8) |
 
 Un canal n'est activé que si **tous** ses secrets sont présents. Si un canal tombe en panne, les autres continuent.
 
 ---
 
-## 4. Remplir votre profil (PROFILE_YAML)
-
-Le profil sert à calculer le score de chaque offre. Copiez le modèle ci-dessous (il est aussi dans
-[`profile.example.yaml`](profile.example.yaml)), adaptez les valeurs, et collez **tout le texte** dans un secret
-nommé `PROFILE_YAML`. Respectez les espaces et les deux-points.
-
-```yaml
-cca: false                 # titulaire du CCA ? true = oui, false = non
-english_level: B2          # A2 / B1 / B2 / C1 / C2
-english_certified: false   # TOEIC / Linguaskills en cours de validité ?
-experience_pnc_months: 0
-experience_client_months: 12
-bases_ok: ["Paris", "Orly", "Roissy", "CDG"]        # villes / aéroports qui vous conviennent
-bases_maybe: ["Lyon", "Nice", "Marseille", "La Réunion"]
-contracts_ok: ["CDI", "CDD", "Alternance", "Contrat de professionnalisation", "Saisonnier"]
-min_score_to_notify: 40    # en dessous de ce score : pas de notification (mais visible dans le résumé)
-```
-
-Sans profil, tout fonctionne quand même : chaque offre PNC reçoit un score neutre de 50/100 et vous est envoyée.
-
-Pour modifier votre profil plus tard : **Settings** → **Secrets and variables** → **Actions** → crayon ✏️ à côté de
-`PROFILE_YAML`.
-
----
-
-## 5. Lancer le premier run à la main
+## 4. Lancer le premier run à la main
 
 1. Onglet **Actions** du dépôt. Si GitHub affiche un bouton vert « I understand my workflows, go ahead and enable
    them », cliquez dessus.
@@ -161,57 +122,52 @@ Ensuite la veille tourne **toute seule toutes les 15 minutes** (à h07, h22, h37
 
 ---
 
-## 6. Lire le résumé d'un run
+## 5. Lire le résumé d'un run
 
 **Actions** → cliquez sur un run → le **résumé** s'affiche sous le schéma du job :
 
 | Colonne | Signification |
 |---|---|
-| Source | identifiant de la source (voir section 9) |
+| Source | identifiant de la source (voir section 8) |
 | Statut | `ok`, `ok (changement)` pour une page surveillée qui a changé, `❌ …` en cas d'échec, `⏸ en pause` si le site refuse l'accès |
 | Offres | nombre d'offres actuellement en ligne sur cette source (`page` pour une page surveillée) |
 | Nouvelles | offres apparues depuis le run précédent |
 
-En dessous : les offres PNC notifiées, l'état de chaque canal (✅ / ❌ avec la raison), et des **notes** (offres PNC
-sous votre seuil, postes d'instructeur PNC, nettoyage de l'état…).
+En dessous : les offres PNC notifiées, l'état de chaque canal (✅ / ❌ avec la raison) et d'éventuelles **notes**
+(nettoyage de l'état, canaux en échec…).
 
 Un commit « chore(état): mise à jour de la veille » apparaît dans l'historique quand l'état change : c'est normal,
 c'est la mémoire de la veille (et ces commits empêchent GitHub de désactiver le workflow après 60 jours).
 
 ---
 
-## 7. Comprendre les notifications et le score
+## 6. Comprendre les notifications
+
+**Chaque nouvelle offre PNC vous est envoyée**, quelle que soit la base ou le contrat. Une notification d'offre
+contient : la compagnie, l'intitulé, le lieu, le contrat, la date de publication (quand le site les donne) et un
+bouton **Voir l'offre**.
 
 | Message | Quand |
 |---|---|
-| 🟢 / 🟡 *Compagnie — Intitulé* | Nouvelle offre PNC dont le score atteint votre seuil (au-delà de 5 offres dans le même run : un message groupé) |
+| ✈️ *Nouvelle offre PNC – Compagnie* | Une offre PNC vient d'être publiée (au-delà de 5 offres dans le même run : un seul message qui les liste toutes) |
 | 📣 *Compagnie : la page recrutement PNC a changé* | Une page « campagne » surveillée a changé, avec un extrait du nouveau texte |
 | ⚠️ *Source en panne* | Une source échoue 3 fois de suite (une seule alerte, pas de spam) |
 | ✅ *Source rétablie* | La source fonctionne de nouveau |
 | 📊 *Résumé de la semaine* | Le lundi matin : offres vues par source et état des sources (preuve que la veille tourne) |
 
-**Score sur 100** (les raisons sont listées dans chaque notification) :
-
-| Critère | Points |
-|---|---|
-| Poste PNC détecté | base 50 |
-| Lieu dans `bases_ok` / `bases_maybe` / non précisé / hors liste | +25 / +10 / +5 / −20 |
-| Contrat dans `contracts_ok` | +10 |
-| CCA exigé alors que vous ne l'avez pas | −30 |
-| Annonce « sans CCA » ou « CQP » (si vous n'avez pas le CCA) | +15 |
-| Niveau d'anglais exigé supérieur au vôtre, ou certification demandée sans certification | −15 |
-
-≥ 70 : 🟢 Très pertinent · 40 à 69 : 🟡 À regarder · < 40 : ⚪ Peu pertinent.
-Si l'annonce est trop courte pour juger des exigences, elle n'est pas pénalisée et porte la mention « à vérifier ».
+Selon le canal :
+- **ntfy** : une notification par offre, titre « Compagnie — Intitulé », lieu / contrat / date en dessous.
+- **Discord** : une carte par offre (titre cliquable, lieu, contrat et date en colonnes).
+- **E-mail** : **un seul e-mail par run**, avec une carte et un bouton par offre.
 
 **Détection PNC** : l'intitulé (ou, à défaut, la description) doit contenir un terme comme *PNC*, *hôtesse de
 l'air*, *steward*, *cabin crew*, *chef de cabine*… et l'intitulé ne doit pas contenir de terme d'exclusion
 (*pilote*, *mécanicien cabine*, *planning PN*, *stage*, *directeur*, *hôtesse d'accueil*…). Les postes
-d'*instructeur PNC* sont classés à part : ils apparaissent dans les notes du résumé, sans notification.
+d'*instructeur PNC* sont aussi envoyés, avec la mention « Instructeur PNC ».
 
 ---
 
-## 8. Vérifier que tout marche
+## 7. Vérifier que tout marche
 
 - **Test d'une notification** : ouvrez `data/state.json` dans GitHub (crayon ✏️), supprimez une entrée d'offre PNC
   (le bloc entre accolades qui commence par `"airfrance_pn::…"` par exemple, virgule comprise), validez
@@ -224,7 +180,7 @@ d'*instructeur PNC* sont classés à part : ils apparaissent dans les notes du r
 
 ---
 
-## 9. Sources surveillées
+## 8. Sources surveillées
 
 La liste complète et les réglages sont dans [`config/sources.yaml`](config/sources.yaml) (vérifiés le 26/10/2026).
 
@@ -241,27 +197,28 @@ La liste complète et les réglages sont dans [`config/sources.yaml`](config/sou
 | `aircaraibes` | Air Caraïbes | sitemap + lecture des nouvelles pages offres dans un navigateur |
 | `frenchbee_ats` | French Bee | sitemap + lecture des nouvelles pages offres |
 | `aircorsica` | Air Corsica | liste rendue dans un navigateur |
+| `frenchbee_alerte` | French Bee | alerte Google `"French Bee" PNC recrutement` |
+| `airaustral_alerte` | Air Austral | alerte Google `"Air Austral" recrutement PNC` |
 
-### Sources désactivées
+### Alertes Google (French Bee, Air Austral)
 
-Deux sources prévues sont **désactivées** (`enabled: false`) car ces sites bloquent les programmes automatiques.
-La veille respecte ces protections et ne cherche pas à les contourner.
+Les sites de French Bee (`www.frenchbee.com`) et d'Air Austral bloquent les programmes automatiques ; la veille
+respecte ces protections. Les sources `frenchbee_pnc` et `airaustral` sont donc désactivées et remplacées par des
+**alertes Google** : Google, lui, explore ces sites et la presse. Quand une page ou un article correspondant à la
+recherche apparaît, l'alerte le publie dans un flux que la veille lit toutes les 15 minutes. Comptez **quelques
+heures** de délai entre la publication et l'arrivée dans Google. Chaque entrée vous est envoyée avec la mention
+🔎 *Alerte Google* et un bouton **Lire l'article** : c'est un article ou une page web, pas forcément une offre.
 
-- **French Bee – page « recrutement PNC »** (`frenchbee_pnc`) : le site ne répond pas aux robots. C'est pourtant là
-  que French Bee annonce ses campagnes PNC. **Alternative** : une alerte Google, lue comme un flux.
-  1. Ouvrez <https://www.google.com/alerts>, tapez `"French Bee" PNC recrutement`.
-  2. **Afficher les options** → *Fréquence* : « Au fil de l'eau » ; *Distribuer à* : **Flux RSS** → **Créer**.
-  3. Cliquez sur l'icône RSS de l'alerte et copiez l'adresse de la page.
-  4. Ajoutez à la fin de `config/sources.yaml` (en respectant l'indentation) :
-     ```yaml
-       - id: frenchbee_alerte
-         company: French Bee (alerte Google)
-         type: rss
-         url: "COLLEZ ICI L'ADRESSE DU FLUX"
-     ```
-  Le même procédé fonctionne pour toute compagnie sans page carrières (ex. Corsair).
-- **Air Austral** (`airaustral`) : le site renvoie « accès refusé » (protection Cloudflare). Même alternative
-  possible : une alerte Google `"Air Austral" recrutement PNC`.
+Créer une alerte (ou en ajouter pour une autre compagnie, ex. Corsair) :
+1. Ouvrez <https://www.google.com/alerts>, tapez la recherche (ex. `"French Bee" PNC recrutement`).
+2. **Afficher les options** → *Fréquence* : « Au fil de l'eau » ; *Distribuer à* : **Flux RSS** → **Créer**.
+3. Cliquez sur l'icône RSS de l'alerte et copiez l'adresse de la page
+   (`https://www.google.com/alerts/feeds/…`).
+4. Collez-la dans le secret correspondant (`GOOGLE_ALERT_FRENCHBEE`, `GOOGLE_ALERT_AIRAUSTRAL`). L'adresse contient
+   l'identifiant de votre compte Google : elle ne doit pas être écrite dans le dépôt public.
+
+Pour une nouvelle alerte, il faut aussi un bloc dans `config/sources.yaml` (type `rss`, `url_env: NOM_DU_SECRET`,
+`notify_all: true`) et une ligne `NOM_DU_SECRET: ${{ secrets.NOM_DU_SECRET }}` dans `.github/workflows/veille.yml`.
 
 ### Ajouter une compagnie
 
@@ -277,18 +234,18 @@ Ajoutez un bloc dans `config/sources.yaml` : pas de code à écrire si le site u
 | `page_watch` | page « campagne » sans liste d'offres | `url`, `zone`, `exclude`, `ignore_lines` |
 
 Options communes : `enabled: false` pour couper une source, `keep_if_any: [mots]` pour ne garder que les offres
-dont l'intitulé ou le lieu contient un de ces mots. Une source ajoutée plus tard est initialisée silencieusement,
+dont l'intitulé ou le lieu contient un de ces mots, `notify_all: true` pour envoyer chaque nouvelle entrée sans
+détection PNC, `url_env: SECRET` pour lire l'URL dans un secret. Une source ajoutée plus tard est initialisée silencieusement,
 comme au premier lancement.
 
 ---
 
-## 10. Dépannage
+## 9. Dépannage
 
 | Problème | Solution |
 |---|---|
 | Aucun message reçu | Vérifiez dans le résumé du run la ligne **Canaux** : un ❌ indique la raison. Vérifiez le nom exact des secrets. |
 | E-mail : « authentification SMTP refusée » | Utilisez un **mot de passe d'application** Gmail, collé sans espaces. |
-| Telegram : HTTP 400 ou 403 | `TELEGRAM_CHAT_ID` incorrect, ou vous n'avez pas encore écrit à votre bot. |
 | Le run échoue à l'étape « Enregistrer l'état » | Revoyez l'étape 1 (*Read and write permissions*). |
 | Une source est « ❌ » | Si c'est passager, rien à faire. Après 3 échecs vous recevez une alerte : le site a sans doute changé et `config/sources.yaml` doit être adapté. |
 | Le workflow ne tourne plus | GitHub coupe les workflows programmés après 60 jours sans activité : onglet **Actions** → **Veille PNC** → **Enable workflow**. Normalement les commits d'état l'évitent. |
@@ -296,7 +253,7 @@ comme au premier lancement.
 
 ---
 
-## 11. Pour les développeurs
+## 10. Pour les développeurs
 
 ```bash
 python -m venv .venv && .venv/Scripts/activate          # Windows (Linux/macOS : source .venv/bin/activate)
@@ -307,11 +264,10 @@ export PYTHONPATH=src                                    # PowerShell : $env:PYT
 python -m pytest -q                                      # tests (fixtures enregistrées, sans réseau)
 python -m veille --dry-run                               # tout tester : aucune notification, état non modifié
 python -m veille --dry-run --source transavia            # une seule source (même désactivée)
-python -m veille --dry-run --profile profile.yaml        # avec un profil local (profile.yaml est ignoré par git)
 python -m veille --weekly --dry-run                      # aperçu du résumé hebdomadaire
 ```
 
-Architecture : `src/veille/main.py` orchestre *relève → diff → filtre → score → notifie → sauvegarde* ;
-`sources/` contient un module par **type** de source, `matching.py` la détection PNC et le score, `state.py` l'état,
+Architecture : `src/veille/main.py` orchestre *relève → diff → filtre PNC → notifie → sauvegarde* ;
+`sources/` contient un module par **type** de source, `matching.py` la détection PNC, `messages.py` le contenu des messages, `state.py` l'état,
 `notifiers/` les canaux. Politesse : User-Agent explicite, délai de 20 s, 2 tentatives maximum, une requête à la
 fois par domaine ; un site qui répond 403/429 est mis en pause 6 h après 3 refus, sans insister.

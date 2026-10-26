@@ -97,13 +97,22 @@ sources:
   # --- French Bee : page « campagne PNC » -----------------------------------------------------------
   # DÉSACTIVÉE : www.frenchbee.com ne répond pas aux clients automatisés (connexion acceptée puis aucune
   # réponse — protection anti-robots). Le brief interdit de contourner ce type de protection.
-  # Voir README, section « French Bee » pour l'alternative (alerte Google en flux RSS).
+  # Remplacée par l'alerte Google ci-dessous.
   - id: frenchbee_pnc
     company: French Bee
     type: page_watch
     enabled: false
     url: https://www.frenchbee.com/fr/recrutement-pnc
     zone: "main"
+
+  # Alerte Google « "French Bee" PNC recrutement » (flux Atom). Google, lui, a le droit d'explorer
+  # frenchbee.com : une page ou un article qui parle d'une campagne PNC remonte ici, en quelques heures.
+  # L'adresse du flux contient l'identifiant du compte Google : elle est dans un secret, pas ici.
+  - id: frenchbee_alerte
+    company: French Bee
+    type: rss
+    url_env: GOOGLE_ALERT_FRENCHBEE
+    notify_all: true   # la requête de l'alerte filtre déjà : chaque nouvelle entrée est envoyée
 
   # --- Air Corsica (Salesforce Sites, rendu JavaScript) ---------------------------------------------
   # Les lignes n'ont pas de lien propre : le lien des notifications ouvre la liste des offres.
@@ -126,7 +135,7 @@ sources:
 
   # --- Air Austral : page statique ------------------------------------------------------------------
   # DÉSACTIVÉE : le site est derrière Cloudflare, qui renvoie 403 au client HTTP de la veille
-  # (contourner cette protection est exclu). Voir README, section « Sources désactivées ».
+  # (contourner cette protection est exclu). Remplacée par l'alerte Google ci-dessous.
   - id: airaustral
     company: Air Austral
     type: page_watch
@@ -134,5 +143,12 @@ sources:
     url: https://www.air-austral.com/a-propos-dair-austral/recrutement.html
     zone: "article#content"
     ignore_lines: ["^Note obtenue", "^Indicateur", "^Pourcentage", "^Nombre de salari"]
+
+  # Alerte Google « "Air Austral" recrutement PNC » (adresse du flux dans un secret).
+  - id: airaustral_alerte
+    company: Air Austral
+    type: rss
+    url_env: GOOGLE_ALERT_AIRAUSTRAL
+    notify_all: true
 
   # --- Corsair : pas de page carrières trouvée. Phase 2 : API France Travail. -----------------------

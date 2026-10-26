@@ -1,4 +1,4 @@
-"""Orchestration : relève → diff → filtre → score → notifie → sauvegarde."""
+"""Orchestration : relève → diff → filtre PNC → notifie → sauvegarde."""
 from __future__ import annotations
 
 import argparse
@@ -14,11 +14,12 @@ from zoneinfo import ZoneInfo
 import yaml
 
 from veille.http import BlockedError, PoliteHttp, SourceError
-from veille.matching import Profile, detect, load_profile, score_offer
-from veille.messages import (Message, OfferAlert, init_message, offer_messages, page_change_message,
-                             source_down_message, source_up_message, weekly_message)
+from veille.matching import ALERT, detect
+from veille.messages import (Message, OfferAlert, facts_line, init_message, offer_heading, offer_messages,
+                             page_change_message, source_down_message, source_up_message, weekly_message)
 from veille.models import Offer, PageSnapshot, normalize_url
 from veille.notifiers import Notifier, NotifyError, enabled_notifiers
+from veille.notifiers.email import render_text
 from veille.sources.base import FetchContext, Source, build_source
 from veille.sources.browser import BrowserPool
 from veille.sources.page_watch import added_lines, removed_lines
@@ -47,7 +48,6 @@ class SourceRow:
 @dataclass
 class Run:
     state: State
-    profile: Profile
     now: datetime
     messages: list[Message] = field(default_factory=list)
     alerts: list[OfferAlert] = field(default_factory=list)
@@ -76,32 +76,19 @@ class Run:
                 continue
             if not offer.title:
                 continue
-            detection = detect(offer.title, offer.description)
-            score = score_offer(offer, detection, self.profile) if detection.is_pnc else None
+            # Sources « notify_all » (alertes Google…) : la requête filtre déjà, chaque entrée est envoyée.
+            detection = ALERT if source.cfg.get("notify_all") else detect(offer.title, offer.description)
             duplicate_of = known_urls.get(normalize_url(offer.url))
-            extra = {"category": detection.category} if detection.category else {}
-            if score:
-                extra["score"] = score.value
-            self.state.record(offer, self.today, **extra)
+            self.state.record(offer, self.today, **({"category": detection.category} if detection.category else {}))
             known_urls[normalize_url(offer.url)] = offer.key
             row.new += 1
-            alert = OfferAlert(offer, detection, score) if score else None
-            log.info("  + %s%s", offer.title, f"  [PNC {score.value}/100]" if score else "")
-
-            if not initialized:
-                if alert and not duplicate_of:
-                    self.init_pnc.append(alert)
+            log.info("  + %s%s", offer.title, f"  [{detection.category}]" if detection.category else "")
+            if not detection.is_relevant:
                 continue
             if duplicate_of:
                 log.info("    (déjà vue via %s)", duplicate_of)
                 continue
-            if detection.category == "instructeur_pnc":
-                self.notes.append(f"Poste d'instructeur PNC (non notifié) : {source.company} — {offer.title} {offer.url}")
-            elif alert and score.value >= self.profile.min_score_to_notify:
-                self.alerts.append(alert)
-            elif alert:
-                self.notes.append(f"Offre PNC sous le seuil ({score.value} < {self.profile.min_score_to_notify}) : "
-                                  f"{source.company} — {offer.title} {offer.url}")
+            (self.alerts if initialized else self.init_pnc).append(OfferAlert(offer, detection))
 
         if not initialized:
             sstate["initialized"] = True
@@ -212,8 +199,8 @@ def send_all(notifiers: list[Notifier], messages: list[Message]) -> dict[str, st
 
 
 def print_messages(messages: list[Message]) -> None:
-    for m in messages:
-        print(f"\n━━ [{m.kind} · {m.priority}] {m.title}\n{m.text}" + (f"\n→ {m.url}" if m.url else ""))
+    if messages:
+        print("\n" + render_text(messages))
 
 
 def summary_markdown(run: Run, channels: dict[str, str], configured: list[str], dry_run: bool) -> str:
@@ -221,7 +208,7 @@ def summary_markdown(run: Run, channels: dict[str, str], configured: list[str], 
              "| Source | Compagnie | Type | Statut | Offres | Nouvelles |", "|---|---|---|---|---|---|"]
     lines += [f"| `{r.id}` | {r.company} | {r.type} | {r.status} | {r.count} | {r.new} |" for r in run.rows]
     lines += ["", f"**Offres PNC notifiées :** {len(run.alerts)}"]
-    lines += [f"- {a.short_line()} — [lien]({a.offer.url})" for a in run.alerts]
+    lines += [f"- [{offer_heading(a)}]({a.offer.url}) {facts_line(a.offer)}" for a in run.alerts]
     if run.init_sources or run.init_pages:
         lines += ["", f"**Initialisation silencieuse :** {', '.join(run.init_sources + run.init_pages)}"]
     if channels:
@@ -250,7 +237,6 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p.add_argument("--source", action="append", default=[], metavar="ID", help="ne traiter que cette source (répétable)")
     p.add_argument("--config", type=Path, default=ROOT / "config" / "sources.yaml")
     p.add_argument("--state", type=Path, default=ROOT / "data" / "state.json")
-    p.add_argument("--profile", type=Path, help="fichier profil YAML (sinon variable d'environnement PROFILE_YAML)")
     p.add_argument("--weekly", action="store_true", help="envoyer le résumé hebdomadaire maintenant")
     p.add_argument("--needs-browser", action="store_true", help="affiche true/false : une source active a-t-elle besoin de Playwright ?")
     p.add_argument("-v", "--verbose", action="store_true")
@@ -280,10 +266,7 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None, no
         print("true" if any(s.needs_browser for s in sources) else "false")
         return 0
 
-    profile_text = args.profile.read_text(encoding="utf-8") if args.profile else env.get("PROFILE_YAML")
-    run = Run(State.load(args.state), load_profile(profile_text), (now or datetime.now(PARIS)).astimezone(PARIS))
-    if not run.profile.provided:
-        run.notes.append("Aucun profil fourni (secret PROFILE_YAML) : score neutre pour toutes les offres PNC.")
+    run = Run(State.load(args.state), (now or datetime.now(PARIS)).astimezone(PARIS))
 
     http, browser = PoliteHttp(), BrowserPool()
     try:

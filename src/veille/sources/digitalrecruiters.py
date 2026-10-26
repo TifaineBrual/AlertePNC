@@ -55,7 +55,7 @@ class DigitalRecruitersSource(Source):
         for item in self._list(ctx):
             offer_id = str(item["id"])
             description = ""
-            # Description lue seulement pour les nouvelles offres (et en nombre limité) : utile au scoring.
+            # Description lue seulement pour les nouvelles offres (et en nombre limité) : sert à la détection PNC.
             if offer_id not in ctx.known_ids and details_fetched < MAX_DETAILS:
                 details_fetched += 1
                 try:

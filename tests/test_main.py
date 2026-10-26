@@ -75,8 +75,8 @@ def test_first_run_is_silent_initialization(env):
     env.set(offers=OFFERS)
     [msg] = env.run()
     assert msg.kind == "init"
-    assert msg.title == "✅ Veille PNC active – 2 offres indexées, dont 1 PNC"
-    assert "Hôtesse de l'air" in msg.text
+    assert msg.title == "Veille PNC active – 2 offres indexées, dont 1 PNC"
+    assert [a.offer.title for a in msg.alerts] == ["Hôtesse de l'air / Steward H/F"]
     assert len(env.load()["offers"]) == 2
 
 
@@ -87,8 +87,16 @@ def test_new_offer_is_notified_once(env):
     del state["offers"]["fake::1"]  # « fausse offre » : on la fait oublier
     env.state.write_text(json.dumps(state), encoding="utf-8")
     [msg] = env.run()
-    assert msg.kind == "offer" and "Hôtesse" in msg.title and msg.url.endswith("/offre/1")
+    assert msg.kind == "offer" and msg.alerts[0].offer.offer_id == "1" and msg.url.endswith("/offre/1")
     assert env.run() == []  # déjà vue
+
+
+def test_instructor_offer_is_notified(env):
+    env.set(offers=[])
+    env.run()
+    env.set(offers=[{"offer_id": "9", "title": "Instructeur PNC H/F", "location": "Roissy", "contract": "CDI"}])
+    [msg] = env.run()
+    assert msg.alerts[0].tag == "Instructeur PNC"
 
 
 def test_non_pnc_offer_is_not_notified(env):
@@ -113,7 +121,7 @@ def test_source_down_alert_after_three_failures_then_recovery(env):
     assert env.run() == []
     assert env.run() == []
     [down] = env.run()
-    assert down.kind == "source_down" and "HTTP 404" in down.text
+    assert down.kind == "source_down" and "HTTP 404" in " ".join(down.lines)
     before = env.state.read_text(encoding="utf-8")
     assert env.run() == [] and env.run() == []  # une seule alerte
     assert env.state.read_text(encoding="utf-8") == before  # et pas de commit à chaque run
@@ -129,7 +137,7 @@ def test_blocked_source_is_paused(env):
     env.set(error="blocked")
     env.run(), env.run()
     [down] = env.run()
-    assert "403" in down.text
+    assert "403" in " ".join(down.lines)
     assert "paused_until" in env.load()["sources"]["fake"]
 
 
@@ -157,7 +165,7 @@ def test_weekly_summary_on_monday_morning(env):
     env.run()
     monday = datetime(2026, 11, 2, 8, 7, tzinfo=PARIS)
     [weekly] = env.run(now=monday)
-    assert weekly.kind == "weekly" and "Fake Air" in weekly.text
+    assert weekly.kind == "weekly" and "Fake Air" in " ".join(weekly.lines)
     assert env.run(now=monday) == []  # une seule fois
 
 
@@ -176,3 +184,21 @@ def test_job_summary_written(env, tmp_path):
                   env={"GITHUB_STEP_SUMMARY": str(summary)}, now=TUESDAY)
     text = summary.read_text(encoding="utf-8")
     assert "| `fake` | Fake Air | fake | ok | 2 | 2 |" in text
+
+
+def test_notify_all_source_sends_every_entry(env, tmp_path):
+    config = tmp_path / "alert.yaml"
+    config.write_text(yaml.safe_dump({"sources": [{"id": "alerte", "company": "French Bee", "type": "fake",
+                                                   "file": str(tmp_path / "fake.json"), "notify_all": True}]}),
+                      encoding="utf-8")
+
+    def run():
+        env.notifier.sent.clear()
+        main_mod.main(["--config", str(config), "--state", str(env.state)], env={}, now=TUESDAY)
+        return [m for batch in env.notifier.sent for m in batch]
+
+    env.set(offers=[])
+    run()
+    env.set(offers=[{"offer_id": "a1", "title": "French Bee ouvre sa saison de recrutement"}])
+    [msg] = run()
+    assert msg.title == "Alerte Google – French Bee" and msg.icon == "🔎" and msg.link_label == "Lire l'article"

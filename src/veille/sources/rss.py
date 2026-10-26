@@ -96,5 +96,7 @@ def _parse_atom(root, source: Source) -> list[Offer]:
 @register("rss")
 class RssSource(Source):
     def fetch(self, ctx: FetchContext) -> list[Offer]:
+        if not self.url:
+            raise SourceError(f"URL absente : le secret {self.cfg.get('url_env', '?')} n'est pas défini")
         resp = ctx.http.get(self.url)
         return [o for o in parse_rss(resp.content, self) if self.keep(o)]

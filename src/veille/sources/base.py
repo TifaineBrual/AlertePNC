@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 from dataclasses import dataclass, field
 from typing import TYPE_CHECKING, Callable, ClassVar
 
@@ -38,7 +39,8 @@ class Source:
         self.cfg = cfg
         self.id: str = cfg["id"]
         self.company: str = cfg["company"]
-        self.url: str = cfg.get("url", "")
+        # url_env : nom d'une variable d'environnement (secret GitHub) contenant l'URL, quand elle est personnelle.
+        self.url: str = cfg.get("url") or os.environ.get(cfg.get("url_env", ""), "").strip()
         # Filtre optionnel : ne garder que les offres dont le titre ou le lieu contient un de ces mots.
         self.keep_if_any = [normalize(t) for t in cfg.get("keep_if_any", [])]
 

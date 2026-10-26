@@ -1,40 +1,70 @@
 from __future__ import annotations
 
+from datetime import datetime, timezone
 from typing import Mapping
 
-from veille.messages import Message
+from veille.messages import Message, OfferAlert, facts_line, offer_facts
 from veille.notifiers.base import Notifier, post, truncate
 
 EMBEDS_PER_POST = 10
 CHARS_PER_POST = 5500  # Discord refuse au-delà de 6000 caractères d'embeds par message
-COLORS = {"high": 0x2ECC71, "default": 0xF1C40F, "low": 0x95A5A6}
-KIND_COLORS = {"source_down": 0xE74C3C, "page_change": 0x3498DB}
+DESCRIPTION_MAX = 4000
+COLORS = {
+    "offer": 0x2ECC71, "offers_group": 0x2ECC71, "page_change": 0x3498DB, "source_down": 0xE74C3C,
+    "source_up": 0x95A5A6, "init": 0x95A5A6, "weekly": 0x95A5A6,
+}
+
+
+def _offer_item(alert: OfferAlert) -> str:
+    o = alert.offer
+    tag = f" · *{alert.tag}*" if alert.tag else ""
+    facts = facts_line(o)
+    return f"**[{truncate(o.title, 200)}]({o.url})**{tag}\n{o.company}" + (f"  ·  {facts}" if facts else "")
+
+
+def _offer_list(alerts: list[OfferAlert], budget: int) -> str:
+    """Liste d'offres en markdown Discord, coupée proprement si elle dépasse `budget` caractères."""
+    out: list[str] = []
+    for i, alert in enumerate(alerts):
+        item = _offer_item(alert)
+        rest = f"\n… et {len(alerts) - i} autre(s) offre(s)"
+        if sum(len(x) + 2 for x in out) + len(item) + len(rest) > budget:
+            out.append(rest.strip())
+            break
+        out.append(item)
+    return "\n\n".join(out)
 
 
 def embed(msg: Message) -> dict:
-    data = {
-        "title": truncate(msg.title, 256),
-        "color": KIND_COLORS.get(msg.kind, COLORS[msg.priority]),
-    }
-    if msg.url:
-        data["url"] = msg.url
+    data: dict = {"color": COLORS.get(msg.kind, 0x95A5A6), "footer": {"text": "Veille PNC"},
+                  "timestamp": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     if msg.kind == "offer":
         alert = msg.alerts[0]
-        o, s = alert.offer, alert.score
-        data["fields"] = [
-            {"name": "Compagnie", "value": o.company, "inline": True},
-            {"name": "Lieu", "value": truncate(o.location or "non précisé", 1024), "inline": True},
-            {"name": "Contrat", "value": truncate(o.contract or "non précisé", 1024), "inline": True},
-            {"name": f"Score {s.value}/100 — {s.label}" + (" (à vérifier)" if s.to_check else ""),
-             "value": truncate("\n".join(f"• {r}" for r in s.reasons), 1024)},
-        ]
+        o = alert.offer
+        data["author"] = {"name": f"{alert.icon} {alert.label} · {o.company}" + (f" · {alert.tag}" if alert.tag else "")}
+        data["title"] = truncate(o.title, 256)
+        data["url"] = o.url
+        data["fields"] = [{"name": label, "value": truncate(value, 1024), "inline": True} for _, label, value in offer_facts(o)]
+        data["footer"]["text"] = f"Veille PNC · {o.source_id}"
+        return data
+
+    data["title"] = truncate(f"{msg.icon} {msg.title}", 256)
+    if msg.url:
+        data["url"] = msg.url
+    if msg.kind == "page_change":
+        details = "\n".join(f"> {line}" for line in msg.lines)
+    elif msg.alerts:
+        details = "\n".join(f"*{line}*" for line in msg.lines)  # informations secondaires sous la liste
     else:
-        data["description"] = truncate(msg.text, 4000)
+        details = "\n".join(msg.lines)
+    offers = _offer_list(msg.alerts, DESCRIPTION_MAX - len(msg.intro) - len(details) - 10) if msg.alerts else ""
+    data["description"] = truncate("\n\n".join(p for p in (msg.intro, offers, details) if p), DESCRIPTION_MAX)
     return data
 
 
 def _size(e: dict) -> int:
-    return len(e["title"]) + len(e.get("description", "")) + sum(len(f["name"]) + len(f["value"]) for f in e.get("fields", []))
+    return (len(e.get("title", "")) + len(e.get("description", "")) + len(e.get("author", {}).get("name", ""))
+            + len(e["footer"]["text"]) + sum(len(f["name"]) + len(f["value"]) for f in e.get("fields", [])))
 
 
 class DiscordNotifier(Notifier):

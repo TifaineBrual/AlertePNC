@@ -6,9 +6,8 @@ from veille.notifiers.base import Notifier, NotifyError
 from veille.notifiers.discord import DiscordNotifier
 from veille.notifiers.email import EmailNotifier
 from veille.notifiers.ntfy import NtfyNotifier
-from veille.notifiers.telegram import TelegramNotifier
 
-ALL = (DiscordNotifier, NtfyNotifier, TelegramNotifier, EmailNotifier)
+ALL = (DiscordNotifier, NtfyNotifier, EmailNotifier)
 
 
 def enabled_notifiers(env: Mapping[str, str]) -> list[Notifier]:
