@@ -159,7 +159,7 @@ class EmailNotifier(Notifier):
         mail.add_alternative(render_html(messages), subtype="html")
         with self._connect() as smtp:
             try:
-                smtp.login(self.user, self.password)
+                self._login(smtp)
             except smtplib.SMTPAuthenticationError as exc:
                 raise NotifyError(f"authentification SMTP refusée ({_server_reply(exc)}) : vérifiez SMTP_USER et "
                                   "le mot de passe d'application") from None
@@ -169,6 +169,17 @@ class EmailNotifier(Notifier):
                 smtp.send_message(mail)
             except (smtplib.SMTPException, OSError) as exc:
                 raise NotifyError(f"erreur SMTP à l'envoi ({_server_reply(exc)}) : vérifiez EMAIL_TO") from None
+
+    def _login(self, smtp: smtplib.SMTP) -> None:
+        # smtplib.login() réessaie avec AUTH LOGIN après un refus en AUTH PLAIN ; Gmail coupe alors la connexion
+        # et le vrai motif (535 identifiants refusés) est masqué par « Connection unexpectedly closed ».
+        # On s'en tient donc à une seule méthode pour remonter la réponse exacte du serveur.
+        smtp.ehlo_or_helo_if_needed()
+        if "PLAIN" not in smtp.esmtp_features.get("auth", "").upper().split():
+            smtp.login(self.user, self.password)
+            return
+        smtp.user, smtp.password = self.user, self.password
+        smtp.auth("PLAIN", smtp.auth_plain)
 
     def _candidates(self) -> list[tuple[int, bool]]:
         """(port, SSL direct ?) à essayer : le port configuré, puis les deux réglages standard (465 SSL, 587 STARTTLS)."""
