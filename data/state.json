@@ -769,71 +769,91 @@
   }
  },
  "sources": {
+  "airaustral": {
+   "new_week": 0
+  },
   "airaustral_alerte": {
    "count": 0,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "aircalin": {
    "count": 0,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "aircaraibes": {
    "count": 15,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "aircorsica": {
    "count": 2,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "airfrance_pn": {
    "count": 1,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "airfrance_pnc": {
    "count": 0,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "airtahitinui": {
    "count": 0,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "asl": {
    "count": 4,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "easyjet": {
    "count": 0,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "frenchbee_alerte": {
    "count": 0,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "frenchbee_ats": {
    "count": 3,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
+  },
+  "frenchbee_pnc": {
+   "new_week": 0
   },
   "hop": {
    "count": 20,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   },
   "transavia": {
    "count": 40,
    "initialized": true,
-   "last_ok": "2026-10-26"
+   "last_ok": "2026-10-26",
+   "new_week": 0
   }
  },
- "version": 1
+ "version": 1,
+ "weekly_sent": "2026-10-26"
 }
