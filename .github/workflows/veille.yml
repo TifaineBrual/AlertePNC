@@ -74,22 +74,38 @@ jobs:
           echo "run=$run" >> "$GITHUB_OUTPUT"
           echo "browser=$(python -m veille --needs-browser $selection)" >> "$GITHUB_OUTPUT"
 
-      # Playwright n'est installé que si une source activée en a besoin.
-      - name: Cache du navigateur Playwright
+      # Playwright n'est installé que si une source activée en a besoin. On utilise le Google Chrome déjà
+      # présent sur les runners GitHub (ni téléchargement ni apt) ; à défaut, on installe Chromium.
+      - name: Playwright
+        id: playwright
         if: steps.args.outputs.browser == 'true'
+        run: |
+          pip install -r requirements-browser.txt
+          if command -v google-chrome >/dev/null; then
+            echo "Chrome préinstallé : $(google-chrome --version)"
+            echo "channel=chrome" >> "$GITHUB_OUTPUT"
+          else
+            echo "install=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Cache du navigateur Playwright
+        if: steps.playwright.outputs.install == 'true'
         uses: actions/cache@v4
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('requirements-browser.txt') }}
 
-      - name: Playwright
-        if: steps.args.outputs.browser == 'true'
-        run: |
-          pip install -r requirements-browser.txt
-          python -m playwright install --with-deps --only-shell chromium
+      # Si l'installation bloque (dépôts apt lents), le run continue : seules les sources navigateur échouent.
+      - name: Installer Chromium
+        if: steps.playwright.outputs.install == 'true'
+        timeout-minutes: 4
+        continue-on-error: true
+        run: python -m playwright install --with-deps --only-shell chromium
 
       - name: Veille
+        timeout-minutes: 6
         env:
+          VEILLE_BROWSER_CHANNEL: ${{ steps.playwright.outputs.channel }}
           GOOGLE_ALERT_FRENCHBEE: ${{ secrets.GOOGLE_ALERT_FRENCHBEE }}
           GOOGLE_ALERT_AIRAUSTRAL: ${{ secrets.GOOGLE_ALERT_AIRAUSTRAL }}
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
