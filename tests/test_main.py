@@ -202,3 +202,17 @@ def test_notify_all_source_sends_every_entry(env, tmp_path):
     env.set(offers=[{"offer_id": "a1", "title": "French Bee ouvre sa saison de recrutement"}])
     [msg] = run()
     assert msg.title == "Alerte Google – French Bee" and msg.icon == "🔎" and msg.link_label == "Lire l'article"
+
+
+def test_test_message_and_channel_filter(env, monkeypatch):
+    other = FakeNotifier(name="Discord")
+    mail = FakeNotifier(name="E-mail")
+    monkeypatch.setattr(main_mod, "enabled_notifiers", lambda e: [other, mail])
+    env.set(offers=[])
+    env.run()
+    other.sent.clear(), mail.sent.clear()
+    main_mod.main(["--config", str(env.state.parent / "sources.yaml"), "--state", str(env.state), "--test",
+                   "--channel", "email"], env={}, now=TUESDAY)
+    assert other.sent == []
+    [[msg]] = mail.sent
+    assert msg.kind == "test" and msg.icon == "🔔"

@@ -116,6 +116,16 @@ def render_html(messages: list[Message]) -> str:
     )
 
 
+def _server_reply(exc: Exception) -> str:
+    """Type d'erreur + réponse du serveur SMTP (jamais les identifiants)."""
+    if isinstance(exc, smtplib.SMTPResponseException):
+        reply = exc.smtp_error.decode(errors="replace") if isinstance(exc.smtp_error, bytes) else str(exc.smtp_error)
+        return f"{type(exc).__name__} {exc.smtp_code} : {' '.join(reply.split())[:200]}"
+    if isinstance(exc, smtplib.SMTPRecipientsRefused):
+        return f"{type(exc).__name__} : destinataire refusé"
+    return f"{type(exc).__name__} : {str(exc)[:200]}" if str(exc) else type(exc).__name__
+
+
 class EmailNotifier(Notifier):
     """Un seul e-mail récapitulatif par run, quel que soit le nombre de messages."""
 
@@ -150,11 +160,15 @@ class EmailNotifier(Notifier):
         with self._connect() as smtp:
             try:
                 smtp.login(self.user, self.password)
-                smtp.send_message(mail)
-            except smtplib.SMTPAuthenticationError:
-                raise NotifyError("authentification SMTP refusée (vérifiez le mot de passe d'application)") from None
+            except smtplib.SMTPAuthenticationError as exc:
+                raise NotifyError(f"authentification SMTP refusée ({_server_reply(exc)}) : vérifiez SMTP_USER et "
+                                  "le mot de passe d'application") from None
             except (smtplib.SMTPException, OSError) as exc:
-                raise NotifyError(f"erreur SMTP pendant l'envoi ({type(exc).__name__})") from None
+                raise NotifyError(f"erreur SMTP à l'authentification ({_server_reply(exc)})") from None
+            try:
+                smtp.send_message(mail)
+            except (smtplib.SMTPException, OSError) as exc:
+                raise NotifyError(f"erreur SMTP à l'envoi ({_server_reply(exc)}) : vérifiez EMAIL_TO") from None
 
     def _candidates(self) -> list[tuple[int, bool]]:
         """(port, SSL direct ?) à essayer : le port configuré, puis les deux réglages standard (465 SSL, 587 STARTTLS)."""

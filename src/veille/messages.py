@@ -14,7 +14,7 @@ PAGE_EXCERPT_LINES = 15
 
 ICONS = {
     "offer": "✈️", "offers_group": "✈️", "page_change": "📣", "source_down": "⚠️",
-    "source_up": "✅", "init": "✅", "weekly": "📊",
+    "source_up": "✅", "init": "✅", "weekly": "📊", "test": "🔔",
 }
 
 

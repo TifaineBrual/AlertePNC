@@ -18,6 +18,15 @@ on:
         description: "Envoyer aussi le résumé hebdomadaire maintenant"
         type: boolean
         default: false
+      test:
+        description: "Envoyer un message de test"
+        type: boolean
+        default: false
+      channel:
+        description: "Canal à utiliser pour ce run"
+        type: choice
+        options: [tous, discord, ntfy, email]
+        default: tous
 
 permissions:
   contents: write
@@ -35,6 +44,8 @@ jobs:
       INPUT_SOURCE: ${{ inputs.source }}
       INPUT_DRY_RUN: ${{ inputs.dry_run }}
       INPUT_WEEKLY: ${{ inputs.weekly }}
+      INPUT_TEST: ${{ inputs.test }}
+      INPUT_CHANNEL: ${{ inputs.channel }}
     steps:
       - uses: actions/checkout@v5
 
@@ -58,6 +69,8 @@ jobs:
           run="$selection"
           if [ "$INPUT_DRY_RUN" = "true" ]; then run="$run --dry-run"; fi
           if [ "$INPUT_WEEKLY" = "true" ]; then run="$run --weekly"; fi
+          if [ "$INPUT_TEST" = "true" ]; then run="$run --test"; fi
+          case "$INPUT_CHANNEL" in discord|ntfy|email) run="$run --channel $INPUT_CHANNEL" ;; esac
           echo "run=$run" >> "$GITHUB_OUTPUT"
           echo "browser=$(python -m veille --needs-browser $selection)" >> "$GITHUB_OUTPUT"
 

@@ -238,9 +238,18 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p.add_argument("--config", type=Path, default=ROOT / "config" / "sources.yaml")
     p.add_argument("--state", type=Path, default=ROOT / "data" / "state.json")
     p.add_argument("--weekly", action="store_true", help="envoyer le résumé hebdomadaire maintenant")
+    p.add_argument("--test", action="store_true", help="envoyer aussi un message de test")
+    p.add_argument("--channel", action="append", default=[], metavar="CANAL",
+                   help="n'envoyer que sur ce canal : discord, ntfy ou email (répétable)")
     p.add_argument("--needs-browser", action="store_true", help="affiche true/false : une source active a-t-elle besoin de Playwright ?")
     p.add_argument("-v", "--verbose", action="store_true")
     return p.parse_args(argv)
+
+
+def _channel_key(name: str) -> str:
+    """« E-mail », « email », « mail » → « email »."""
+    key = name.lower().replace("-", "").strip()
+    return "email" if key in ("mail", "email") else key
 
 
 def select_sources(configs: list[dict], wanted: list[str]) -> list[dict]:
@@ -294,7 +303,13 @@ def main(argv: list[str] | None = None, env: Mapping[str, str] | None = None, no
 
     messages = run.final_messages(all_configs, bool(settings.get("weekly_summary", True)) and not args.source, args.weekly)
     channels: dict[str, str] = {}
+    if args.test:
+        messages.append(Message(kind="test", title="Test de notification",
+                                intro="Si vous lisez ce message, ce canal fonctionne."))
     notifiers = [] if args.dry_run else enabled_notifiers(env)
+    if args.channel:
+        wanted = {_channel_key(c) for c in args.channel}
+        notifiers = [n for n in notifiers if _channel_key(n.name) in wanted]
     if args.dry_run:
         print_messages(messages)
     else:
