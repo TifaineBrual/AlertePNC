@@ -245,6 +245,8 @@ comme au premier lancement.
 | Problème | Solution |
 |---|---|
 | Aucun message reçu | Vérifiez dans le résumé du run la ligne **Canaux** : un ❌ indique la raison. Vérifiez le nom exact des secrets. |
+| ntfy : rien reçu alors que le résumé affiche ntfy ✅ | Le message est bien publié, mais pas sur le sujet suivi par l'application. Ouvrez `https://ntfy.sh/VOTRE_SUJET` dans un navigateur : si les messages y sont, abonnez l'application à **exactement** ce nom (majuscules comprises), sur le serveur `ntfy.sh`. |
+| E-mail : « connexion SMTP impossible » | `SMTP_HOST` doit valoir `smtp.gmail.com` et `SMTP_PORT` `465`. |
 | E-mail : « authentification SMTP refusée » | Utilisez un **mot de passe d'application** Gmail, collé sans espaces. |
 | Le run échoue à l'étape « Enregistrer l'état » | Revoyez l'étape 1 (*Read and write permissions*). |
 | Une source est « ❌ » | Si c'est passager, rien à faire. Après 3 échecs vous recevez une alerte : le site a sans doute changé et `config/sources.yaml` doit être adapté. |

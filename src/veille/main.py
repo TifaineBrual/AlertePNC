@@ -210,7 +210,7 @@ def summary_markdown(run: Run, channels: dict[str, str], configured: list[str], 
     lines += ["", f"**Offres PNC notifiées :** {len(run.alerts)}"]
     lines += [f"- [{offer_heading(a)}]({a.offer.url}) {facts_line(a.offer)}" for a in run.alerts]
     if run.init_sources or run.init_pages:
-        lines += ["", f"**Initialisation silencieuse :** {', '.join(run.init_sources + run.init_pages)}"]
+        lines += ["", f"**Initialisation silencieuse :** {', '.join(dict.fromkeys(run.init_sources + run.init_pages))}"]
     if channels:
         lines += ["", "**Canaux :** " + ", ".join(f"{name} {'✅' if res == 'ok' else '❌ ' + res}" for name, res in channels.items())]
     elif configured:

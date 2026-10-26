@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import html
+import logging
 import smtplib
 import ssl
 from email.message import EmailMessage
@@ -8,6 +9,8 @@ from typing import Mapping
 
 from veille.messages import Message, OfferAlert, facts_line, offer_facts, offer_heading
 from veille.notifiers.base import Notifier, NotifyError
+
+log = logging.getLogger(__name__)
 
 TIMEOUT = 30
 ACCENT = "#0b5cad"
@@ -127,8 +130,15 @@ class EmailNotifier(Notifier):
         values = {k: env.get(k, "").strip() for k in keys}
         if not all(values.values()):
             return None
-        port = int(env.get("SMTP_PORT", "").strip() or 465)
-        return cls(values["SMTP_HOST"], port, values["SMTP_USER"], values["SMTP_PASSWORD"], values["EMAIL_TO"])
+        port_text = "".join(c for c in env.get("SMTP_PORT", "") if c.isdigit())  # tolère « 465 (SSL) »
+        # Tolère « smtp.gmail.com:465 » ou « smtps://smtp.gmail.com » dans SMTP_HOST.
+        host = values["SMTP_HOST"].split("://")[-1].split("/")[0]
+        if ":" in host:
+            host, _, host_port = host.partition(":")
+            port_text = port_text or host_port
+        port = int(port_text or 465)
+        password = values["SMTP_PASSWORD"].replace(" ", "")  # mot de passe d'application Gmail collé avec espaces
+        return cls(host, port, values["SMTP_USER"], password, values["EMAIL_TO"])
 
     def send(self, messages: list[Message]) -> None:
         mail = EmailMessage()
@@ -137,18 +147,36 @@ class EmailNotifier(Notifier):
         mail["To"] = self.to
         mail.set_content(render_text(messages))
         mail.add_alternative(render_html(messages), subtype="html")
+        with self._connect() as smtp:
+            try:
+                smtp.login(self.user, self.password)
+                smtp.send_message(mail)
+            except smtplib.SMTPAuthenticationError:
+                raise NotifyError("authentification SMTP refusée (vérifiez le mot de passe d'application)") from None
+            except (smtplib.SMTPException, OSError) as exc:
+                raise NotifyError(f"erreur SMTP pendant l'envoi ({type(exc).__name__})") from None
+
+    def _candidates(self) -> list[tuple[int, bool]]:
+        """(port, SSL direct ?) à essayer : le port configuré, puis les deux réglages standard (465 SSL, 587 STARTTLS)."""
+        options = [(self.port, self.port == 465), (self.port, self.port != 465), (465, True), (587, False)]
+        return list(dict.fromkeys(options))
+
+    def _connect(self) -> smtplib.SMTP:
         context = ssl.create_default_context()
-        try:
-            if self.port == 465:
-                with smtplib.SMTP_SSL(self.host, self.port, context=context, timeout=TIMEOUT) as smtp:
-                    smtp.login(self.user, self.password)
-                    smtp.send_message(mail)
-            else:
-                with smtplib.SMTP(self.host, self.port, timeout=TIMEOUT) as smtp:
+        failures = []
+        for port, direct_ssl in self._candidates():
+            mode = "SSL" if direct_ssl else "STARTTLS"
+            try:
+                if direct_ssl:
+                    smtp = smtplib.SMTP_SSL(self.host, port, context=context, timeout=TIMEOUT)
+                else:
+                    smtp = smtplib.SMTP(self.host, port, timeout=TIMEOUT)
                     smtp.starttls(context=context)
-                    smtp.login(self.user, self.password)
-                    smtp.send_message(mail)
-        except smtplib.SMTPAuthenticationError:
-            raise NotifyError("authentification SMTP refusée (vérifiez le mot de passe d'application)") from None
-        except (smtplib.SMTPException, OSError) as exc:
-            raise NotifyError(f"erreur SMTP ({type(exc).__name__})") from None
+            except (smtplib.SMTPException, OSError) as exc:
+                failures.append(f"{mode} : {type(exc).__name__}")
+                continue
+            if failures:
+                log.warning("E-mail : connexion établie en %s après échec de %s (vérifiez SMTP_PORT : 465 pour Gmail)",
+                            mode, ", ".join(failures))
+            return smtp
+        raise NotifyError(f"connexion SMTP impossible ({' ; '.join(failures)}) — vérifiez SMTP_HOST (smtp.gmail.com)")

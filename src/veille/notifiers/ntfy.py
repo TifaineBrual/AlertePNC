@@ -51,10 +51,13 @@ class NtfyNotifier(Notifier):
 
     @classmethod
     def from_env(cls, env: Mapping[str, str]) -> "NtfyNotifier | None":
-        topic = env.get("NTFY_TOPIC", "").strip()
+        topic = env.get("NTFY_TOPIC", "").strip().rstrip("/")
         if not topic:
             return None
-        return cls(topic, env.get("NTFY_SERVER", "").strip() or "https://ntfy.sh", env.get("NTFY_TOKEN", "").strip())
+        server = env.get("NTFY_SERVER", "").strip() or "https://ntfy.sh"
+        if "://" in topic:  # adresse complète collée (« https://ntfy.sh/mon-sujet ») : on sépare serveur et sujet
+            server, _, topic = topic.rpartition("/")
+        return cls(topic, server, env.get("NTFY_TOKEN", "").strip())
 
     def send(self, messages: list[Message]) -> None:
         headers = {"Authorization": f"Bearer {self.token}"} if self.token else {}

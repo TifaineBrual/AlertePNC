@@ -189,3 +189,46 @@ def test_rss_source_without_secret_url_fails_clearly():
 def test_display_location(raw, shown):
     from veille.messages import display_location
     assert display_location(raw) == shown
+
+
+def test_ntfy_topic_given_as_full_url():
+    n = NtfyNotifier.from_env({"NTFY_TOPIC": "https://ntfy.sh/veille-pnc-abc123/"})
+    assert (n.server, n.topic) == ("https://ntfy.sh", "veille-pnc-abc123")
+
+
+def test_email_settings_are_tolerant():
+    from veille.notifiers.email import EmailNotifier
+    base = {"SMTP_USER": "moi@gmail.com", "SMTP_PASSWORD": "abcd efgh ijkl mnop", "EMAIL_TO": "moi@gmail.com"}
+    n = EmailNotifier.from_env({**base, "SMTP_HOST": "smtp.gmail.com:587"})
+    assert (n.host, n.port, n.password) == ("smtp.gmail.com", 587, "abcdefghijklmnop")
+    assert EmailNotifier.from_env({**base, "SMTP_HOST": "smtp.gmail.com", "SMTP_PORT": "465 (SSL)"}).port == 465
+
+
+def test_email_falls_back_to_working_mode(monkeypatch):
+    import smtplib
+    from veille.notifiers import email as email_mod
+    tried = []
+
+    class FakeSMTP:
+        def __init__(self, host, port, **kw):
+            tried.append(("plain", port))
+            if port != 587:
+                raise smtplib.SMTPServerDisconnected("Connection unexpectedly closed")
+
+        def starttls(self, **kw):
+            pass
+
+    class FakeSSL(FakeSMTP):
+        def __init__(self, host, port, **kw):
+            tried.append(("ssl", port))
+            if port != 465:
+                raise OSError("wrong version number")
+
+    monkeypatch.setattr(email_mod.smtplib, "SMTP", FakeSMTP)
+    monkeypatch.setattr(email_mod.smtplib, "SMTP_SSL", FakeSSL)
+    n = email_mod.EmailNotifier("smtp.gmail.com", 465, "u", "p", "t")
+    assert isinstance(n._connect(), FakeSSL) and tried == [("ssl", 465)]
+    tried.clear()
+    n.port = 4650  # port erroné : on finit par 465 en SSL
+    assert isinstance(n._connect(), FakeSSL)
+    assert tried == [("plain", 4650), ("ssl", 4650), ("ssl", 465)]
