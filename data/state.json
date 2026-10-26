@@ -326,6 +326,15 @@
    "title": "Technicienne/Technicien avion F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25287&idOrigine=502&LCID=1036&offerReference=2026-25287"
   },
+  "hop::2026-25367": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Toulouse La Barigoude",
+   "title": "STAGE DATA ENGINEER – REFONTE D’UNE APPLICATION DATA SUR LE DOMAINE PRODUIT VOL F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25367&idOrigine=502&LCID=1036&offerReference=2026-25367"
+  },
   "hop::2026-25651": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -854,7 +863,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-10-26",
-   "new_week": 1
+   "new_week": 2
   },
   "transavia": {
    "count": 40,
