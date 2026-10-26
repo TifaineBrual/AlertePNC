@@ -1,0 +1,138 @@
+# Déclaration des sources surveillées.
+# Ajouter une compagnie = ajouter un bloc ici (aucun code à écrire si le type existe déjà).
+#
+# Champs communs : id (unique, ne plus le changer ensuite), company, type, url, enabled (défaut : true),
+#                  keep_if_any (ne garder que les offres dont le titre ou le lieu contient un de ces mots).
+# Types : rss, digitalrecruiters, html_list, sitemap, browser, page_watch (voir README, section « Sources »).
+#
+# Audit des URLs : 26/10/2026.
+
+settings:
+  weekly_summary: true   # résumé le lundi matin (heure de Paris)
+
+sources:
+  # --- Air France (Talentsoft) -----------------------------------------------------------------
+  - id: airfrance_pnc
+    company: Air France
+    type: rss
+    url: https://recrutement.airfrance.com/handlers/offerRss.ashx?LCID=1036&Rss_Profile=3416
+
+  - id: airfrance_pn
+    company: Air France
+    type: rss
+    url: https://recrutement.airfrance.com/handlers/offerRss.ashx?LCID=1036&Rss_JobFamily=3383
+
+  # Le filtre « HOP! » (Rss_CustomCodeTableItem=4483) est ignoré par le site : le flux renvoie les
+  # 20 dernières offres de tout le groupe (Air France, HOP!, Air France KLM…). On le garde comme filet
+  # de sécurité : relevé toutes les 15 min, il voit passer chaque nouvelle offre du groupe.
+  - id: hop
+    company: Groupe Air France (dont HOP!)
+    type: rss
+    url: https://recrutement.airfrance.com/handlers/offerRss.ashx?LCID=1036&Rss_CustomCodeTableItem=4483
+
+  - id: aircalin
+    company: Aircalin
+    type: rss
+    url: https://carrieres.aircalin.com/handlers/offerRss.ashx?LCID=1036&Rss_JobFamily=6827
+
+  # --- easyJet (Taleo) : ~10 dernières offres, tous pays -------------------------------------------
+  - id: easyjet
+    company: easyJet
+    type: rss
+    url: "https://easyjet.taleo.net/careersection/feed/joblist.rss?lang=en&portal=101430233&searchtype=3&f=null&s=5|A&a=null&multiline=true"
+    keep_if_any: [France, Paris, CDG, Charles de Gaulle, Orly, Lyon, Nice, Toulouse, Bordeaux, Nantes,
+                  Marseille, Montpellier, Lille, Biarritz, Mulhouse, Basel, Bâle]
+
+  # --- Transavia France (DigitalRecruiters) ---------------------------------------------------------
+  # La page https://recrutement.transavia.com/fr/annonces est rendue en JavaScript ; elle lit une API
+  # JSON publique, interrogée directement (plus rapide et plus fiable qu'un navigateur).
+  - id: transavia
+    company: Transavia France
+    type: digitalrecruiters
+    domain: recrutement.transavia.com
+
+  # --- Air Tahiti Nui (Drupal, rendu serveur) -------------------------------------------------------
+  # Aucune offre en ligne lors de l'audit : la structure d'une offre est inconnue. On prend donc tous les
+  # liens de la zone de contenu qui ressemblent à une offre. Si une offre paraît sans être lue, le message
+  # « Aucune offre » disparaît et la source passe en panne → alerte : il faudra alors affiner les sélecteurs.
+  - id: airtahitinui
+    company: Air Tahiti Nui
+    type: html_list
+    url: https://fr.airtahitinui.com/emploi/offres
+    container: "#block-atn-content"
+    exclude: ".hero, .job-description-listing"
+    item: "a[href]"
+    link_pattern: "/(emploi|offre|offres|job|jobs|career|carriere)s?/[^/?#]+"
+    empty_text: "Aucune offre d'emploi n'est disponible"
+
+  # --- ASL Airlines France (Cezanne / InterviewWeb) -------------------------------------------------
+  - id: asl
+    company: ASL Airlines France
+    type: html_list
+    url: https://cezanneondemand.intervieweb.it/aslaviationgroup/en/career
+    item: "div.vacancy__render"
+    title: ".vacancy__title h3"
+    link: ".vacancy__title a"
+    id_regex: "-(\\d+)/[a-z]{2}/?$"
+    description: ".vacancy__description"
+    fields:
+      location: "span[title=Location]"
+      category: "span[title='Functional Area']"
+    keep_if_any: [France]
+
+  # --- Hellowork : sitemap + rendu des nouvelles pages offres -------------------------------------
+  - id: aircaraibes
+    company: Air Caraïbes
+    type: sitemap
+    url: https://recrutement.aircaraibes.com/sitemap.xml
+    url_pattern: "/offer/([^/?#]+)"
+
+  - id: frenchbee_ats
+    company: French Bee
+    type: sitemap
+    url: https://recrutement.frenchbee.com/sitemap.xml
+    url_pattern: "/offer/([^/?#]+)"
+    prefer: "/fr/"
+
+  # --- French Bee : page « campagne PNC » -----------------------------------------------------------
+  # DÉSACTIVÉE : www.frenchbee.com ne répond pas aux clients automatisés (connexion acceptée puis aucune
+  # réponse — protection anti-robots). Le brief interdit de contourner ce type de protection.
+  # Voir README, section « French Bee » pour l'alternative (alerte Google en flux RSS).
+  - id: frenchbee_pnc
+    company: French Bee
+    type: page_watch
+    enabled: false
+    url: https://www.frenchbee.com/fr/recrutement-pnc
+    zone: "main"
+
+  # --- Air Corsica (Salesforce Sites, rendu JavaScript) ---------------------------------------------
+  # Les lignes n'ont pas de lien propre : le lien des notifications ouvre la liste des offres.
+  - id: aircorsica
+    company: Air Corsica
+    type: browser
+    url: https://aircorsica-rh.my.salesforce-sites.com/Recrutement
+    wait_for: "div.job-item, .crtarecrJobOfferSearch article"
+    settle_ms: 2000
+    item: "div.job-item"
+    id_attr: data-id
+    title: "span.slds-text-title_caps"
+    fields:
+      location: "div:has(> lightning-icon[title='Ville'])"
+      contract: "div:has(> lightning-icon[title='Type de contrat'])"
+      published_at: "div:has(> lightning-icon[title='Date de publication'])"
+      direction: "div:has(> lightning-icon[title='Métier'])"
+    empty_text: "(0 offre(s) d'emploi"
+    count_regex: "\\((\\d+) offre\\(s\\) d'emploi"
+
+  # --- Air Austral : page statique ------------------------------------------------------------------
+  # DÉSACTIVÉE : le site est derrière Cloudflare, qui renvoie 403 au client HTTP de la veille
+  # (contourner cette protection est exclu). Voir README, section « Sources désactivées ».
+  - id: airaustral
+    company: Air Austral
+    type: page_watch
+    enabled: false
+    url: https://www.air-austral.com/a-propos-dair-austral/recrutement.html
+    zone: "article#content"
+    ignore_lines: ["^Note obtenue", "^Indicateur", "^Pourcentage", "^Nombre de salari"]
+
+  # --- Corsair : pas de page carrières trouvée. Phase 2 : API France Travail. -----------------------
