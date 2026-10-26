@@ -2,7 +2,7 @@
 
 Ce dépôt surveille automatiquement les offres d'emploi **PNC** (hôtesse de l'air, steward, personnel navigant
 commercial) des compagnies aériennes basées en France et en outre-mer. Il vous prévient **en moins de 20 minutes**
-sur votre téléphone (ntfy), sur Discord et/ou par e-mail, **à chaque nouvelle offre PNC publiée**.
+sur votre téléphone (ntfy) et/ou sur Discord, **à chaque nouvelle offre PNC publiée**.
 
 - Tout tourne gratuitement sur **GitHub Actions** : pas de serveur, rien à installer sur votre ordinateur.
 - Toutes les 15 minutes, la veille relit les sites des compagnies, repère les nouvelles offres, garde celles qui
@@ -67,18 +67,6 @@ Les nouvelles offres PNC arrivent en priorité haute (son + bannière), avec un 
 2. **Intégrations** → **Webhooks** → **Nouveau webhook** → donnez-lui un nom (« Veille PNC »).
 3. **Copier l'URL du webhook**. Valeur à garder → secret `DISCORD_WEBHOOK_URL`.
 
-### 📧 E-mail (Gmail)
-
-Gmail exige un **mot de passe d'application** (pas votre mot de passe habituel) :
-
-1. Activez la **validation en deux étapes** sur votre compte Google : <https://myaccount.google.com/security>.
-2. Ouvrez <https://myaccount.google.com/apppasswords>, saisissez un nom (« Veille PNC ») → **Créer**.
-3. Google affiche un mot de passe de 16 lettres : copiez-le **sans les espaces** → secret `SMTP_PASSWORD`.
-4. Autres valeurs : `SMTP_HOST` = `smtp.gmail.com`, `SMTP_PORT` = `465`, `SMTP_USER` = votre adresse Gmail,
-   `EMAIL_TO` = l'adresse qui recevra les alertes (peut être la même).
-
-Si plusieurs offres arrivent pendant le même run, vous recevez **un seul e-mail récapitulatif**.
-
 ---
 
 ## 3. Ajouter les secrets dans GitHub
@@ -92,11 +80,6 @@ Si plusieurs offres arrivent pendant le même run, vous recevez **un seul e-mail
 | ntfy | `NTFY_TOPIC` | le nom de votre sujet |
 | ntfy | `NTFY_SERVER` | facultatif, `https://ntfy.sh` par défaut |
 | Discord | `DISCORD_WEBHOOK_URL` | l'URL du webhook |
-| E-mail | `SMTP_HOST` | `smtp.gmail.com` |
-| E-mail | `SMTP_PORT` | `465` |
-| E-mail | `SMTP_USER` | votre adresse Gmail |
-| E-mail | `SMTP_PASSWORD` | le mot de passe d'application (16 lettres) |
-| E-mail | `EMAIL_TO` | l'adresse qui reçoit les alertes |
 | Alerte Google | `GOOGLE_ALERT_FRENCHBEE` | adresse du flux de l'alerte French Bee (section 8) |
 | Alerte Google | `GOOGLE_ALERT_AIRAUSTRAL` | adresse du flux de l'alerte Air Austral (section 8) |
 
@@ -110,6 +93,8 @@ Un canal n'est activé que si **tous** ses secrets sont présents. Si un canal t
    them », cliquez dessus.
 2. À gauche, cliquez sur **Veille PNC**, puis à droite sur **Run workflow** → **Run workflow** (bouton vert).
    - *Facultatif* : cochez d'abord **Essai à blanc** pour un premier test sans rien envoyer ni enregistrer.
+   - Pour vérifier un canal à tout moment : cochez **Envoyer un message de test** et choisissez le canal
+     (`discord`, `ntfy` ou `tous`).
 3. Attendez 1 à 2 minutes (rafraîchissez la page) : le run passe au vert ✅.
 
 Le **premier vrai run est silencieux** : la veille enregistre toutes les offres déjà en ligne sans vous les envoyer
@@ -158,7 +143,6 @@ bouton **Voir l'offre**.
 Selon le canal :
 - **ntfy** : une notification par offre, titre « Compagnie — Intitulé », lieu / contrat / date en dessous.
 - **Discord** : une carte par offre (titre cliquable, lieu, contrat et date en colonnes).
-- **E-mail** : **un seul e-mail par run**, avec une carte et un bouton par offre.
 
 **Détection PNC** : l'intitulé (ou, à défaut, la description) doit contenir un terme comme *PNC*, *hôtesse de
 l'air*, *steward*, *cabin crew*, *chef de cabine*… et l'intitulé ne doit pas contenir de terme d'exclusion
@@ -246,8 +230,6 @@ comme au premier lancement.
 |---|---|
 | Aucun message reçu | Vérifiez dans le résumé du run la ligne **Canaux** : un ❌ indique la raison. Vérifiez le nom exact des secrets. |
 | ntfy : rien reçu alors que le résumé affiche ntfy ✅ | Le message est bien publié, mais pas sur le sujet suivi par l'application. Ouvrez `https://ntfy.sh/VOTRE_SUJET` dans un navigateur : si les messages y sont, abonnez l'application à **exactement** ce nom (majuscules comprises), sur le serveur `ntfy.sh`. |
-| E-mail : « connexion SMTP impossible » | `SMTP_HOST` doit valoir `smtp.gmail.com` et `SMTP_PORT` `465`. |
-| E-mail : « authentification SMTP refusée » | Utilisez un **mot de passe d'application** Gmail, collé sans espaces. |
 | Le run échoue à l'étape « Enregistrer l'état » | Revoyez l'étape 1 (*Read and write permissions*). |
 | Une source est « ❌ » | Si c'est passager, rien à faire. Après 3 échecs vous recevez une alerte : le site a sans doute changé et `config/sources.yaml` doit être adapté. |
 | Le workflow ne tourne plus | GitHub coupe les workflows programmés après 60 jours sans activité : onglet **Actions** → **Veille PNC** → **Enable workflow**. Normalement les commits d'état l'évitent. |

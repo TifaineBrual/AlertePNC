@@ -16,10 +16,10 @@ import yaml
 from veille.http import BlockedError, PoliteHttp, SourceError
 from veille.matching import ALERT, detect
 from veille.messages import (Message, OfferAlert, facts_line, init_message, offer_heading, offer_messages,
-                             page_change_message, source_down_message, source_up_message, weekly_message)
+                             page_change_message, render_text, source_down_message, source_up_message,
+                             weekly_message)
 from veille.models import Offer, PageSnapshot, normalize_url
 from veille.notifiers import Notifier, NotifyError, enabled_notifiers
-from veille.notifiers.email import render_text
 from veille.sources.base import FetchContext, Source, build_source
 from veille.sources.browser import BrowserPool
 from veille.sources.page_watch import added_lines, removed_lines
@@ -240,16 +240,14 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p.add_argument("--weekly", action="store_true", help="envoyer le résumé hebdomadaire maintenant")
     p.add_argument("--test", action="store_true", help="envoyer aussi un message de test")
     p.add_argument("--channel", action="append", default=[], metavar="CANAL",
-                   help="n'envoyer que sur ce canal : discord, ntfy ou email (répétable)")
+                   help="n'envoyer que sur ce canal : discord ou ntfy (répétable)")
     p.add_argument("--needs-browser", action="store_true", help="affiche true/false : une source active a-t-elle besoin de Playwright ?")
     p.add_argument("-v", "--verbose", action="store_true")
     return p.parse_args(argv)
 
 
 def _channel_key(name: str) -> str:
-    """« E-mail », « email », « mail » → « email »."""
-    key = name.lower().replace("-", "").strip()
-    return "email" if key in ("mail", "email") else key
+    return name.lower().strip()
 
 
 def select_sources(configs: list[dict], wanted: list[str]) -> list[dict]:

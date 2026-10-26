@@ -170,3 +170,30 @@ def weekly_message(rows: list[tuple[str, str, int, int]]) -> Message:
              + ("" if status == "ok" else f" — {status}") for source, status, online, new in rows]
     return Message(kind="weekly", title="Veille PNC – résumé de la semaine",
                    intro="La veille tourne normalement. Offres par source :", lines=lines, priority="low")
+
+
+# --- version texte (aperçu console en --dry-run) ---
+
+def _text_offer(alert: OfferAlert) -> str:
+    lines = [offer_heading(alert)]
+    lines += [f"   {label} : {value}" for _, label, value in offer_facts(alert.offer)]
+    lines.append(f"   {alert.offer.url}")
+    return "\n".join(lines)
+
+
+def render_text(messages: list[Message]) -> str:
+    blocks = []
+    for m in messages:
+        # Pour une offre seule, la compagnie figure déjà sous le titre : titre court.
+        heading = f"{m.icon} {m.alerts[0].label if m.kind == 'offer' else m.title}"
+        parts = [f"{heading}\n{'=' * len(heading)}"]
+        if m.intro and m.kind != "offer":
+            parts.append(m.intro)
+        if m.alerts:
+            parts.append("\n\n".join(_text_offer(a) for a in m.alerts))
+        if m.lines:
+            parts.append("\n".join(f"  {line}" for line in m.lines))
+        if m.url and m.kind != "offer":
+            parts.append(f"{m.link_label} : {m.url}")
+        blocks.append("\n\n".join(parts))
+    return "\n\n\n".join(blocks) + "\n"

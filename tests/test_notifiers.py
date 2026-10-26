@@ -3,12 +3,11 @@ import requests
 
 from veille.matching import detect
 from veille.messages import (OfferAlert, format_date, init_message, offer_messages, page_change_message,
-                             source_down_message)
+                             render_text, source_down_message)
 from veille.models import Offer
 from veille.notifiers import NotifyError, enabled_notifiers
 from veille.notifiers import base as notif_base
 from veille.notifiers.discord import DiscordNotifier, embed
-from veille.notifiers.email import render_html, render_text, subject
 from veille.notifiers.ntfy import NtfyNotifier, render
 
 
@@ -39,8 +38,8 @@ def recorder(monkeypatch):
 
 def test_channels_enabled_only_with_secrets():
     assert enabled_notifiers({}) == []
-    names = [n.name for n in enabled_notifiers({"DISCORD_WEBHOOK_URL": "https://d", "NTFY_TOPIC": "t", "SMTP_HOST": "h"})]
-    assert names == ["Discord", "ntfy"]  # e-mail incomplet
+    names = [n.name for n in enabled_notifiers({"DISCORD_WEBHOOK_URL": "https://d", "NTFY_TOPIC": "t"})]
+    assert names == ["Discord", "ntfy"]
 
 
 def test_format_date():
@@ -120,22 +119,10 @@ def test_ntfy_init_without_offers():
     assert "Sources : Air France, Transavia." in p["message"]
 
 
-# --- e-mail ---
-
-def test_email_subjects():
-    assert subject(offer_messages([alert()])) == "✈️ Nouvelle offre PNC – Air France — Hôtesse de l'air / Steward H/F"
-    assert subject(offer_messages([alert()] * 3)) == "✈️ 3 nouvelles offres PNC"
-    assert subject([page_change_message("French Bee", "https://x", ["Campagne"], [])]) == \
-        "📣 French Bee : la page recrutement PNC a changé"
+# --- version texte (console) ---
 
 
-def test_email_html_is_escaped_and_has_button():
-    page = render_html(offer_messages([alert(title="PNC <Orly> & CDG")]))
-    assert "PNC &lt;Orly&gt; &amp; CDG" in page
-    assert 'href="https://example.com/o?a=1&amp;b=2"' in page and "Voir l’offre" in page
-
-
-def test_email_text_version():
+def test_text_version():
     text = render_text(offer_messages([alert()]) + [source_down_message("hop", "HOP!", "https://h", "HTTP 404", 3)])
     assert "Lieu : Orly" in text and "Contrat : CDI" in text and "https://example.com/o?a=1&b=2" in text
     assert "⚠️ Source en panne : HOP!" in text and "Dernière erreur : HTTP 404" in text
@@ -164,8 +151,7 @@ def test_web_alert_rendering():
     msg = offer_messages([OfferAlert(offer, ALERT)])[0]
     assert embed(msg)["author"]["name"] == "🔎 Alerte Google · French Bee"
     assert render(msg)["tags"] == ["mag"] and render(msg)["actions"][0]["label"] == "Lire l'article"
-    assert subject([msg]) == "🔎 Alerte Google – French Bee — French Bee recrute 150 PNC"
-    assert "Lire l’article" in render_html([msg])
+    assert render_text([msg]).startswith("🔎 Alerte Google")
 
 
 def test_rss_source_without_secret_url_fails_clearly():
@@ -194,41 +180,3 @@ def test_display_location(raw, shown):
 def test_ntfy_topic_given_as_full_url():
     n = NtfyNotifier.from_env({"NTFY_TOPIC": "https://ntfy.sh/veille-pnc-abc123/"})
     assert (n.server, n.topic) == ("https://ntfy.sh", "veille-pnc-abc123")
-
-
-def test_email_settings_are_tolerant():
-    from veille.notifiers.email import EmailNotifier
-    base = {"SMTP_USER": "moi@gmail.com", "SMTP_PASSWORD": "abcd efgh ijkl mnop", "EMAIL_TO": "moi@gmail.com"}
-    n = EmailNotifier.from_env({**base, "SMTP_HOST": "smtp.gmail.com:587"})
-    assert (n.host, n.port, n.password) == ("smtp.gmail.com", 587, "abcdefghijklmnop")
-    assert EmailNotifier.from_env({**base, "SMTP_HOST": "smtp.gmail.com", "SMTP_PORT": "465 (SSL)"}).port == 465
-
-
-def test_email_falls_back_to_working_mode(monkeypatch):
-    import smtplib
-    from veille.notifiers import email as email_mod
-    tried = []
-
-    class FakeSMTP:
-        def __init__(self, host, port, **kw):
-            tried.append(("plain", port))
-            if port != 587:
-                raise smtplib.SMTPServerDisconnected("Connection unexpectedly closed")
-
-        def starttls(self, **kw):
-            pass
-
-    class FakeSSL(FakeSMTP):
-        def __init__(self, host, port, **kw):
-            tried.append(("ssl", port))
-            if port != 465:
-                raise OSError("wrong version number")
-
-    monkeypatch.setattr(email_mod.smtplib, "SMTP", FakeSMTP)
-    monkeypatch.setattr(email_mod.smtplib, "SMTP_SSL", FakeSSL)
-    n = email_mod.EmailNotifier("smtp.gmail.com", 465, "u", "p", "t")
-    assert isinstance(n._connect(), FakeSSL) and tried == [("ssl", 465)]
-    tried.clear()
-    n.port = 4650  # port erroné : on finit par 465 en SSL
-    assert isinstance(n._connect(), FakeSSL)
-    assert tried == [("plain", 4650), ("ssl", 4650), ("ssl", 465)]

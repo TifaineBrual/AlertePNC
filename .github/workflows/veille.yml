@@ -25,7 +25,7 @@ on:
       channel:
         description: "Canal à utiliser pour ce run"
         type: choice
-        options: [tous, discord, ntfy, email]
+        options: [tous, discord, ntfy]
         default: tous
 
 permissions:
@@ -70,7 +70,7 @@ jobs:
           if [ "$INPUT_DRY_RUN" = "true" ]; then run="$run --dry-run"; fi
           if [ "$INPUT_WEEKLY" = "true" ]; then run="$run --weekly"; fi
           if [ "$INPUT_TEST" = "true" ]; then run="$run --test"; fi
-          case "$INPUT_CHANNEL" in discord|ntfy|email) run="$run --channel $INPUT_CHANNEL" ;; esac
+          case "$INPUT_CHANNEL" in discord|ntfy) run="$run --channel $INPUT_CHANNEL" ;; esac
           echo "run=$run" >> "$GITHUB_OUTPUT"
           echo "browser=$(python -m veille --needs-browser $selection)" >> "$GITHUB_OUTPUT"
 
@@ -112,11 +112,6 @@ jobs:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           NTFY_SERVER: ${{ secrets.NTFY_SERVER }}
           NTFY_TOKEN: ${{ secrets.NTFY_TOKEN }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
-          SMTP_USER: ${{ secrets.SMTP_USER }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          EMAIL_TO: ${{ secrets.EMAIL_TO }}
         run: python -m veille ${{ steps.args.outputs.run }}
 
       # L'état n'est commité que s'il a changé (au moins une fois par semaine grâce au « heartbeat »).
