@@ -1,0 +1,11 @@
+# Modèle de profil – copiez ce contenu dans le secret GitHub PROFILE_YAML et remplacez les valeurs.
+# Ne commitez jamais votre vrai profil dans le dépôt (il est public).
+cca: false                 # titulaire du CCA ?
+english_level: B2          # A2 / B1 / B2 / C1 / C2
+english_certified: false   # TOEIC / Linguaskills valide ?
+experience_pnc_months: 0
+experience_client_months: 12
+bases_ok: ["Paris", "Orly", "Roissy", "CDG"]        # villes / aéroports acceptés
+bases_maybe: ["Lyon", "Nice", "Marseille", "La Réunion"]
+contracts_ok: ["CDI", "CDD", "Alternance", "Contrat de professionnalisation", "Saisonnier"]
+min_score_to_notify: 40    # en dessous : pas de notification (mais logué)
