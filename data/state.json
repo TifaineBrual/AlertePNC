@@ -1,5 +1,839 @@
 {
- "offers": {},
- "sources": {},
+ "heartbeat": "2026-10-26",
+ "offers": {
+  "aircaraibes::11381-NG03d2xydjg1dw": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Les Abymes",
+   "title": "Chef de projet SI",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-NG03d2xydjg1dw"
+  },
+  "aircaraibes::11381-NnBxbXd6NHh2bQ": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Fort-de-France",
+   "title": "Mécanicien(ne) aéronautique (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-NnBxbXd6NHh2bQ"
+  },
+  "aircaraibes::11381-NnRhejF3ejNpag": {
+   "company": "Air Caraïbes",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Wissous",
+   "title": "Stage ou césure Analyste Yield",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-NnRhejF3ejNpag"
+  },
+  "aircaraibes::11381-YTBkMWc1NWdubA": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Wissous",
+   "title": "Responsable des Coordinateurs Technique Opérationnel (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-YTBkMWc1NWdubA"
+  },
+  "aircaraibes::11381-YXZxOTY2cHViYg": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Wissous",
+   "title": "Technico-Commercial(e) (H/F) - Support Commercial B2B",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-YXZxOTY2cHViYg"
+  },
+  "aircaraibes::11381-Ym0wdDczaXlhbw": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Les Abymes",
+   "title": "Chef(fe) de projet Pilotage des Risques – Sécurité & Sûreté",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-Ym0wdDczaXlhbw"
+  },
+  "aircaraibes::11381-YmRxOGFkcjdzaw": {
+   "company": "Air Caraïbes",
+   "contract": "Alternance",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Le Lamentin",
+   "title": "Alternant(e) Chargé d’Étude & de Pilotage de la Performance des programmes de fidélité (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-YmRxOGFkcjdzaw"
+  },
+  "aircaraibes::11381-ZTZkNTN1ZXh6Zw": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Les Abymes",
+   "title": "Responsable Ingénierie Formation Sûreté & Coordination ERP",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-ZTZkNTN1ZXh6Zw"
+  },
+  "aircaraibes::11381-aTB4a2Yxd211eQ": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Paray-Vieille-Poste",
+   "title": "Responsable Process, Documentation et Sécurité des Opérations Sol (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-aTB4a2Yxd211eQ"
+  },
+  "aircaraibes::11381-aWx4aWJmYnZpcA": {
+   "company": "Air Caraïbes",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Saint-Martin",
+   "title": "Attaché(e) commercial",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-aWx4aWJmYnZpcA"
+  },
+  "aircaraibes::11381-bTlsYjh0ZGI4eA": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Les Abymes",
+   "title": "Responsable Formations & Support aux manuels et procédures DT",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-bTlsYjh0ZGI4eA"
+  },
+  "aircaraibes::11381-bXhnNjdidG9saA": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Les Abymes",
+   "title": "Chaudronnier(ère) aéronautique (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-bXhnNjdidG9saA"
+  },
+  "aircaraibes::11381-dTltb2VzZjllbQ": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Ingénieur suivi Navigabilité (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-dTltb2VzZjllbQ"
+  },
+  "aircaraibes::11381-dmN0aHhoOHBtNA": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Les Abymes",
+   "title": "Responsable de la Sécurité des Systèmes d'Information",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-dmN0aHhoOHBtNA"
+  },
+  "aircaraibes::11381-eHA1MHF0bGljeQ": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Les Abymes",
+   "title": "Data Analyst",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-eHA1MHF0bGljeQ"
+  },
+  "aircorsica::a10Sa00000TsadjIAB": {
+   "company": "Air Corsica",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Ajaccio",
+   "title": "Coordinateur conformité opérationnelle & SGS (H/F)",
+   "url": "https://aircorsica-rh.my.salesforce-sites.com/Recrutement"
+  },
+  "aircorsica::a10Sa00000TsvOoIAJ": {
+   "company": "Air Corsica",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Ajaccio",
+   "title": "Chargé de planification Personnels Navigants (H/F)",
+   "url": "https://aircorsica-rh.my.salesforce-sites.com/Recrutement"
+  },
+  "airfrance_pn::2026-23622": {
+   "company": "Air France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Pilote de ligne F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23622&idOrigine=502&LCID=1036&offerReference=2026-23622"
+  },
+  "asl::47825": {
+   "company": "ASL Airlines France",
+   "contract": "",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "TREMBLAY-EN-FRANCE France",
+   "title": "Licensed Engineers B1/B2 - B737",
+   "url": "https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineer-b1b2-47825/en/"
+  },
+  "asl::54249": {
+   "company": "ASL Airlines France",
+   "contract": "",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "TREMBLAY-EN-FRANCE France",
+   "title": "Internships (Stages et Alternants) - Maintenance France (Paris CDG)",
+   "url": "https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/internships-stages-et-alternants-maintenance-paris-cdg-54249/en/"
+  },
+  "asl::60540": {
+   "company": "ASL Airlines France",
+   "contract": "",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Tremblay-en-France France",
+   "title": "ASL Airlines France - Candidature spontanée",
+   "url": "https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/asl-airlines-france-candidature-spontanee-60540/en/"
+  },
+  "asl::61688": {
+   "category": "pnc",
+   "company": "ASL Airlines France",
+   "contract": "",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Tremblay-en-France France",
+   "title": "Personnels Navigants Commerciaux (PNC) - Candidature spontanée H/F",
+   "url": "https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/personnels-navigants-commerciaux-pnc-candidature-spontanee-hf-61688/en/"
+  },
+  "frenchbee_ats::11593-OXFpajRydmI0aQ": {
+   "company": "French Bee",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Analyste Yield",
+   "url": "https://recrutement.frenchbee.com/fr/offer/11593-OXFpajRydmI0aQ"
+  },
+  "frenchbee_ats::11593-ZTZ0cDNvZnF2ZA": {
+   "company": "French Bee",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Paray-Vieille-Poste",
+   "title": "Responsable Ressources Humaines",
+   "url": "https://recrutement.frenchbee.com/fr/offer/11593-ZTZ0cDNvZnF2ZA"
+  },
+  "frenchbee_ats::11593-aDBpNGM1OWMxdw": {
+   "company": "French Bee",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Responsable des Processus des Opérations Cargo",
+   "url": "https://recrutement.frenchbee.com/fr/offer/11593-aDBpNGM1OWMxdw"
+  },
+  "hop::2025-23302": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Data Analyst Commercial - Digital Product F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23302&idOrigine=502&LCID=1036&offerReference=2025-23302"
+  },
+  "hop::2025-23533": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "STAGE - CONSEIL INTERNE ET GESTION DE PROJETS F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23533&idOrigine=502&LCID=1036&offerReference=2025-23533"
+  },
+  "hop::2026-23539": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Pricing Manager / Revenue Growth Manager F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23539&idOrigine=502&LCID=1036&offerReference=2026-23539"
+  },
+  "hop::2026-23565": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "CDG ORY",
+   "title": "Mécanicienne/Mécanicien cabine F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23565&idOrigine=502&LCID=1036&offerReference=2026-23565"
+  },
+  "hop::2026-23592": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Roissy",
+   "title": "Infirmière du Travail à temps plein F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23592&idOrigine=502&LCID=1036&offerReference=2026-23592"
+  },
+  "hop::2026-24147": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "ORLY",
+   "title": "Technicienne/Technicien Planning Structure Maintenance Avion H/F",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24147&idOrigine=502&LCID=1036&offerReference=2026-24147"
+  },
+  "hop::2026-24464": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "zone aéroportuaire : CDG - ORLY et Villeneuve le Roi",
+   "title": "Manager d'équipe de production aéronautique F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24464&idOrigine=502&LCID=1036&offerReference=2026-24464"
+  },
+  "hop::2026-24797": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Cheffe/chef de projet Sécurité des réseaux industriels et objets connectés F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24797&idOrigine=502&LCID=1036&offerReference=2026-24797"
+  },
+  "hop::2026-25143": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "ORLY",
+   "title": "CONTROLEUR CND F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25143&idOrigine=502&LCID=1036&offerReference=2026-25143"
+  },
+  "hop::2026-25273": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Agent d'Escale Commercial (Vivier CDD) F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25273&idOrigine=502&LCID=1036&offerReference=2026-25273"
+  },
+  "hop::2026-25287": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Technicienne/Technicien avion F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25287&idOrigine=502&LCID=1036&offerReference=2026-25287"
+  },
+  "hop::2026-25651": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Responsable performance & formalités douanières carburants F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25651&idOrigine=502&LCID=1036&offerReference=2026-25651"
+  },
+  "hop::2026-25690": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Contrôleur équipements avioniques F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25690&idOrigine=502&LCID=1036&offerReference=2026-25690"
+  },
+  "hop::2026-25707": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "CDG Siège",
+   "title": "STAGE - GESTION DE PROJET ET TRANSFORMATION DIGITALE F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25707&idOrigine=502&LCID=1036&offerReference=2026-25707"
+  },
+  "hop::2026-25710": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "2 AV du Maréchal Devaux 94390 Orly",
+   "title": "STAGE - Projets d'Amélioration Qualité Moteurs F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25710&idOrigine=502&LCID=1036&offerReference=2026-25710"
+  },
+  "hop::2026-25713": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Zone de Fret aéroport de LYON",
+   "title": "TECHNICIEN DOCUMENTAIRE FRET Air France KLM Cargo LYON F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25713&idOrigine=502&LCID=1036&offerReference=2026-25713"
+  },
+  "hop::2026-25714": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage - Ingénieur métier maintenance prédictive F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25714&idOrigine=502&LCID=1036&offerReference=2026-25714"
+  },
+  "hop::2026-25715": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "HOP! Site de CDG (95)",
+   "title": "HOP! Ingénieur Projets et Data Sécurité des Vols – Roissy Charles De Gaulle (95) F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25715&idOrigine=502&LCID=1036&offerReference=2026-25715"
+  },
+  "hop::2026-25716": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stagiaire – Recherche Opérationnelle – Conception d'approches scalables pour le Tail Assignment F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25716&idOrigine=502&LCID=1036&offerReference=2026-25716"
+  },
+  "hop::2026-25717": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "HOP! Site de Clermont-Ferrand",
+   "title": "HOP! - Gestionnaire Ressources Humaines - Clermont-Ferrand (63) F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25717&idOrigine=502&LCID=1036&offerReference=2026-25717"
+  },
+  "transavia::2606569-52370301": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Suivi Technique Avionique H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/2606569-suivi-technique-avionique-hf-orly"
+  },
+  "transavia::2830739-52370373": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Représentant Technique H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/2830739-representant-technique-hf-94390-orly"
+  },
+  "transavia::3486431-52370341": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Manager Programme d’Entretien - Fiabilité H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/3486431-manager-programme-d-entretien-fiabilite-hf-94390-orly"
+  },
+  "transavia::3558915-52370301": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Responsable Suivi Technique H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/3558915-responsable-suivi-technique-hf-orly"
+  },
+  "transavia::3616509-52369277": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Responsable Sécurité & Conformité Maintenance H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/3616509-responsable-securite-conformite-maintenance-hf-94390-orly"
+  },
+  "transavia::3740823-52370301": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Coordinateur MCC H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/3740823-coordinateur-mcc-hf-orly"
+  },
+  "transavia::3882567-52370277": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Coordinateur Technique Phase-out B737 H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/3882567-coordinateur-technique-phase-out-b737-hf-94390-orly"
+  },
+  "transavia::4136551-52369347": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Solution Architect – Domaines Corporate & Commercial H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4136551-solution-architect-domaines-corporate-commercial-hf-94390-orly"
+  },
+  "transavia::4206763-52369321": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Tech Lead Data Engineering & Intégration (H/F)",
+   "url": "https://recrutement.transavia.com/fr/annonce/4206763-tech-lead-data-engineering-integration-hf-94390-orly"
+  },
+  "transavia::4209279-52370323": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Leader Logistique AOG Desk H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4209279-leader-logistique-aog-desk-hf-94390-orly"
+  },
+  "transavia::4212261-52369347": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Chargé de projets AMO \"Opérations Aériennes\" H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4212261-charge-de-projets-amo-operations-aeriennes-hf-94390-orly"
+  },
+  "transavia::4268195-52370373": {
+   "company": "Transavia France",
+   "contract": "Contrat d'apprentissage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Alternance - Agent Planning Technique H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4268195-alternance-agent-planning-technique-hf-94390-orly"
+  },
+  "transavia::4472809-52370323": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Technicien Logistique - Chantiers H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4472809-technicien-logistique-chantiers-hf-94390-orly"
+  },
+  "transavia::4494953-125363005": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Agent Planning Technique & Suivi de Navigabilité H/F (horaires décalés)",
+   "url": "https://recrutement.transavia.com/fr/annonce/4494953-agent-planning-technique-suivi-de-navigabilite-hf-horaires-decales-orly"
+  },
+  "transavia::4501389-52369347": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Chef de projet IT - Opérations Aériennes H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4501389-chef-de-projet-it-operations-aeriennes-hf-94390-orly"
+  },
+  "transavia::4501515-52369347": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Chef de projet IT - Commercial H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4501515-chef-de-projet-it-commercial-hf-94390-orly"
+  },
+  "transavia::4509239-125362919": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Agent Planning Technique & Suivi de Navigabilité H/F (horaires administratifs)",
+   "url": "https://recrutement.transavia.com/fr/annonce/4509239-agent-planning-technique-suivi-de-navigabilite-hf-horaires-administratifs-orly"
+  },
+  "transavia::4511069-52369321": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Data Engineer H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4511069-data-engineer-hf-94390-orly"
+  },
+  "transavia::4518257-125361401": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Technicien Support Navigabilité & Transitions H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4518257-technicien-support-navigabilite-transitions-hf-94310-orly"
+  },
+  "transavia::4523475-50585527": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Responsable Opérationnel des Escales H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4523475-responsable-operationnel-des-escales-hf-94390-orly"
+  },
+  "transavia::4543493-125362565": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Agent Navigabilité - Référent MEL H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4543493-agent-navigabilite-referent-mel-hf-orly"
+  },
+  "transavia::4544273-125363111": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Coordinateur Chantiers Externalisés H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4544273-coordinateur-chantiers-externalises-hf-94310-orly"
+  },
+  "transavia::4569107-50583709": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Assistant Acheteur IT H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4569107-stage-assistant-acheteur-it-hf-94390-orly"
+  },
+  "transavia::4584709-125360151": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Cadre Engineering Cabine & Avionique H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4584709-cadre-engineering-cabine-avionique-hf-94310-orly"
+  },
+  "transavia::4593295-125363065": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Ingénieur Planification de Maintenance H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4593295-ingenieur-planification-de-maintenance-hf-94310-orly"
+  },
+  "transavia::4594709-60699185": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Responsable Support Production PN H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4594709-responsable-support-production-pn-hf-94390-orly"
+  },
+  "transavia::4596971-52158479": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Assistant Digital Marketing Analyst H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4596971-stage-assistant-digital-marketing-analyst-hf-94390-orly"
+  },
+  "transavia::4609127-52160087": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Adjoint Responsable Paie H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4609127-adjoint-responsable-paie-hf-94390-orly"
+  },
+  "transavia::4613261-52160353": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Ingénieur Santé, Sécurité au Travail H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4613261-ingenieur-sante-securite-au-travail-hf-94390-orly"
+  },
+  "transavia::4635547-125360285": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Cadre Engineering Moteurs & APU H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4635547-cadre-engineering-moteurs-apu-hf-94310-orly"
+  },
+  "transavia::4648681-52159873": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Chef de Projet Développement Offre Commerciale H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4648681-chef-de-projet-developpement-offre-commerciale-hf-94390-orly"
+  },
+  "transavia::4649765-52160135": {
+   "company": "Transavia France",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Chargé de Projets RH H/F - CDD",
+   "url": "https://recrutement.transavia.com/fr/annonce/4649765-charge-de-projets-rh-hf-cdd-94390-orly"
+  },
+  "transavia::4653061-50585577": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Analyste Outils & Méthodes Logistique PN H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4653061-stage-analyste-outils-methodes-logistique-pn-hf-94390-orly"
+  },
+  "transavia::4653109-50585597": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Chargé de projet Outils & Méthodes Planification PN (H/F)",
+   "url": "https://recrutement.transavia.com/fr/annonce/4653109-stage-charge-de-projet-outils-methodes-planification-pn-hf-94390-orly"
+  },
+  "transavia::4653369-50585551": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Chargé de projet Outils & Méthodes Régulation PN H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4653369-stage-charge-de-projet-outils-methodes-regulation-pn-hf-94390-orly"
+  },
+  "transavia::4653453-60699185": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Ingénieur Support Projet Exploitation H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4653453-stage-ingenieur-support-projet-exploitation-hf-94390-orly"
+  },
+  "transavia::4654169-52369829": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Ingénieur Bureau d'Etudes - EFB H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4654169-stage-ingenieur-bureau-detudes-efb-hf-94390-orly"
+  },
+  "transavia::4654187-52369829": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Ingénieur Bureau d'Etudes - GED H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4654187-stage-ingenieur-bureau-detudes-ged-hf-94390-orly"
+  },
+  "transavia::4656379-52369277": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Stage - Ingénieur Gestion du Risque Fatigue H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4656379-stage-ingenieur-gestion-du-risque-fatigue-hf-94390-orly"
+  },
+  "transavia::4658009-52158589": {
+   "company": "Transavia France",
+   "contract": "CDD",
+   "first_seen": "2026-10-26",
+   "last_seen": "2026-10-26",
+   "location": "Orly",
+   "title": "Représentant commercial H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4658009-representant-commercial-hf-94390-orly"
+  }
+ },
+ "sources": {
+  "airaustral_alerte": {
+   "count": 0,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "aircalin": {
+   "count": 0,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "aircaraibes": {
+   "count": 15,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "aircorsica": {
+   "count": 2,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "airfrance_pn": {
+   "count": 1,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "airfrance_pnc": {
+   "count": 0,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "airtahitinui": {
+   "count": 0,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "asl": {
+   "count": 4,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "easyjet": {
+   "count": 0,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "frenchbee_alerte": {
+   "count": 0,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "frenchbee_ats": {
+   "count": 3,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "hop": {
+   "count": 20,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  },
+  "transavia": {
+   "count": 40,
+   "initialized": true,
+   "last_ok": "2026-10-26"
+  }
+ },
  "version": 1
 }
