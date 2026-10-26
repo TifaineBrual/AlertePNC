@@ -1,0 +1,9 @@
+[project]
+name = "veille-pnc"
+version = "1.0.0"
+description = "Veille automatique des offres PNC des compagnies aériennes françaises"
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

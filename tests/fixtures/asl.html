@@ -1,0 +1,1644 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	        <!-- InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+        <script type="text/javascript" async=true>
+            (function() {
+                var host = window.location.hostname.split('.').slice(-2).join('.');
+                var element = document.createElement('script');
+                var firstScript = document.getElementsByTagName('script')[0];
+                var url = 'https://cmp.inmobi.com'
+                    .concat('/choice/', '7GTRjPTMwznq-', '/', host, '/choice.js?tag_version=V3');
+                var uspTries = 0;
+                var uspTriesLimit = 3;
+                element.async = true;
+                element.type = 'text/javascript';
+                element.src = url;
+
+                firstScript.parentNode.insertBefore(element, firstScript);
+
+                function makeStub() {
+                    var TCF_LOCATOR_NAME = '__tcfapiLocator';
+                    var queue = [];
+                    var win = window;
+                    var cmpFrame;
+
+                    function addFrame() {
+                        var doc = win.document;
+                        var otherCMP = !!(win.frames[TCF_LOCATOR_NAME]);
+
+                        if (!otherCMP) {
+                            if (doc.body) {
+                                var iframe = doc.createElement('iframe');
+
+                                iframe.style.cssText = 'display:none';
+                                iframe.name = TCF_LOCATOR_NAME;
+                                doc.body.appendChild(iframe);
+                            } else {
+                                setTimeout(addFrame, 5);
+                            }
+                        }
+                        return !otherCMP;
+                    }
+
+                    function tcfAPIHandler() {
+                        var gdprApplies;
+                        var args = arguments;
+
+                        if (!args.length) {
+                            return queue;
+                        } else if (args[0] === 'setGdprApplies') {
+                            if (
+                                args.length > 3 &&
+                                args[2] === 2 &&
+                                typeof args[3] === 'boolean'
+                            ) {
+                                gdprApplies = args[3];
+                                if (typeof args[2] === 'function') {
+                                    args[2]('set', true);
+                                }
+                            }
+                        } else if (args[0] === 'ping') {
+                            var retr = {
+                                gdprApplies: gdprApplies,
+                                cmpLoaded: false,
+                                cmpStatus: 'stub'
+                            };
+
+                            if (typeof args[2] === 'function') {
+                                args[2](retr);
+                            }
+                        } else {
+                            if(args[0] === 'init' && typeof args[3] === 'object') {
+                                args[3] = Object.assign(args[3], { tag_version: 'V3' });
+                            }
+                            queue.push(args);
+                        }
+                    }
+
+                    function postMessageEventHandler(event) {
+                        var msgIsString = typeof event.data === 'string';
+                        var json = {};
+
+                        try {
+                            if (msgIsString) {
+                                json = JSON.parse(event.data);
+                            } else {
+                                json = event.data;
+                            }
+                        } catch (ignore) {}
+
+                        var payload = json.__tcfapiCall;
+
+                        if (payload) {
+                            window.__tcfapi(
+                                payload.command,
+                                payload.version,
+                                function(retValue, success) {
+                                    var returnMsg = {
+                                        __tcfapiReturn: {
+                                            returnValue: retValue,
+                                            success: success,
+                                            callId: payload.callId
+                                        }
+                                    };
+                                    if (msgIsString) {
+                                        returnMsg = JSON.stringify(returnMsg);
+                                    }
+                                    if (event && event.source && event.source.postMessage) {
+                                        event.source.postMessage(returnMsg, '*');
+                                    }
+                                },
+                                payload.parameter
+                            );
+                        }
+                    }
+
+                    while (win) {
+                        try {
+                            if (win.frames[TCF_LOCATOR_NAME]) {
+                                cmpFrame = win;
+                                break;
+                            }
+                        } catch (ignore) {}
+
+                        if (win === window.top) {
+                            break;
+                        }
+                        win = win.parent;
+                    }
+                    if (!cmpFrame) {
+                        addFrame();
+                        win.__tcfapi = tcfAPIHandler;
+                        win.addEventListener('message', postMessageEventHandler, false);
+                    }
+                };
+
+                makeStub();
+
+                function makeGppStub() {
+                    const CMP_ID = 10;
+                    const SUPPORTED_APIS = [
+                        '2:tcfeuv2',
+                        '6:uspv1',
+                        '7:usnatv1',
+                        '8:usca',
+                        '9:usvav1',
+                        '10:uscov1',
+                        '11:usutv1',
+                        '12:usctv1'
+                    ];
+
+                    window.__gpp_addFrame = function (n) {
+                        if (!window.frames[n]) {
+                            if (document.body) {
+                                var i = document.createElement("iframe");
+                                i.style.cssText = "display:none";
+                                i.name = n;
+                                document.body.appendChild(i);
+                            } else {
+                                window.setTimeout(window.__gpp_addFrame, 10, n);
+                            }
+                        }
+                    };
+                    window.__gpp_stub = function () {
+                        var b = arguments;
+                        __gpp.queue = __gpp.queue || [];
+                        __gpp.events = __gpp.events || [];
+
+                        if (!b.length || (b.length == 1 && b[0] == "queue")) {
+                            return __gpp.queue;
+                        }
+
+                        if (b.length == 1 && b[0] == "events") {
+                            return __gpp.events;
+                        }
+
+                        var cmd = b[0];
+                        var clb = b.length > 1 ? b[1] : null;
+                        var par = b.length > 2 ? b[2] : null;
+                        if (cmd === "ping") {
+                            clb(
+                                {
+                                    gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+                                    cmpStatus: "stub", // possible values: stub, loading, loaded, error
+                                    cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+                                    signalStatus: "not ready", // possible values: not ready, ready
+                                    supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+                                    cmpId: CMP_ID, // IAB assigned CMP ID, may be 0 during stub/loading
+                                    sectionList: [],
+                                    applicableSections: [-1],
+                                    gppString: "",
+                                    parsedSections: {},
+                                },
+                                true
+                            );
+                        } else if (cmd === "addEventListener") {
+                            if (!("lastId" in __gpp)) {
+                                __gpp.lastId = 0;
+                            }
+                            __gpp.lastId++;
+                            var lnr = __gpp.lastId;
+                            __gpp.events.push({
+                                id: lnr,
+                                callback: clb,
+                                parameter: par,
+                            });
+                            clb(
+                                {
+                                    eventName: "listenerRegistered",
+                                    listenerId: lnr, // Registered ID of the listener
+                                    data: true, // positive signal
+                                    pingData: {
+                                        gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+                                        cmpStatus: "stub", // possible values: stub, loading, loaded, error
+                                        cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+                                        signalStatus: "not ready", // possible values: not ready, ready
+                                        supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+                                        cmpId: CMP_ID, // list of supported APIs
+                                        sectionList: [],
+                                        applicableSections: [-1],
+                                        gppString: "",
+                                        parsedSections: {},
+                                    },
+                                },
+                                true
+                            );
+                        } else if (cmd === "removeEventListener") {
+                            var success = false;
+                            for (var i = 0; i < __gpp.events.length; i++) {
+                                if (__gpp.events[i].id == par) {
+                                    __gpp.events.splice(i, 1);
+                                    success = true;
+                                    break;
+                                }
+                            }
+                            clb(
+                                {
+                                    eventName: "listenerRemoved",
+                                    listenerId: par, // Registered ID of the listener
+                                    data: success, // status info
+                                    pingData: {
+                                        gppVersion: "1.1", // must be “Version.Subversion”, current: “1.1”
+                                        cmpStatus: "stub", // possible values: stub, loading, loaded, error
+                                        cmpDisplayStatus: "hidden", // possible values: hidden, visible, disabled
+                                        signalStatus: "not ready", // possible values: not ready, ready
+                                        supportedAPIs: SUPPORTED_APIS, // list of supported APIs
+                                        cmpId: CMP_ID, // CMP ID
+                                        sectionList: [],
+                                        applicableSections: [-1],
+                                        gppString: "",
+                                        parsedSections: {},
+                                    },
+                                },
+                                true
+                            );
+                        } else if (cmd === "hasSection") {
+                            clb(false, true);
+                        } else if (cmd === "getSection" || cmd === "getField") {
+                            clb(null, true);
+                        }
+                        //queue all other commands
+                        else {
+                            __gpp.queue.push([].slice.apply(b));
+                        }
+                    };
+                    window.__gpp_msghandler = function (event) {
+                        var msgIsString = typeof event.data === "string";
+                        try {
+                            var json = msgIsString ? JSON.parse(event.data) : event.data;
+                        } catch (e) {
+                            var json = null;
+                        }
+                        if (typeof json === "object" && json !== null && "__gppCall" in json) {
+                            var i = json.__gppCall;
+                            window.__gpp(
+                                i.command,
+                                function (retValue, success) {
+                                    var returnMsg = {
+                                        __gppReturn: {
+                                            returnValue: retValue,
+                                            success: success,
+                                            callId: i.callId,
+                                        },
+                                    };
+                                    event.source.postMessage(msgIsString ? JSON.stringify(returnMsg) : returnMsg, "*");
+                                },
+                                "parameter" in i ? i.parameter : null,
+                                "version" in i ? i.version : "1.1"
+                            );
+                        }
+                    };
+                    if (!("__gpp" in window) || typeof window.__gpp !== "function") {
+                        window.__gpp = window.__gpp_stub;
+                        window.addEventListener("message", window.__gpp_msghandler, false);
+                        window.__gpp_addFrame("__gppLocator");
+                    }
+                };
+
+                makeGppStub();
+
+                var uspStubFunction = function() {
+                    var arg = arguments;
+                    if (typeof window.__uspapi !== uspStubFunction) {
+                        setTimeout(function() {
+                            if (typeof window.__uspapi !== 'undefined') {
+                                window.__uspapi.apply(window.__uspapi, arg);
+                            }
+                        }, 500);
+                    }
+                };
+
+                var checkIfUspIsReady = function() {
+                    uspTries++;
+                    if (window.__uspapi === uspStubFunction && uspTries < uspTriesLimit) {
+                        console.warn('USP is not accessible');
+                    } else {
+                        clearInterval(uspInterval);
+                    }
+                };
+
+                if (typeof window.__uspapi === 'undefined') {
+                    window.__uspapi = uspStubFunction;
+                    var uspInterval = setInterval(checkIfUspIsReady, 6000);
+                }
+            })();
+        </script>
+        <!-- End InMobi Choice. Consent Manager Tag v3.0 (for TCF 2.2) -->
+        	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style type="text/css">@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/hebrew/400/normal.woff2);unicode-range:U+0307-0308,U+0590-05FF,U+200C-2010,U+20AA,U+25CC,U+FB1D-FB4F;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/math/400/normal.woff2);unicode-range:U+0302-0303,U+0305,U+0307-0308,U+0310,U+0312,U+0315,U+031A,U+0326-0327,U+032C,U+032F-0330,U+0332-0333,U+0338,U+033A,U+0346,U+034D,U+0391-03A1,U+03A3-03A9,U+03B1-03C9,U+03D1,U+03D5-03D6,U+03F0-03F1,U+03F4-03F5,U+2016-2017,U+2034-2038,U+203C,U+2040,U+2043,U+2047,U+2050,U+2057,U+205F,U+2070-2071,U+2074-208E,U+2090-209C,U+20D0-20DC,U+20E1,U+20E5-20EF,U+2100-2112,U+2114-2115,U+2117-2121,U+2123-214F,U+2190,U+2192,U+2194-21AE,U+21B0-21E5,U+21F1-21F2,U+21F4-2211,U+2213-2214,U+2216-22FF,U+2308-230B,U+2310,U+2319,U+231C-2321,U+2336-237A,U+237C,U+2395,U+239B-23B7,U+23D0,U+23DC-23E1,U+2474-2475,U+25AF,U+25B3,U+25B7,U+25BD,U+25C1,U+25CA,U+25CC,U+25FB,U+266D-266F,U+27C0-27FF,U+2900-2AFF,U+2B0E-2B11,U+2B30-2B4C,U+2BFE,U+3030,U+FF5B,U+FF5D,U+1D400-1D7FF,U+1EE00-1EEFF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/greek/400/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/symbols/400/normal.woff2);unicode-range:U+0001-000C,U+000E-001F,U+007F-009F,U+20DD-20E0,U+20E2-20E4,U+2150-218F,U+2190,U+2192,U+2194-2199,U+21AF,U+21E6-21F0,U+21F3,U+2218-2219,U+2299,U+22C4-22C6,U+2300-243F,U+2440-244A,U+2460-24FF,U+25A0-27BF,U+2800-28FF,U+2921-2922,U+2981,U+29BF,U+29EB,U+2B00-2BFF,U+4DC0-4DFF,U+FFF9-FFFB,U+10140-1018E,U+10190-1019C,U+101A0,U+101D0-101FD,U+102E0-102FB,U+10E60-10E7E,U+1D2C0-1D2D3,U+1D2E0-1D37F,U+1F000-1F0FF,U+1F100-1F1AD,U+1F1E6-1F1FF,U+1F30D-1F30F,U+1F315,U+1F31C,U+1F31E,U+1F320-1F32C,U+1F336,U+1F378,U+1F37D,U+1F382,U+1F393-1F39F,U+1F3A7-1F3A8,U+1F3AC-1F3AF,U+1F3C2,U+1F3C4-1F3C6,U+1F3CA-1F3CE,U+1F3D4-1F3E0,U+1F3ED,U+1F3F1-1F3F3,U+1F3F5-1F3F7,U+1F408,U+1F415,U+1F41F,U+1F426,U+1F43F,U+1F441-1F442,U+1F444,U+1F446-1F449,U+1F44C-1F44E,U+1F453,U+1F46A,U+1F47D,U+1F4A3,U+1F4B0,U+1F4B3,U+1F4B9,U+1F4BB,U+1F4BF,U+1F4C8-1F4CB,U+1F4D6,U+1F4DA,U+1F4DF,U+1F4E3-1F4E6,U+1F4EA-1F4ED,U+1F4F7,U+1F4F9-1F4FB,U+1F4FD-1F4FE,U+1F503,U+1F507-1F50B,U+1F50D,U+1F512-1F513,U+1F53E-1F54A,U+1F54F-1F5FA,U+1F610,U+1F650-1F67F,U+1F687,U+1F68D,U+1F691,U+1F694,U+1F698,U+1F6AD,U+1F6B2,U+1F6B9-1F6BA,U+1F6BC,U+1F6C6-1F6CF,U+1F6D3-1F6D7,U+1F6E0-1F6EA,U+1F6F0-1F6F3,U+1F6F7-1F6FC,U+1F700-1F7FF,U+1F800-1F80B,U+1F810-1F847,U+1F850-1F859,U+1F860-1F887,U+1F890-1F8AD,U+1F8B0-1F8BB,U+1F8C0-1F8C1,U+1F900-1F90B,U+1F93B,U+1F946,U+1F984,U+1F996,U+1F9E9,U+1FA00-1FA6F,U+1FA70-1FA7C,U+1FA80-1FA89,U+1FA8F-1FAC6,U+1FACE-1FADC,U+1FADF-1FAE9,U+1FAF0-1FAF8,U+1FB00-1FBFF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Open Sans';font-style:normal;font-weight:400;src:url(/cf-fonts/s/open-sans/5.2.7/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}</style>
+	<style type="text/css">@font-face {font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(/cf-fonts/s/ubuntu/5.2.8/greek/400/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(/cf-fonts/s/ubuntu/5.2.8/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(/cf-fonts/s/ubuntu/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:400;src:url(/cf-fonts/s/ubuntu/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(/cf-fonts/s/ubuntu/5.2.8/latin-ext/500/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(/cf-fonts/s/ubuntu/5.2.8/greek-ext/500/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(/cf-fonts/s/ubuntu/5.2.8/greek/500/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(/cf-fonts/s/ubuntu/5.2.8/latin/500/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic/500/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:500;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic-ext/500/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(/cf-fonts/s/ubuntu/5.2.8/greek/700/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic/700/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic-ext/700/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(/cf-fonts/s/ubuntu/5.2.8/greek-ext/700/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(/cf-fonts/s/ubuntu/5.2.8/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:700;src:url(/cf-fonts/s/ubuntu/5.2.8/latin-ext/700/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:300;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:300;src:url(/cf-fonts/s/ubuntu/5.2.8/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:300;src:url(/cf-fonts/s/ubuntu/5.2.8/greek/300/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:300;src:url(/cf-fonts/s/ubuntu/5.2.8/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:300;src:url(/cf-fonts/s/ubuntu/5.2.8/latin-ext/300/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Ubuntu';font-style:normal;font-weight:300;src:url(/cf-fonts/s/ubuntu/5.2.8/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}</style>
+	<style type="text/css">@font-face {font-family:'Signika Negative';font-style:normal;font-weight:400;src:url(/cf-fonts/s/signika-negative/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:400;src:url(/cf-fonts/s/signika-negative/5.2.8/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:400;src:url(/cf-fonts/s/signika-negative/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:300;src:url(/cf-fonts/s/signika-negative/5.2.8/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:300;src:url(/cf-fonts/s/signika-negative/5.2.8/latin-ext/300/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:300;src:url(/cf-fonts/s/signika-negative/5.2.8/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:600;src:url(/cf-fonts/s/signika-negative/5.2.8/latin/600/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:600;src:url(/cf-fonts/s/signika-negative/5.2.8/latin-ext/600/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:600;src:url(/cf-fonts/s/signika-negative/5.2.8/vietnamese/600/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:700;src:url(/cf-fonts/s/signika-negative/5.2.8/vietnamese/700/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:700;src:url(/cf-fonts/s/signika-negative/5.2.8/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Signika Negative';font-style:normal;font-weight:700;src:url(/cf-fonts/s/signika-negative/5.2.8/latin-ext/700/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}</style>
+	<link rel="shortcut icon" href="favicon.ico" />
+	<base href="https://cezanneondemand.intervieweb.it/" target="_self">
+	
+	                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/theme_bien_vars.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/LIB/JS/jquery-3.7.1/jquery-ui-1.13.2.min.css" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/LIB/JS/jquery-3.7.1/jquery-ui-1.13.2.custom.css" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/glyphicon.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/custom/40/84B3E1FFFFFF/bootstrap-4.css?ver=1793017422" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap-datepicker/bootstrap-datepicker-1.10.css" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap-datepicker/bootstrap-datepicker-1.10-custom.css" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap-select/bootstrap-select-1.13.18.css" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/fontawesome-all.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/material-icons.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/material-symbols.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/material-icons-extended.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/career/flag-icon.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/ModalOpenInfo.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/skills.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/aliasFont.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/perfect-scrollbar.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/LIB/JS/sweetalert/sweetalert2.css" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/LIB/JS/sweetalert/sweetalert2-custom.css" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/annunci/iframe_list_vacancies.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/slick.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/dropzone.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/style.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/toolbar.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_header.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_navbar.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_carousel.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_video.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_benefits.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_team.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_testimonial.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/section_vacancy.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/modal.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/careernew/form_modal.css?ver=1793009313" type="text/css" />
+                                <link rel="stylesheet" href="https://cezanneondemand.intervieweb.it/css/wcag_overrides.css?ver=1793009313" type="text/css" />
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/translations.js.php?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/jquery-3.7.1/jquery-3.7.1.min.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/jquery-3.7.1/jquery-ui-1.13.2.min.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/jquery-3.7.1/jquery-ui-1.13.2.custom.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/jquery.extends.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap/popper.min.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap/bootstrap.min.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/career/main.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap-select/bootstrap-select-1.13.18.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap-select/i18n/defaults-en.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/bootstrap-datepicker/bootstrap-datepicker-1.10.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/sweetalert/sweetalert2.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/sweetalert/sweetalert-mixins.js.php?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/formValidation.js.php?ver=1793009312en" defer charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/jquery/jquery.atcodegeocomplete.js?ver=1793009312en" defer charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/skills-utility.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/js-utility.js.php?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/HtmlSanitizer/HtmlSanitizer.js?ver=1793009312en" defer charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/perfect-scrollbar.js?ver=1793009312en" defer charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/base64/base64.min.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/career/career-modal.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/jquery/jquery.form.min.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/career/jscolor.js?ver=1793009312en" charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/slick.min.js?ver=1793009312en" defer charset="UTF-8"></script>
+                                <script type="text/javascript" src="https://cezanneondemand.intervieweb.it/LIB/JS/dropzone.js?ver=1793009312en" defer charset="UTF-8"></script>
+                
+	<title>Cezanne OnDemand | career</title>
+
+	        <link href="https://fonts.googleapis.com/css?family=Bitter|Dosis|Droid+Sans|Lato|Montserrat|Muli|Noto+Sans|Noto+Serif|Open+Sans|Oxygen|PT+Sans|PT+Serif|Playfair+Display|Raleway|Roboto|Slabo+27px|Source+Sans+Pro|Ubuntu" rel="stylesheet">
+                <meta name="title" content="Cezanne OnDemand"/>
+        <meta name="description" content="Career Page Cezanne OnDemand"/>
+
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "Cezanne OnDemand",
+                "url": "https://cezanneondemand.intervieweb.it/aslaviationgroup/en/career",
+                "description": "Career Page Cezanne OnDemand"
+            }
+        </script>
+                <meta property="og:title" content="Cezanne OnDemand"/>
+        <meta property="og:description" content="Career Page Cezanne OnDemand"/>
+        <meta property="og:image" content=""/>
+        <meta property="og:url" content="https://cezanneondemand.intervieweb.it/app.php?module=career&LAC=aslaviationgroup&lang=en&back=0"/>
+        <meta property="og:type" content="website"/>
+                <meta name="twitter:title" content="Cezanne OnDemand"/>
+        <meta name="twitter:description" content="Career Page Cezanne OnDemand"/>
+        <meta name="twitter:image" content=""/>
+        <meta name="twitter:card" content="summary_large_image">
+                <meta property="og:title" content="Cezanne OnDemand"/>
+        <meta property="og:description" content="Career Page Cezanne OnDemand"/>
+        <meta property="og:image" content=""/>
+        </head>
+<body id="theme_v2" class="other content_only_module_tpl ">
+<div id="pageMessagesBox">
+	</div>
+
+	
+	<main id="pagecontent">
+		<div id='contenutipagine' class="contentonly" >
+
+				
+			<style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+    #wrapper-content-career * {
+        font-family: "Open Sans";
+    }
+    #wrapper-career .toolbar * {
+        font-family: 'Roboto', sans-serif;
+    }
+</style>
+<div id="wrapper-career" style="display: flex; flex-direction: column;">
+    <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: #ffffff; z-index: 6;"
+         id="spinner-career">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 5rem;">
+            <div class="wrapper-spinner-career">
+                <div class="wrapper-spinner-career__spinner">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper-content-career">
+                <header class="navigation-bar"
+             id="section_AWwAyfo8Yg_JmJ7Y4ALU"
+             >
+            <style>
+                .navigation-bar {
+                    background-color: #FFFFFF;
+                }
+                .navigation-bar__menu__item__link {
+                    color: #000000;
+                }
+                .navigation-bar__menu__item__link:hover {
+                    color: #84B3E1;
+                }
+                .navigation-bar__operation__button-link_colored {
+                    border-color: #84B3E1;
+                    background-color: #84B3E1;
+                    color: #FFFFFF;
+                }
+                .navigation-bar__operation__button-link_colored:hover {
+                    border-color: #84B3E1;
+                    background-color: #FFFFFF;
+                    color: #84B3E1;
+                }
+                .navigation-bar__operation__button-link_colored-outline {
+                    border-color: transparent;
+                    color: #84B3E1;
+                }
+                .navigation-bar__operation__button-link_colored-outline:hover {
+                    border-color: #84B3E1;
+                    background-color: #84B3E1;
+                    color: #FFFFFF;
+                }
+                .navigation-bar__operation__button-link__label_lang, .navigation-bar__operation__button-link__icon_lang {
+                    color: #84B3E1                }
+            </style>
+                        <div class="container-fluid navigation-bar__container">
+                                    <img class="navigation-bar__logo"
+                         alt="Navigation Bar Logo"
+                         src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/logo1524810977.png">
+                                <div class="navigation-bar__action" id="menu-list">
+                        <ul class="navigation-bar__menu">
+                                                                <li class="navigation-bar__menu__item">
+                    <a class="navigation-bar__menu__item__link" href="#section_AXSRdTUvaTQS4Nb7tmIg">You career with ASL starts here</a>
+                </li>                                                                    <li class="navigation-bar__menu__item">
+                    <a class="navigation-bar__menu__item__link" href="#section_AWwAycJrYg_JmJ7Y3_6W">ASL Career Centre</a>
+                </li>                                                                    <li class="navigation-bar__menu__item">
+                    <a class="navigation-bar__menu__item__link" href="#section_AXR2p9zFV65neqtGGvJR">Our Values</a>
+                </li>                                                                    <li class="navigation-bar__menu__item">
+                    <a class="navigation-bar__menu__item__link" href="#section_AWwAyZwHYg_JmJ7Y3_v4">Vacancies</a>
+                </li>                                                                    <li class="navigation-bar__menu__item">
+                    <a class="navigation-bar__menu__item__link" href="#section_AXSNDfTCV65neqtGz2y_">Our Vision</a>
+                </li>                                                                    <li class="navigation-bar__menu__item">
+                    <a class="navigation-bar__menu__item__link" href="#section_AXSNEBZiaTQS4Nb7tRY_">Our Mission</a>
+                </li>                                                                    <li class="navigation-bar__menu__item">
+                    <a class="navigation-bar__menu__item__link" href="#section_AXSNGej0V65neqtG0i1I">ESG Commitment</a>
+                </li>                                                        </ul>
+                    <div class="navigation-bar__operation">
+                                                    <a href="http://www.aslaviationholdings.com/" target="_blank"
+                               class="navigation-bar__operation__button-link navigation-bar__operation__button-link_colored">
+                                <span class="navigation-bar__operation__button-link__label">
+                                    										Company Website									                                </span>
+                                <i class="navigation-bar__operation__button-link__icon fas fa-arrow-circle-right"></i>
+                            </a>
+                                                                            <div style="position: relative">
+                                <div href="#" id="login-div-button"
+                                     role="link"
+                                     class="navigation-bar__operation__button-link navigation-bar__operation__button-link_colored-outline"
+                                     onclick="$('#navigation-bar__popup').toggle()">
+                                    <i class="navigation-bar__operation__button-link__icon fas fa-user"></i>
+                                    <span class="navigation-bar__operation__button-link__label">
+                                                                                    Login                                                                            </span>
+                                </div>
+                                <div class="navigation-bar__popup" id="navigation-bar__popup">
+                                    <div class="navigation-bar__popup__title">
+																					Login										                                    </div>
+                                    <div class="navigation-bar__popup__content">
+                                        <form role="form"
+                                              method="post"
+                                              action="https://cezanneondemand.intervieweb.it/app.php?opmode=guest&module=company&act1=login&back=0"
+                                              >
+                                            <div class="input-g">
+                                                <div class="input-w-icon">
+                                                    <div class="input-w-icon__icon">
+                                                        <i class="fas fa-envelope"></i>
+                                                    </div>
+                                                    <input class="input-w-icon__input"
+                                                           name="login_email"
+                                                           placeholder="E-mail">
+                                                </div>
+                                            </div>
+                                            <div class="input-g">
+                                                <div class="input-w-icon">
+                                                    <div class="input-w-icon__icon">
+                                                        <i class="fas fa-lock"></i>
+                                                    </div>
+                                                    <input class="input-w-icon__input"
+                                                           name="login_password"
+                                                           type="password"
+                                                           placeholder="Password">
+                                                </div>
+                                            </div>
+                                            <div class="input-g">
+                                                <button type="submit"
+                                                        class="navigation-bar__operation__button-link navigation-bar__operation__button-link_colored"
+                                                        style="width: 100%; justify-content: center;">
+                                                    <span class="navigation-bar__operation__button-link__label">Login</span>
+                                                </button>
+                                            </div>
+                                            <div class="input-g" style="text-align: center;">
+                                                <a class="psw-r-link"
+                                                   href="https://cezanneondemand.intervieweb.it/app.php?opmode=guest&module=passwordrecovery&FW=&FWS=&cid=&FWM=&back=0&CSRFToken=2d85453970a9af9c&CSRFHash=2fb71ef0f340f4113c58b8b2d05865fc9b3d7a46d7f99752bb416b9a5f512487">
+                                                    Password Recovery                                                </a>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+                <div class="navigation-bar__mobile-action">
+                                        <div class="navigation-bar__operation__button-link navigation-bar__operation__button-link_colored-outline navigation-bar__toggle"
+                         onclick="$('#menu-list').slideToggle()"
+                        id="menu-toggle">
+                        <i class="navigation-bar__operation__button-link__icon mi mi-menu"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <script>
+            if ($(window).width() < 768) {
+                $(document).mouseup(function (event) {
+                    const container = $("#menu-list");
+                    const toggle = $('#menu-toggle');
+
+                    if (!container.is(event.target) && container.has(event.target).length === 0 && !toggle.is(event.target) && toggle.has(event.target).length === 0) {
+                        $(container).slideUp();
+                    }
+                });
+            }
+            var spidCandidateEnabled = false;
+            if (spidCandidateEnabled) {
+                $('#login-div-button').prop("onclick", null).off("click");
+                $('#login-div-button').click(function () {
+                    window.location.href = "https://cezanneondemand.intervieweb.it/app.php?opmode=guest&module=access";
+                });
+            }
+        </script>
+                <section class="header-video" id="section_AXSRdTUvaTQS4Nb7tmIg"
+                 style="order: 0;"
+                 aria-labelledby="Career Header Video Section section_AXSRdTUvaTQS4Nb7tmIg">
+            
+                            <div id="player" class="header-video__video"></div>
+
+                <script>
+                    var tag = document.createElement('script');
+                    tag.src = "https://www.youtube.com/iframe_api";
+                    var firstScriptTag = document.getElementsByTagName('script')[0];
+                    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                    var player;
+                    function onYouTubeIframeAPIReady() {
+                        player = new YT.Player('player', {
+                            height: '100%',
+                            width: '100%',
+                            videoId: 'KDZwKDgMYlw',
+                            events: {
+                                'onReady': onPlayerReady
+                            },
+                            playerVars: {
+                                'autoplay': 1,
+                                'controls': 0,
+                                'loop': 1,
+                                'mute': 1,
+                                'playlist': 'KDZwKDgMYlw',
+                                'widgetid': 1,
+                                'disablekb': 1,
+                                'enablejsapi': 1
+                            }
+                        });
+                    }
+
+                    function onPlayerReady(event) {
+                        event.target.playVideo();
+                        event.target.setPlaybackQuality('hd1080')
+                    }
+                </script>
+            
+                    <div class="header-video__overlay" style="background-color: rgba(255,255,255,0)"></div>
+                    <div class="header-video__inner">
+                <div class="header-video__inner__content">
+                    <div class="container header-video__inner__content">
+                                                <div class="header-video__inner__content__description">
+                                                                                                            </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function searchAnnFromBar($mobile = false) {
+                    if($mobile) {
+                        researchAnnounces(1, $('#order li.active > a').attr('data-order'), true);
+                    } else {
+                        researchAnnounces(1, $('#order li.active > a').attr('data-order'));
+                    }
+                    let offset = $("#vacancyList").offset();
+                    $('html, body').animate({
+                        scrollTop: offset.top
+                    }, 250);
+                }
+
+                            </script>
+        </section>
+                        <div class="section"
+             id="section_AWwAyZwHYg_JmJ7Y3_v4"
+             style="order: 1"
+        >
+            <style>
+                .btn.btn-primary {
+                    border-color: #84B3E1 !important;
+                    background-color: #84B3E1 !important;
+                    color: #FFFFFF !important;
+                }
+                .btn.btn-primary:hover {
+                    border-color: #84B3E1 !important;
+                    background-color: #FFF !important;
+                    color: #84B3E1 !important;
+                }
+                .link-annuncio:hover .title-annuncio {
+                    color: #84B3E1 !important;
+                }
+				:root {
+					--buttonAnnColor: #84B3E1;
+					--buttonTextColor: #FFFFFF;
+				}
+				@media (max-width: 768px) {
+                    .vacancy__render .btn.btn-primary {
+						width: 100%;
+                        margin-top: var(--bien-gutter);
+					}
+				}
+            </style>
+                        <div class="container">
+                <div class="section__content mb-bien-gutter">
+                    <h1 class="section__content__title section__content__title_center" style="color: #333333">Current Vacancies</h1>                                    </div>
+                <div id="vacancyList">
+                    <input type="hidden" id="url-for-announces"
+                           value="https://cezanneondemand.intervieweb.it/app.php?opmode=guest&module=newcareer&ajax=1&IdAzienda=40&CSRFToken=2d85453970a9af9c&CSRFHash=f01a48caf04894ed9d65508833c4b072ada44bb7e0fd24c03155fa097ecb9a63">
+
+                    <div id="order" class="collapse show mb-bien-gutter">
+                        <ul class="nav nav-tabs" role="tablist">
+
+                                                            <li>
+                                    <a href="#tab-annunci"
+                                       class=""
+                                       data-order="name"
+                                       data-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false"
+                                    >Title                                    </a>
+                                </li>
+                            
+                                                            <li>
+                                    <a href="#tab-annunci"
+                                       class=""
+                                       data-order="location"
+                                       data-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false"
+                                    >Location</a>
+                                </li>
+                            
+                                                            <li>
+                                    <a href="#tab-annunci"
+                                       class=""
+                                       data-order="function"
+                                       data-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false"
+                                    >Functional Area</a>
+                                </li>
+                            
+                                                            <li>
+                                    <a href="#tab-annunci"
+                                       class="active"
+                                       data-order="date"
+                                       data-toggle="tab"
+                                       role="tab"
+                                       aria-selected="true"
+                                    >Date</a>
+                                </li>
+                            
+                            
+                                                            <li>
+                                    <a href="#tab-annunci"
+                                       class=""
+                                       data-order="company"
+                                       data-toggle="tab"
+                                       role="tab"
+                                       aria-selected="false"
+                                    >Company</a>
+                                </li>
+                                                        
+                        </ul>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-annunci">
+                                        <div class="row">
+                					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/safety-monitoring-compliance-auditor-63784/en/">
+												<h3>
+													Safety & Monitoring Compliance Auditor												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    GRACE-HOLLOGNE Belgium												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													ASL Maintenance - LGG												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											Evaluate the ASLM organisation adherence to MOE and internal procedures, regulatory requirements and industry standards. This role ensures that the maintenance processes are compliant, risks are identified and corrective actions are implemented to...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/safety-monitoring-compliance-auditor-63784/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineers-b1b2-b737-62374/en/">
+												<h3>
+													Licensed Engineers B1/B2 - B737												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    GRACE-HOLLOGNE Belgium												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													ASL Maintenance - LGG												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											ASL Maintenance is looking for long term B1 and B2 B737 classic and NG aircraft engineers - shift work - for its line and heavy maintenance operations in Liège (LGG), Belgium.  Responsibilities: As part of our team we count on you to maintain and...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineers-b1b2-b737-62374/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/personnels-navigants-commerciaux-pnc-candidature-spontanee-hf-61688/en/">
+												<h3>
+													Personnels Navigants Commerciaux (PNC) - Candidature spontanée H/F												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    Tremblay-en-France France												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													Aircrew												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											S’assurer que ses tâches sont conduites en accord avec la règlementation applicable et les standards de la compagnie. Être garant de la performance en matière de sécurité et de sureté de la compagnie. Le titulaire reçoit délégation de...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/personnels-navigants-commerciaux-pnc-candidature-spontanee-hf-61688/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/asl-airlines-france-candidature-spontanee-60540/en/">
+												<h3>
+													ASL Airlines France - Candidature spontanée												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    Tremblay-en-France France												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													Other												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											If you don't find a specific job opening that matches your skills and experience, please click on 'Apply for this job' and send us your resumé. All applications are reviewed by our HR Team regularly                         				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/asl-airlines-france-candidature-spontanee-60540/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/internships-stages-et-alternants-maintenance-belgium-liege-brussels-54251/en/">
+												<h3>
+													Internships (Stages et Alternants) - Maintenance Belgium (Liège - Brussels)												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    GRACE-HOLLOGNE Belgium												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													ASL Maintenance LGG/BRU												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											Dear,  If you are a student looking for an internship ("stage" or "alternance"), we invite you to apply online.  In order to treat your request, we would need: copy of your CV,  a motivation letter, mentioning the dates of the internship.   We thank...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/internships-stages-et-alternants-maintenance-belgium-liege-brussels-54251/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/internships-stages-et-alternants-maintenance-paris-cdg-54249/en/">
+												<h3>
+													Internships (Stages et Alternants) - Maintenance France (Paris CDG)												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    TREMBLAY-EN-FRANCE France												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													ASL Maintenance - CDG												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											Dear,  If you are a student looking for an internship ("stage" or "alternance"), we invite you to apply online.  In order to treat your request, we would need: copy of your CV,  a motivation letter, mentioning the dates of the internship.   We thank...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/internships-stages-et-alternants-maintenance-paris-cdg-54249/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineers-b1b2-b747-47859/en/">
+												<h3>
+													Licensed Engineers B1/B2 - B747												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    GRACE-HOLLOGNE Belgium												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													ASL Maintenance - LGG												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											ASL Maintenance is looking for long term B1 and B2 B747 aircraft engineers - shift work - for its line maintenance operations in Liège (LGG), Belgium.  Responsibilities: As part of our team we count on you to maintain and take good care of our...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineers-b1b2-b747-47859/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineers-b1b2-b737-47858/en/">
+												<h3>
+													Licensed Engineers B1/B2 - B737												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    Brussels Airport Belgium												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													ASL Maintenance - BRU												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											ASL Maintenance is looking for long term B1 and B2 B737 classic and NG aircraft engineers - shift work - for its line and heavy maintenance operations in Liège (LGG) and Brussels (BRU), Belgium.  Responsibilities: As part of our team we count on...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineers-b1b2-b737-47858/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineer-b1b2-47825/en/">
+												<h3>
+													Licensed Engineers B1/B2 - B737												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    TREMBLAY-EN-FRANCE France												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													ASL Maintenance - CDG												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											ASL Maintenance is looking for long term B1 and B2 B737 classic and NG aircraft engineers - Night shift - for its line maintenance operations at Paris (CDG).  Responsibilities: As part of our team we count on you to maintain and take good care of...                        				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/licensed-engineer-b1b2-47825/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/aslb__flying_staff_short_haul_22597/en/">
+												<h3>
+													B737 First Officer short haul Pilot opportunities ASLB												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    Liège Belgium												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													Flight Operations												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											*                         				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/aslb__flying_staff_short_haul_22597/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                    					<div class="col-12 col-md-6">
+						<div class="row vacancy__render">
+							<div class="col-md col-12">
+								<div class="d-flex flex-column justify-content-between h-100">
+									<div class="vacancy__header">
+										<div class="vacancy__title">
+											<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/aslb_external_pilot_application__long_haul_only_21114/en/">
+												<h3>
+													B747 long haul Pilot opportunities ASLB												</h3>
+											</a>
+										</div>
+										<div class="vacancy__subtitle mb-bien-gutter">
+																																		<span class="subtitle__informations" title="Location">
+                                                    <i class="mi mi-location_on font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Location</span>
+                                                    Liège Belgium												</span>
+																																		<span class="subtitle__informations" title="Functional Area">
+													<i class="mi mi-sell font-size-20"
+                                                       aria-hidden="true">
+                                                    </i>
+                                                    <span class="sr-only">Functional Area</span>
+													Flight Operations												</span>
+                                                                                    </div>
+                                    </div>
+																			<div class="vacancy__description text-max-2-rows">
+											-                         				</div>
+																	</div>
+                            </div>
+							<div class="col-md-auto col-12 ml-md-3 ml-0 d-inline-flex align-items-center">
+								<a href="https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/aslb_external_pilot_application__long_haul_only_21114/en/"
+								   target="_blank" class="btn btn-primary font-weight-bold">
+									Apply                                </a>
+                            </div>
+                            </div>
+                        </div>
+					<div class="vacancies__separator collapse "></div>
+                                </div>
+                                    </div>
+                        <div id="annunci-spinner" style="display: none; margin-top: 1.8rem; width: 100%; text-align: center; position: relative;">
+                            <div class="wrapper-spinner-career wrapper-spinner-career_ann">
+                                <div class="wrapper-spinner-career__spinner wrapper-spinner-career__spinner_ann">
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                    <i></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+
+            /* CLICK PER BOTTONI DI ORDINAMENTO DEGLI ANNUNCI */
+            $('body').on('click', '#order li > a', function (event) {
+                event.preventDefault();
+                researchAnnounces(1, $(this).attr('data-order'));
+                $('#order a').each(function () {
+                    $(this).removeClass('active')
+                    .attr('aria-selected', 'false');
+                })
+                $(this).addClass('active')
+                .attr('aria-selected', 'true');
+            });
+
+            /* FUNZIONE PER RICHIAMARE IL FRAME SUGLI ANNUNCI E RICARICARLO */
+            function researchAnnounces(pageNumber, order, mobile = false) {
+                const $tabAnnunci = $('#tab-annunci');
+                const $annSpinner = $('#annunci-spinner');
+                const oldView = $tabAnnunci.html();
+
+                const url = $('#url-for-announces').val();
+                const mobileString = mobile ? 'Mobile' : '';
+
+                /* Informazioni di ricerca */
+                const countryFilter = $('#countryFilter' + mobileString).val();
+                const regionFilter = $('#regionFilter' + mobileString).val();
+                const functionFilter = $('#functionFilter' + mobileString).val();
+                                const textFilter = $('#textFilter' + mobileString).val();
+                const divisionFilter = $('#divisionFilter' + mobileString).val();
+                const companyFilter = $('#companyFilter' + mobileString).val();
+
+                /* Inserisco la gif di caricamento */
+                $tabAnnunci.hide();
+                setTimeout(function () {
+                    $tabAnnunci.html('');
+                    $annSpinner.show();
+
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: {
+                            'act1': 'vacancyListCareer',
+                            'section': 'AWwAyZwHYg_JmJ7Y3_v4',
+                            'order': order,
+                            'page': pageNumber,
+                            'country': countryFilter,
+                            'region': regionFilter,
+                            'function': functionFilter,
+                                                        'text': textFilter,
+                            'division': divisionFilter,
+                            'company': companyFilter
+                        },
+                        success: function (response) {
+                            response = $.parseJSON(response);
+                            if (response.success === true) {
+                                $tabAnnunci.html(response.data);
+                                $annSpinner.hide();
+                                $tabAnnunci.show();
+                            } else {
+                                alert('Error');
+                                $annSpinner.hide();
+                                $tabAnnunci.html(oldView);
+                                $tabAnnunci.show();
+                            }
+                            let offset = $("#vacancyList").offset();
+                            $('html, body').animate({
+                                scrollTop: offset.top - 100
+                            }, 250);
+                        },
+                        /* reimposto la lista che c'era prima */
+                        error: function () {
+                            alert('Error');
+                            $annSpinner.hide();
+                            $tabAnnunci.html(oldView);
+                            $tabAnnunci.show();
+                        }
+                    });
+                }, 200);
+            }
+        </script>
+                <section class="section"
+             id="section_AXSBeMAIV65neqtGomwz"
+             style="background-color: rgba(255,255,255,0); order: 2;"
+             aria-labelledby="Carrìeer Text Video Section section_AXSBeMAIV65neqtGomwz">
+                        <div class="container">
+                <h1 class="section__content__title section__content__title_center" style="color: #000000">ASL Aviation Holdings</h1>                <div class="section__splitted">
+                                            <div class="section__splitted__side-video">
+                <div class="section__splitted__side-video__wrapper-video">
+                    <iframe class="section__splitted__side-video__wrapper-video__video" frameborder="0"
+                            allowfullscreen="1"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            src="https://www.youtube-nocookie.com/embed/QexKeTj3f80?enablejsapi=1&disablekb=1&controls=0&showinfo=0&rel=0&wmode=transparent&widgetid=1"
+                            title="Career Page Text Video"
+                            >
+
+                    </iframe>
+                </div>
+            </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p>The ASL Way</p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AWwAycJrYg_JmJ7Y3_6W"
+             style="background: linear-gradient(rgba(255,255,255,0.9),
+             rgba(255,255,255,0.9)),
+             url('https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/History.PNG') center center/cover no-repeat; order: 3;"
+             aria-labelledby="Career Aboutus Section section_AWwAycJrYg_JmJ7Y3_6W">
+                        <div class="container section__content">
+                <h1 class="section__content__title section__content__title_center" style="color: #000000">ASL Career Centre</h1>                <div class="section__content__description" style="color: #000000"><h3 style="text-align: center;"><br /></h3><p style="text-align: justify;">Throughout ASL Aviation Holdings we believe that our people are our greatest asset.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">We have 6 core values: Safety, People, Reliability, Quality, Profitability and Innovation. 'People’ comes second only to ‘Safety’ which should always be the number one core value in an air transport organisation.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">We have an incredible diversity of people in our organisation with nearly 2500 team members of 51 nationalities working as one to deliver a service that is beyond our customers’ expectations.</p><p style="text-align: justify;">&nbsp;</p><p style="text-align: justify;">At ASL we offer a career, not just a job. Our global ASL family places the emphasis on work-life balance and the creation of a working environment where there are equal opportunities to grow for all our employees.</p><p class="section__content__description__info"><span class="section__content__description__info__single"><i class="fas fa-map-marker-alt"></i>Dublin, Ireland</span><span class="section__content__description__info__single"><i class="fas fa-tags"></i>Aviation Services : Transport</span><span class="section__content__description__info__single"><i class="fas fa-users"></i>3000</span></p></div>            </div>
+        </section>
+                <section class="section"
+             id="section_AXR2p9zFV65neqtGGvJR"
+             style="background-color: rgba(255,255,255,0); order: 4;"
+             aria-labelledby="Image Gallery Section section_AXR2p9zFV65neqtGGvJR">
+                                        <div class="container section__content">
+                    <h1 class="section__content__title section__content__title_center" style="color: #000000">Our Values</h1>                    <div class="section__content__subtitle" style="color: #3737C4">Safety : People : Reliability : Profitability : Quality: Innovation</div>                </div>
+                        <div class="slick__carousel" id="slick_AXR2p9zFV65neqtGGvJR">
+                                    <div>
+                        <img class="slick__carousel__image"
+                             src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASL2001SlideDeckDarkwithFoilGraphic-8.jpg"
+                             style="height: 400px;"
+                             alt="Carousel Image"
+                        >
+                    </div>
+                            </div>
+            <script>
+                $(document).ready(function () {
+                    $("#slick_AXR2p9zFV65neqtGGvJR").slick({
+                        dots: false,
+                        infinite: true,
+                        speed: 300,
+                        slidesToShow: 1,
+                        centerMode: true,
+                        autoplay: true,
+                        autoplaySpeed: 1500,
+                        variableWidth: true,
+                        adaptiveHeight: false,
+                        focusOnSelect: true,
+                        nextArrow: '',
+                        prevArrow: ''
+                    })
+                });
+            </script>
+        </section>
+                <section class="section"
+             id="section_AXR2woxwV65neqtGHswE"
+             style="background-color: rgba(255,255,255,0); order: 5;"
+             aria-labelledby="Career Text Image Section section_AXR2woxwV65neqtGHswE">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p style="text-align: justify;"><span style="font-size: 14pt;">ASL Aviation Holdings is a global aviation services company with airlines based in Europe, South Africa and Asia. ASL is a world leader in ACMI airline operations serving major cargo and passenger airlines.</span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">Headquartered in Dublin, Ireland, close to Dublin Airport, the ASL Aviation Holdings Group includes four wholly owned European airlines and; ASL Airlines Ireland, ASL Airlines Belgium, ASL Airlines France and ASL Airlines United Kingdom. The Group also includes associate and joint venture airlines FlySafair in South Africa and K-Mile Asia in Thailand. Additionally, the Group includes maintenance facilities, and several leasing entities. </span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">ASL’s airlines operate cargo networks on behalf of major international customers, specialising in the express freight, online commerce, and postal sectors. The Group’s global operations serve over 65 countries and includes passenger and cargo operations under ASL’s own brands.</span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">The Global ASL fleet of 130 aircraft includes 17 aircraft types from the Boeing 747-400F to the ATR72-200F. ASLI Airlines Ireland recently became the first operator, on behalf of FedEx, of the new ATR 72-600F, ATR’s first production-built freighter.</span></p><p style="text-align: justify;"><span style="font-size: 14pt;">ASL Group confirmed 20 slots with Boeing for 737-800 Boeing Converted Freighters (BCF) aircraft. To date 11 aircraft have entered service with ASL airlines in Europe and Thailand and the next two aircraft are in conversion and will be re-delivered to ASL in Q1 2022. The BCF programme will continue throughout 2022. </span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">In 2021, despite the global disruption caused by the Covid-19 pandemic, ASL’s airlines continued to operate with an average dispatch reliability of 98.04%. The airlines operated 93,181 flights totalling 177,474 flight hours, carrying 991,141 tonnes of freight and 3,900,000 passengers. </span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">While some of the group airlines were founded more than 40 and 50 years ago, ASL Aviation Holdings story essentially began in 1998. Annual revenue now exceeds €1.1bn EUR.</span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">Globally, ASL has a team of 3.000 people of 51 different nationalities. The Group’s vision is to be the aviation service provider of choice through excellence, experience, and expertise.</span></p>
+                        </div>
+                    </div>                        <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLG_JobPortalimage.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXR2uvxrV65neqtGHa3U"
+             style="background-color: rgba(255,255,255,0); order: 6;"
+             aria-labelledby="Career Text Image Section section_AXR2uvxrV65neqtGHa3U">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLB_JobPortalimage.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p style="text-align: justify;">ASL Airlines Belgium (ASLB) operates worldwide B737 and widebody B747 freighter services under its own brand and for major express integrator and e-commerce customers including FedEx and Alibaba.&nbsp;The airline’s fleet of 35 aircraft includes the B737-400 Classic and the B737-800BCF that serve an extensive network across Europe.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASLB’s fleet of five B747-400 Freighters operate globally with the airline’s network including Beijing, Shanghai, Jinan and other airports in China and airports in the United States including New York JFK. Two of the B747 aircraft operate worldwide as part of a joint-venture agreement with Nippon Cargo Airlines (NCA).</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASL Airlines Belgium is headquartered in Liege Airport and operates European flights from the Belgian airport for FedEx Express. The airline also operates for FedEx from Paris-CDG where it opened a large B737 base to serve the FedEx hub in 2022.&nbsp;In addition to its own fleet, ASLB also manages various third-party airlines providing aircraft for FedEx's European routes.</p><p style="text-align: justify;">​​​​​​​</p><p style="text-align: justify;">ASL Airlines Belgium, formerly TNT Airways, was founded in 1999 and was acquired by ASL Aviation Holdings in May 2016. ASL is the largest operator at the FedEx CDG hub and supplies the FedEx European network with the required aircraft numbers and aircraft types to meet the customer's ever-growing network schedule.</p><p style="text-align: justify;"><br /></p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXR2zdZKV65neqtGIL5r"
+             style="background-color: rgba(255,255,255,0); order: 7;"
+             aria-labelledby="Career Video Section section_AXR2zdZKV65neqtGIL5r">
+                        <div class="container section__content">
+                <h1 class="section__content__title section__content__title_center" style="color: #000000">ASL welcomes B747-400F OE-ILC to its fleet</h1>                            </div>
+            <div class="container">
+                <div class="section__splitted">
+                                            <div class="section__splitted__side-video section__splitted__side-video_3-3">
+                            <div class="section__splitted__side-video__wrapper-video">
+                                <iframe class="section__splitted__side-video__wrapper-video__video" frameborder="0"
+                                        allowfullscreen="1"
+                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                        src="https://www.youtube-nocookie.com/embed/1rH1GHq83Oo?enablejsapi=1&disablekb=1&controls=0&showinfo=0&rel=0&wmode=transparent&widgetid=1"
+                                        title="Career Page Video"
+                                >
+                                </iframe>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXR2vGFfaTQS4Nb7r1_v"
+             style="background-color: rgba(255,255,255,0); order: 8;"
+             aria-labelledby="Career Text Image Section section_AXR2vGFfaTQS4Nb7r1_v">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p style="text-align: justify;">ASL Airlines France (ASLF) is based in Paris-Charles de Gaulle and operates out of major French airports. The airline operates both cargo and passenger flights with a fleet of B737 aircraft including the B737-300QC, the B737-700 passenger aircraft and both the B737-400F and -800BCF.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASL Airlines France operates freighter services on behalf of express freight integrators, including FedEx Express, and has been an operator of overnight postal flights for the French Postal service, La Poste, for many years. The airline also operates charter cargo flights.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASLF provides scheduled passenger services from domestic French airports to points in North Africa including Algeria. The airline also operates transatlantic passenger services, on behalf of Air Saint-Pierre to the&nbsp;French overseas territory of<strong>&nbsp;Saint Pierre and Miquelon,</strong>&nbsp;off the coast of Newfoundland, Canada.</p><p style="text-align: justify;">The French airline also operates charter passenger flights throughout Europe for leading European tour operators and brokers.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">The airline can trace its roots back to L'Aeropostale and later Europe Airpost. It is now known throughout the industry for its high-quality passenger service and emphasis on customer care.</p><p style="text-align: justify;"><br /></p>
+                        </div>
+                    </div>                        <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLF_JobPortalimage.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXR2uARQV65neqtGHSWg"
+             style="background-color: rgba(255,255,255,0); order: 9;"
+             aria-labelledby="Career Text Image Section section_AXR2uARQV65neqtGHSWg">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLH_JobPortalimage.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #272727;">
+                            <p style="text-align: justify;">ASL Airlines Hungary (ASLH), provides airline service to ASL’s European airlines from its base in Budapest Airport, Hungary.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">Previously an airline with six B737 aircraft operating for DHL, the airline’s aircraft and operations were transferred to ASL Airlines Ireland in 2020. This removed layers of duplication in operations and maintenance management and introduced higher levels of efficiency across the combined fleet.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASLH continues to provide operational services to the ASL Group’s European airlines including crew control and AMOS maintenance and parts support.&nbsp;​​​​​​​</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">Formerly Farnair Hungary, ASLH was acquired by ASL Aviation Holdings in December 2014</p><p style="text-align: justify;"><br /></p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXSGU9Q_aTQS4Nb7s3F7"
+             style="background-color: rgba(255,255,255,0); order: 10;"
+             aria-labelledby="Carrìeer Text Video Section section_AXSGU9Q_aTQS4Nb7s3F7">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-video">
+                <div class="section__splitted__side-video__wrapper-video">
+                    <iframe class="section__splitted__side-video__wrapper-video__video" frameborder="0"
+                            allowfullscreen="1"
+                            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                            src="https://www.youtube-nocookie.com/embed/oU6VS-uxY7Y?enablejsapi=1&disablekb=1&controls=0&showinfo=0&rel=0&wmode=transparent&widgetid=1"
+                            title="Career Page Text Video"
+                            >
+
+                    </iframe>
+                </div>
+            </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p>A night time view of our operation in Hungary</p><p><br></p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXR2vstQV65neqtGHjp_"
+             style="background-color: rgba(255,255,255,0); order: 11;"
+             aria-labelledby="Career Text Image Section section_AXR2vstQV65neqtGHjp_">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p style="text-align: justify;">ASL Airlines Ireland (ASLI) is one of Europe's leading cargo airlines with an extensive operations network. The IOSA accredited airline specialises in the provision of air transport services for the world's leading express parcel integrators with major customers being FedEx, Amazon and DHL.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">The airline is headquartered in Dublin, Ireland and maintains crew bases in 10 European countries. ASL Airlines Ireland also has its own maintenance hangar in Shannon, Ireland.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">The airline's operations span a network of more than 50 regular destinations across Europe, North America and the Middle East with a fleet of 40 aircraft. The airline operates B737-400 aircraft and has recently introduced the B737-800 BCF, Boeing Converted Freighter. This new next-generation aircraft type offers the airline’s customers additional range and capacity as well as reducing CO2 emissions BY 15% per flight.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASL Airline’s Ireland operates widebody freighter aircraft including the A300 in Europe and the A330 on routes to the Middle East and the United States. The airline’s regional European network is served by the ATR72 including the -200, -500 and -600 series aircraft. ASL Airlines Ireland was the launch operator of the ATR72-600F, on behalf of FedEx, the first custom built ATR freighter.&nbsp;​​​​​​​</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">Established as Air Bridge Carriers in 1972, ASLI went on to operate as Air Contractors before becoming ASL Airlines Ireland. The airline supplies its customers with high-quality, dependable aviation solutions, with an emphasis on flexibility and customer service. The company specialises in ACMI solutions and provides full-charter, long or short-term contract services, ad-hoc charters and consultancy and project management services.</p>
+                        </div>
+                    </div>                        <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLI_JobPortalimage.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXR2wWUUV65neqtGHqKX"
+             style="background-color: rgba(255,255,255,0); order: 12;"
+             aria-labelledby="Career Text Image Section section_AXR2wWUUV65neqtGHqKX">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLS_JobPortalimager2.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p style="text-align: justify;">ASL Airline Services Switzerland, (ASLS), based in Basel, Switzerland, is a leading services provider primarily for the express cargo sector. The company specialises in the provision of leased personnel and air transport technical services for global express integrators and parcel carriers.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASL Airlines Services Switzerland provides full support CAMO Engineering Technical Services, Part 145 Maintenance services, logistics and personnel for long or short-term contracts, consultancy and project management services. The company is a key exponent in the use of the AMOS' Aircraft Maintenance Management System'.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">Formerly Farnair Switzerland, the airline was acquired by ASL Aviation Holdings in December 2014, subsequently transferring its ATR72 flight and ground operations to ASL Airlines Ireland.</p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_hjpv9IMBB2qllS_UCHsl"
+             style="background-color: rgba(255,255,255,0); order: 13;"
+             aria-labelledby="Career Text Image Section section_hjpv9IMBB2qllS_UCHsl">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p style="text-align: justify;">ASL Airlines United Kingdom (ASLUK) became ASL Aviation Holdings' newest airline, receiving its Air Operator Certificate (AOC) and its Operating Licence from the UK Civil Aviation Authority in 2021. The airline was the first fixed-wing AOC issued by the CAA post-Brexit.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASL Airlines United Kingdom's first flight was operated by an ATR72-200 freighter from East Midlands Airport to Belfast International Airport. The aircraft became the first aircraft on the AOC and performs daily operations between Belfast International Airport and ASLUK’s base in East Midlands.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">The initial ASL Airlines UK AOC specifies the operation of cargo flights on a single route on ATR72 aircraft and but over time the airline is aiming to grow its domestic UK network and operate cargo flights between the UK and Europe.</p><p style="text-align: justify;"><br /></p><p style="text-align: justify;">ASL UK is closely aligned with ASL Airlines Ireland with common SOPs and shared support services. This corresponds to ASL Group's programme to harmonise operations, remove unnecessary duplication and the creation of 'centres of excellence' serving all airlines.</p><p><br /></p>
+                        </div>
+                    </div>                        <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLinrecruiting_ASLUK_pic.JPG"
+                        alt="Text Image"
+                        >
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_WSRz9IMBXnPBDSbK4Meo"
+             style="background-color: rgba(255,255,255,0); order: 14;"
+             aria-labelledby="Career Text Image Section section_WSRz9IMBXnPBDSbK4Meo">
+                        <div class="container">
+                                <div class="section__splitted">
+                                            <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLincrecruiting_xairpic.JPG"
+                        alt="Text Image"
+                        >
+                    </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p style="text-align: justify;">Launched in November 2009, the Belgian certified PART 145 joint venture, X-air services, offers line, light, base maintenance services &amp; technical support from its facilities located at Liège and Brussels Airports.</p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXSNDfTCV65neqtGz2y_"
+             style="background-color: rgba(255,255,255,0); order: 15;"
+             aria-labelledby="Career Text Image Section section_AXSNDfTCV65neqtGz2y_">
+                        <div class="container">
+                <h1 class="section__content__title section__content__title_center" style="color: #000000">Our Vision</h1>                <div class="section__splitted">
+                                            <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p>is to be aviation provider of choice through excellence, experience and expertise</p>
+                        </div>
+                    </div>                        <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASL2001SlideDeckDarkwithFoilGraphic-6.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXSNEBZiaTQS4Nb7tRY_"
+             style="background-color: rgba(255,255,255,0); order: 16;"
+             aria-labelledby="Career Text Image Section section_AXSNEBZiaTQS4Nb7tRY_">
+                        <div class="container">
+                <h1 class="section__content__title section__content__title_center" style="color: #000000">Our Mission</h1>                <div class="section__splitted">
+                                            <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASL2001SlideDeckDarkwithFoilGraphic-7.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p>is to provide all customers with the best and most competitive service possible in all of the aviation markets we serve</p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                <section class="section"
+             id="section_AXSNGej0V65neqtG0i1I"
+             style="background-color: rgba(255,255,255,0); order: 17;"
+             aria-labelledby="Career Text Image Section section_AXSNGej0V65neqtG0i1I">
+                        <div class="container">
+                <h1 class="section__content__title section__content__title_center" style="color: #000000">ESG Commitment</h1>                <div class="section__splitted">
+                                            <div class="section__splitted__side-image">
+                        <img class="section__splitted__side-image__image" 
+                        src="https://cezanneondemand.intervieweb.it/uploads/40/career_elastic/en/ASLESGLogo.jpg"
+                        alt="Text Image"
+                        >
+                    </div>                        <div class="section__splitted__side-text">
+                        <div class="section__splitted__side-image__text" style="color: #333333;">
+                            <p>ASL’s ESG policy was introduced to further strengthen the Group’s unwavering commitment to&nbsp;operating safely and responsibly and in full compliance as promoted and protected by both our Safer Skies and Governance policies and procedures.</p><p>&nbsp;</p><p>ASL’s vision is to be the ‘aviation provider of choice through excellence, experience and expertise’. This sustains ASL’s mission to provide all customers with the best and most competitive service possible in all the aviation markets we serve.</p><p>&nbsp;</p><p>In 2020 ASL Aviation Holdings adopted a new ‘ESG Promise’ to reflect the Group’s awareness of its&nbsp;responsibilities to people and the planet.</p><p><br /></p><p><a href="https://cloud.3dissue.net/17602/17660/17779/39786/index.html">ESG Commitment</a></p><p><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">ASL Aviation Holdings is mindful that aviation, while fundamental, must also be environmentally sustainable. The ASL Group is committed to promoting and acting in the best interest of our staff, customers, environment, and planet through our ESG policy. </span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">ASL has committed to Destination 2050, the industry-led programme to achieve net-zero emissions in aviation by 2050 and is working to meet the requirements of the European Commissions ‘Fit for 55’ proposals. </span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">ASL Aviation Holdings also formally endorsed the ‘Toulouse Declaration’, further committing the aviation industry to meeting carbon emissions reduction targets by 2030 and to reaching net-zero emissions by 2050.</span></p><p style="text-align: justify;"><br /></p><p style="text-align: justify;"><span style="font-size: 14pt;">ASL strengthened its commitment to being a first mover in introducing new emissions reduction technology into our current fleet by partnering with leading innovators in hydrogen-electric emission powertrains, Universal Hydrogen and ZeroAvia.</span></p>
+                        </div>
+                    </div>                                    </div>
+            </div>
+        </section>
+                        <footer class="section section_footer" style="order: 16;">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <a class="section_footer__link justify-content-center" href="http://www.in-recruiting.com" target="_blank">
+                        <span>Powered by</span>
+                        <img class="section_footer__link__image" src="immagini/Logo_In-recruiting.png" alt="Inrecruiting Logo">
+                    </a>
+                </div>
+                <div class="col-12 text-center">
+                    <a href="/accessibility/INRECRUITING-public-Allegato1-modello_dichiarazione_accessibilità_privati.pdf" class="text-bien-gray-1" target="_blank">
+                        Accessibility statement                    </a>
+                </div>
+            </div>
+        </footer>
+
+        
+            </div>
+</div>
+<script>
+    $(document).ready(function () {
+        const $topbar = $('[element="topbar-career"]').get(0);
+        if ($topbar) {
+            const topbarHeight = $topbar.clientHeight;
+            $('#wrapper-career').css("padding-top", topbarHeight + 'px');
+        }
+
+        $('#spinner-career').hide();
+    });
+
+    $('.navigation-bar__menu__item__link').on('click', function(e){
+        e.preventDefault();
+        const target= $($(this).attr('href'));
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top
+        }, 1000);
+        if ($(window).width() < 768) {
+            $('#menu-list').slideUp();
+        }
+    });
+</script>
+		</div>
+	
+	</main>
+
+    
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a50a5f66ec7900a8',t:'MTc5MzAyNzI2Nw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
