@@ -299,6 +299,15 @@
    "title": "Cheffe/chef de projet Sécurité des réseaux industriels et objets connectés F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24797&idOrigine=502&LCID=1036&offerReference=2026-24797"
   },
+  "hop::2026-24926": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stagiaire Business Product Analyst - Gestion des irrégularités bagages F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24926&idOrigine=502&LCID=1036&offerReference=2026-24926"
+  },
   "hop::2026-25143": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -335,6 +344,15 @@
    "title": "STAGE DATA ENGINEER – REFONTE D’UNE APPLICATION DATA SUR LE DOMAINE PRODUIT VOL F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25367&idOrigine=502&LCID=1036&offerReference=2026-25367"
   },
+  "hop::2026-25467": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "location": "CMH",
+   "title": "STAGE - Data Analyst Logistique Opérationnelle Aéronautique – Business Intelligence & Power BI F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25467&idOrigine=502&LCID=1036&offerReference=2026-25467"
+  },
   "hop::2026-25651": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -362,6 +380,15 @@
    "title": "STAGE DATA ENGINEER – EXPLORATION DES DONNÉES DE PERFOPS PAR UN AGENT CONVERSATIONNEL F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25692&idOrigine=502&LCID=1036&offerReference=2026-25692"
   },
+  "hop::2026-25695": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "location": "aéroport d'Orly",
+   "title": "Stage – Ingénieur Méthode – Amélioration de la performance opérationnelle F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25695&idOrigine=502&LCID=1036&offerReference=2026-25695"
+  },
   "hop::2026-25707": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -379,6 +406,15 @@
    "location": "2 AV du Maréchal Devaux 94390 Orly",
    "title": "STAGE - Projets d'Amélioration Qualité Moteurs F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25710&idOrigine=502&LCID=1036&offerReference=2026-25710"
+  },
+  "hop::2026-25712": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage - Analyste Schéma Logistique Bagages F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25712&idOrigine=502&LCID=1036&offerReference=2026-25712"
   },
   "hop::2026-25713": {
    "company": "Groupe Air France (dont HOP!)",
@@ -863,10 +899,10 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-10-27",
-   "new_week": 2
+   "new_week": 6
   },
   "transavia": {
-   "count": 40,
+   "count": 39,
    "initialized": true,
    "last_ok": "2026-10-27",
    "new_week": 0
