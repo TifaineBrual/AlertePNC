@@ -299,6 +299,15 @@
    "title": "Cheffe/chef de projet Sécurité des réseaux industriels et objets connectés F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24797&idOrigine=502&LCID=1036&offerReference=2026-24797"
   },
+  "hop::2026-24904": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Product Owner Portail et Catalogue de Services F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24904&idOrigine=502&LCID=1036&offerReference=2026-24904"
+  },
   "hop::2026-24926": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -398,6 +407,15 @@
    "title": "STAGE - GESTION DE PROJET ET TRANSFORMATION DIGITALE F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25707&idOrigine=502&LCID=1036&offerReference=2026-25707"
   },
+  "hop::2026-25709": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "location": "14 RUE DE LA BELLE BORNE. CENTRE LOGISTIQUE DE ROISSY. 93290 TREMBLAY EN FRANCE",
+   "title": "Chargé d'approvisionnement - Gestionnaire de commandes F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25709&idOrigine=502&LCID=1036&offerReference=2026-25709"
+  },
   "hop::2026-25710": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -460,6 +478,15 @@
    "location": "HOP! Site de Clermont-Ferrand",
    "title": "HOP! - Gestionnaire Ressources Humaines - Clermont-Ferrand (63) F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25717&idOrigine=502&LCID=1036&offerReference=2026-25717"
+  },
+  "hop::2026-25738": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-27",
+   "last_seen": "2026-10-27",
+   "location": "2 avenue du Maréchal Devaux, 94390 Orly",
+   "title": "Stage – Methods & Data Analyst F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25738&idOrigine=502&LCID=1036&offerReference=2026-25738"
   },
   "transavia::2606569-52370301": {
    "company": "Transavia France",
@@ -899,7 +926,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-10-27",
-   "new_week": 6
+   "new_week": 9
   },
   "transavia": {
    "count": 39,
