@@ -149,7 +149,7 @@
    "company": "Air Corsica",
    "contract": "CDD",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-10-27",
+   "last_seen": "2026-10-28",
    "location": "Ajaccio",
    "title": "Chargé de planification Personnels Navigants (H/F)",
    "url": "https://aircorsica-rh.my.salesforce-sites.com/Recrutement"
@@ -330,7 +330,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDD",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-10-27",
+   "last_seen": "2026-10-28",
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Agent d'Escale Commercial (Vivier CDD) F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25273&idOrigine=502&LCID=1036&offerReference=2026-25273"
@@ -595,6 +595,15 @@
    "location": "Orly",
    "title": "Alternance - Agent Planning Technique H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4268195-alternance-agent-planning-technique-hf-94390-orly"
+  },
+  "transavia::4457313-52158479": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-10-28",
+   "last_seen": "2026-10-28",
+   "location": "Orly",
+   "title": "Chef de Projet E-Commerce H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4457313-chef-de-projet-e-commerce-hf-94390-orly"
   },
   "transavia::4472809-52370323": {
    "company": "Transavia France",
@@ -872,7 +881,7 @@
    "new_week": 0
   },
   "aircorsica": {
-   "count": 1,
+   "count": 2,
    "initialized": true,
    "last_ok": "2026-10-28",
    "new_week": 0
@@ -929,10 +938,10 @@
    "new_week": 9
   },
   "transavia": {
-   "count": 39,
+   "count": 40,
    "initialized": true,
    "last_ok": "2026-10-28",
-   "new_week": 0
+   "new_week": 1
   }
  },
  "version": 1,
