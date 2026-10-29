@@ -109,6 +109,15 @@
    "title": "Chaudronnier(ère) aéronautique (H/F)",
    "url": "https://recrutement.aircaraibes.com/offer/11381-bXhnNjdidG9saA"
   },
+  "aircaraibes::11381-bmh5MDV1eWlzNg": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-10-29",
+   "last_seen": "2026-10-29",
+   "location": "Orly",
+   "title": "Responsable d’Exploitation ORY H/F",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-bmh5MDV1eWlzNg"
+  },
   "aircaraibes::11381-dGdhZDFvcXk3dA": {
    "company": "Air Caraïbes",
    "contract": "CDD",
@@ -245,6 +254,15 @@
    "title": "Data Analyst Commercial - Digital Product F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23302&idOrigine=502&LCID=1036&offerReference=2025-23302"
   },
+  "hop::2025-23378": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-29",
+   "last_seen": "2026-10-29",
+   "location": "2 Avenue de Fontainebleau, 94310 Orly",
+   "title": "Stage - Coordinateur de Production Equipements moteur F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23378&idOrigine=502&LCID=1036&offerReference=2025-23378"
+  },
   "hop::2025-23533": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -352,6 +370,15 @@
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Technicienne/Technicien avion F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25287&idOrigine=502&LCID=1036&offerReference=2026-25287"
+  },
+  "hop::2026-25351": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-29",
+   "last_seen": "2026-10-29",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stagiaire en Conception de Formation E-Learning (Storyline) F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25351&idOrigine=502&LCID=1036&offerReference=2026-25351"
   },
   "hop::2026-25367": {
    "company": "Groupe Air France (dont HOP!)",
@@ -929,10 +956,10 @@
    "new_week": 0
   },
   "aircaraibes": {
-   "count": 16,
+   "count": 17,
    "initialized": true,
    "last_ok": "2026-10-29",
-   "new_week": 1
+   "new_week": 2
   },
   "aircorsica": {
    "count": 2,
@@ -989,7 +1016,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-10-29",
-   "new_week": 11
+   "new_week": 13
   },
   "transavia": {
    "count": 43,
