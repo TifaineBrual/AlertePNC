@@ -109,6 +109,15 @@
    "title": "Chaudronnier(ère) aéronautique (H/F)",
    "url": "https://recrutement.aircaraibes.com/offer/11381-bXhnNjdidG9saA"
   },
+  "aircaraibes::11381-dGdhZDFvcXk3dA": {
+   "company": "Air Caraïbes",
+   "contract": "CDD",
+   "first_seen": "2026-10-29",
+   "last_seen": "2026-10-29",
+   "location": "Les Abymes",
+   "title": "Agent de comptoir vente (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-dGdhZDFvcXk3dA"
+  },
   "aircaraibes::11381-dTltb2VzZjllbQ": {
    "company": "Air Caraïbes",
    "contract": "CDI",
@@ -875,10 +884,10 @@
    "new_week": 0
   },
   "aircaraibes": {
-   "count": 15,
+   "count": 16,
    "initialized": true,
    "last_ok": "2026-10-29",
-   "new_week": 0
+   "new_week": 1
   },
   "aircorsica": {
    "count": 2,
