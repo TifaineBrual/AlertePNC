@@ -218,6 +218,15 @@
    "title": "Personnels Navigants Commerciaux (PNC) - Candidature spontanée H/F",
    "url": "https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/personnels-navigants-commerciaux-pnc-candidature-spontanee-hf-61688/en/"
   },
+  "frenchbee_ats::11593-NG1ndTBianlxbA": {
+   "company": "French Bee",
+   "contract": "CDD",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "location": "Orly",
+   "title": "DRH -Remplacement de congé maternité",
+   "url": "https://recrutement.frenchbee.com/fr/offer/11593-NG1ndTBianlxbA"
+  },
   "frenchbee_ats::11593-OXFpajRydmI0aQ": {
    "company": "French Bee",
    "contract": "CDI",
@@ -353,6 +362,15 @@
    "title": "CONTROLEUR CND F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25143&idOrigine=502&LCID=1036&offerReference=2026-25143"
   },
+  "hop::2026-25152": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "location": "Villeneuve Le Roi ou CDG Roissy en France",
+   "title": "Technicienne/Technicien référent en électromécanique ou en électronique F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25152&idOrigine=502&LCID=1036&offerReference=2026-25152"
+  },
   "hop::2026-25264": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -406,6 +424,24 @@
    "location": "CMH",
    "title": "STAGE - Data Analyst Logistique Opérationnelle Aéronautique – Business Intelligence & Power BI F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25467&idOrigine=502&LCID=1036&offerReference=2026-25467"
+  },
+  "hop::2026-25649": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage Data Science / AI Engineer – Finance Commercial F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25649&idOrigine=502&LCID=1036&offerReference=2026-25649"
+  },
+  "hop::2026-25650": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage Data Science / ML Ops – Monitoring et prédiction du parcours des bagages en correspondance F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25650&idOrigine=502&LCID=1036&offerReference=2026-25650"
   },
   "hop::2026-25651": {
    "company": "Groupe Air France (dont HOP!)",
@@ -532,6 +568,15 @@
    "location": "2 avenue du Maréchal Devaux, 94390 Orly",
    "title": "Stage – Methods & Data Analyst F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25738&idOrigine=502&LCID=1036&offerReference=2026-25738"
+  },
+  "hop::2026-25739": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "location": "5 avenue James Clerk Maxwell, Toulouse 31100",
+   "title": "Data Engineer / Tech Lead Dataviz F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25739&idOrigine=502&LCID=1036&offerReference=2026-25739"
   },
   "hop::2026-25744": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1013,10 +1058,10 @@
    "new_week": 0
   },
   "frenchbee_ats": {
-   "count": 3,
+   "count": 4,
    "initialized": true,
    "last_ok": "2026-10-30",
-   "new_week": 0
+   "new_week": 1
   },
   "frenchbee_pnc": {
    "new_week": 0
@@ -1025,7 +1070,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-10-30",
-   "new_week": 14
+   "new_week": 18
   },
   "transavia": {
    "count": 43,
