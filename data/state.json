@@ -335,6 +335,15 @@
    "title": "Cheffe/chef de projet Sécurité des réseaux industriels et objets connectés F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24797&idOrigine=502&LCID=1036&offerReference=2026-24797"
   },
+  "hop::2026-24857": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-10-30",
+   "last_seen": "2026-10-30",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stagiaire Analyste Performance & Data F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24857&idOrigine=502&LCID=1036&offerReference=2026-24857"
+  },
   "hop::2026-24904": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -1070,7 +1079,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-10-30",
-   "new_week": 18
+   "new_week": 19
   },
   "transavia": {
    "count": 43,
