@@ -938,6 +938,24 @@
    "title": "Stagiaire Chargé de projets évènementiels et communication F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25793&idOrigine=502&LCID=1036&offerReference=2026-25793"
   },
+  "hop::2026-25797": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "2 avenue du marechal Devaux, 94310 Orly",
+   "title": "STAGE - Quality engineer F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25797&idOrigine=502&LCID=1036&offerReference=2026-25797"
+  },
+  "hop::2026-25808": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "",
+   "title": "Préparateur Leap F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25808&idOrigine=502&LCID=1036&offerReference=2026-25808"
+  },
   "transavia::2606569-52370301": {
    "company": "Transavia France",
    "contract": "CDI",
@@ -1439,7 +1457,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-09",
-   "new_week": 0
+   "new_week": 2
   },
   "transavia": {
    "count": 38,
