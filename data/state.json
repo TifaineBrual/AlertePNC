@@ -380,6 +380,15 @@
    "title": "Mécanicienne/ mécanicien cabine Toulouse F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23769&idOrigine=502&LCID=1036&offerReference=2026-23769"
   },
+  "hop::2026-24105": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "ORLY et CDG",
+   "title": "Technicien Métrologue F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24105&idOrigine=502&LCID=1036&offerReference=2026-24105"
+  },
   "hop::2026-24147": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -397,6 +406,15 @@
    "location": "zone aéroportuaire : CDG - ORLY et Villeneuve le Roi",
    "title": "Manager d'équipe de production aéronautique F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24464&idOrigine=502&LCID=1036&offerReference=2026-24464"
+  },
+  "hop::2026-24787": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "CENTRE LOGISTIQUE DE ROISSY ZONE CARGO 8",
+   "title": "Responsable Logistique Réparations Extérieures F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24787&idOrigine=502&LCID=1036&offerReference=2026-24787"
   },
   "hop::2026-24797": {
    "company": "Groupe Air France (dont HOP!)",
@@ -568,6 +586,15 @@
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Analyste de vols - Revenue Management F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25588&idOrigine=502&LCID=1036&offerReference=2026-25588"
+  },
+  "hop::2026-25590": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Technicienne/Technicien bureau technique metrologie F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25590&idOrigine=502&LCID=1036&offerReference=2026-25590"
   },
   "hop::2026-25619": {
    "company": "Groupe Air France (dont HOP!)",
@@ -848,6 +875,15 @@
    "title": "Stagiaire Ingénieur – Stratégie Slots H/F",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25771&idOrigine=502&LCID=1036&offerReference=2026-25771"
   },
+  "hop::2026-25772": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage Data Science – Digital Commercial Cargo F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25772&idOrigine=502&LCID=1036&offerReference=2026-25772"
+  },
   "hop::2026-25780": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -883,6 +919,15 @@
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Manager Telecom Contract Management – Air France F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25788&idOrigine=502&LCID=1036&offerReference=2026-25788"
+  },
+  "hop::2026-25790": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "Aéroport Nantes-Atlantique",
+   "title": "Stage — Assistant(e) pilotage de la performance F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25790&idOrigine=502&LCID=1036&offerReference=2026-25790"
   },
   "hop::2026-25793": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1306,6 +1351,15 @@
    "location": "Orly",
    "title": "Technicien Régulation Planning PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4673545-technicien-regulation-planning-pn-hf-94390-orly"
+  },
+  "transavia::4684835-125362833": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-11-09",
+   "last_seen": "2026-11-09",
+   "location": "Orly",
+   "title": "Responsable Production Planning Control H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4684835-responsable-production-planning-control-hf-94310-orly"
   }
  },
  "sources": {
@@ -1328,13 +1382,13 @@
    "count": 17,
    "initialized": true,
    "last_ok": "2026-11-09",
-   "new_week": 1
+   "new_week": 0
   },
   "aircorsica": {
    "count": 2,
    "initialized": true,
    "last_ok": "2026-11-09",
-   "new_week": 1
+   "new_week": 0
   },
   "airfrance_pn": {
    "count": 1,
@@ -1385,15 +1439,15 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-09",
-   "new_week": 26
+   "new_week": 0
   },
   "transavia": {
-   "count": 37,
+   "count": 38,
    "initialized": true,
    "last_ok": "2026-11-09",
-   "new_week": 1
+   "new_week": 0
   }
  },
  "version": 1,
- "weekly_sent": "2026-11-02"
+ "weekly_sent": "2026-11-09"
 }
