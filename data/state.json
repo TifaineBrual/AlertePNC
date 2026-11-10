@@ -492,7 +492,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDD",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-06",
+   "last_seen": "2026-11-10",
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Agent d'Escale Commercial (Vivier CDD) F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25273&idOrigine=502&LCID=1036&offerReference=2026-25273"
@@ -1253,6 +1253,15 @@
    "title": "Cadre Engineering Moteurs & APU H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4635547-cadre-engineering-moteurs-apu-hf-94310-orly"
   },
+  "transavia::4645053-52370323": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "location": "Orly",
+   "title": "Technicien Logistique AOG Desk H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4645053-technicien-logistique-aog-desk-hf-94390-orly"
+  },
   "transavia::4648681-52159873": {
    "company": "Transavia France",
    "contract": "CDI",
@@ -1415,7 +1424,7 @@
    "new_week": 0
   },
   "aircaraibes": {
-   "count": 17,
+   "count": 11,
    "initialized": true,
    "last_ok": "2026-11-10",
    "new_week": 0
@@ -1478,10 +1487,10 @@
    "new_week": 3
   },
   "transavia": {
-   "count": 38,
+   "count": 39,
    "initialized": true,
    "last_ok": "2026-11-10",
-   "new_week": 1
+   "new_week": 2
   }
  },
  "version": 1,
