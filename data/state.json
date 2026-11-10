@@ -852,7 +852,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
    "first_seen": "2026-11-05",
-   "last_seen": "2026-11-09",
+   "last_seen": "2026-11-10",
    "location": "ORLY",
    "title": "STAGE - Chef de Projet Méthodes, Digitalisation & Performance Garanties Moteurs F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25767&idOrigine=502&LCID=1036&offerReference=2026-25767"
@@ -955,6 +955,15 @@
    "location": "",
    "title": "Préparateur Leap F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25808&idOrigine=502&LCID=1036&offerReference=2026-25808"
+  },
+  "hop::2026-25816": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "location": "5 av. Maxwell - 31100 TOULOUSE",
+   "title": "STAGE - Architecture du système d'information de la production des personnels navigants F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25816&idOrigine=502&LCID=1036&offerReference=2026-25816"
   },
   "transavia::2606569-52370301": {
    "company": "Transavia France",
@@ -1378,6 +1387,15 @@
    "location": "Orly",
    "title": "Responsable Production Planning Control H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4684835-responsable-production-planning-control-hf-94310-orly"
+  },
+  "transavia::4687123-60699185": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-11-10",
+   "last_seen": "2026-11-10",
+   "location": "Orly",
+   "title": "Ingénieur Méthodes & Etudes Production PN H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4687123-ingenieur-methodes-etudes-production-pn-hf-94390-orly"
   }
  },
  "sources": {
@@ -1457,13 +1475,13 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-10",
-   "new_week": 2
+   "new_week": 3
   },
   "transavia": {
    "count": 38,
    "initialized": true,
    "last_ok": "2026-11-10",
-   "new_week": 0
+   "new_week": 1
   }
  },
  "version": 1,
