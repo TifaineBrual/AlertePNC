@@ -10,6 +10,15 @@
    "title": "Chargé(e) de projet communication & partenariats Orly",
    "url": "https://recrutement.aircaraibes.com/offer/11381-MnhucnFlaDV3Zw"
   },
+  "aircaraibes::11381-N3Frb2UwMnRwbQ": {
+   "company": "Air Caraïbes",
+   "contract": "CDI",
+   "first_seen": "2026-11-11",
+   "last_seen": "2026-11-11",
+   "location": "Les Abymes",
+   "title": "Mécanicien(ne) aéronautique (H/F)",
+   "url": "https://recrutement.aircaraibes.com/offer/11381-N3Frb2UwMnRwbQ"
+  },
   "aircaraibes::11381-NG03d2xydjg1dw": {
    "company": "Air Caraïbes",
    "contract": "CDI",
@@ -1424,10 +1433,10 @@
    "new_week": 0
   },
   "aircaraibes": {
-   "count": 11,
+   "count": 12,
    "initialized": true,
    "last_ok": "2026-11-11",
-   "new_week": 0
+   "new_week": 1
   },
   "aircorsica": {
    "count": 2,
