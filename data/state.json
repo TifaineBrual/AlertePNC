@@ -632,6 +632,15 @@
    "title": "Technicien Supérieur Bureau Technique Equipements Moteurs F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25622&idOrigine=502&LCID=1036&offerReference=2026-25622"
   },
+  "hop::2026-25635": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-12",
+   "last_seen": "2026-11-12",
+   "location": "Air France, Route des Crêtes, 1201, Sophia Antipolis",
+   "title": "Stagiaire Devops Integration F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25635&idOrigine=502&LCID=1036&offerReference=2026-25635"
+  },
   "hop::2026-25649": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -1469,7 +1478,7 @@
    "new_week": 0
   },
   "aircaraibes": {
-   "count": 12,
+   "count": 11,
    "initialized": true,
    "last_ok": "2026-11-12",
    "new_week": 1
@@ -1529,7 +1538,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-12",
-   "new_week": 5
+   "new_week": 6
   },
   "transavia": {
    "count": 39,
