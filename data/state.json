@@ -254,6 +254,15 @@
    "title": "Personnels Navigants Commerciaux (PNC) - Candidature spontanée H/F",
    "url": "https://cezanneondemand.intervieweb.it/aslaviationgroup/jobs/personnels-navigants-commerciaux-pnc-candidature-spontanee-hf-61688/en/"
   },
+  "easyjet::17218": {
+   "company": "easyJet",
+   "contract": "",
+   "first_seen": "2026-11-12",
+   "last_seen": "2026-11-12",
+   "location": "",
+   "title": "Industrial Relations Business Partner - France & Switzerland",
+   "url": "http://easyjet.taleo.net/careersection/2/jobdetail.ftl?lang=en&job=17218"
+  },
   "frenchbee_ats::11593-NG1ndTBianlxbA": {
    "company": "French Bee",
    "contract": "CDD",
@@ -614,6 +623,15 @@
    "title": "Stage - Développeur Fullstack F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25619&idOrigine=502&LCID=1036&offerReference=2026-25619"
   },
+  "hop::2026-25622": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-12",
+   "last_seen": "2026-11-12",
+   "location": "Air France Industries - 2 avenue du Maréchal Devaux, 94310 Orly",
+   "title": "Technicien Supérieur Bureau Technique Equipements Moteurs F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25622&idOrigine=502&LCID=1036&offerReference=2026-25622"
+  },
   "hop::2026-25649": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -892,6 +910,15 @@
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Stage Data Science – Digital Commercial Cargo F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25772&idOrigine=502&LCID=1036&offerReference=2026-25772"
+  },
+  "hop::2026-25773": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-12",
+   "last_seen": "2026-11-12",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Data Analyst Commercial - Digital Product F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25773&idOrigine=502&LCID=1036&offerReference=2026-25773"
   },
   "hop::2026-25780": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1397,6 +1424,15 @@
    "title": "Technicien Régulation Planning PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4673545-technicien-regulation-planning-pn-hf-94390-orly"
   },
+  "transavia::4682017-52371741": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-11-12",
+   "last_seen": "2026-11-12",
+   "location": "Orly",
+   "title": "Stage - Ingénieur Formation PN H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4682017-stage-ingenieur-formation-pn-hf-94390-orly"
+  },
   "transavia::4684835-125362833": {
    "company": "Transavia France",
    "contract": "CDI",
@@ -1469,10 +1505,10 @@
    "new_week": 0
   },
   "easyjet": {
-   "count": 0,
+   "count": 1,
    "initialized": true,
    "last_ok": "2026-11-12",
-   "new_week": 0
+   "new_week": 1
   },
   "frenchbee_alerte": {
    "count": 0,
@@ -1493,13 +1529,13 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-12",
-   "new_week": 3
+   "new_week": 5
   },
   "transavia": {
    "count": 39,
    "initialized": true,
    "last_ok": "2026-11-12",
-   "new_week": 2
+   "new_week": 3
   }
  },
  "version": 1,
