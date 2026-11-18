@@ -389,6 +389,15 @@
    "title": "Mécanicienne/Mécanicien structure industrielle F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23573&idOrigine=502&LCID=1036&offerReference=2026-23573"
   },
+  "hop::2026-23575": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-18",
+   "last_seen": "2026-11-18",
+   "location": "Villeneuve le Roi et Roissy CDG",
+   "title": "Mécanicienne/Mécanicien structure aéronautique (atelier) F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23575&idOrigine=502&LCID=1036&offerReference=2026-23575"
+  },
   "hop::2026-23592": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -406,6 +415,15 @@
    "location": "BLAGNAC CROIX DU SUD",
    "title": "Mécanicienne/ mécanicien cabine Toulouse F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23769&idOrigine=502&LCID=1036&offerReference=2026-23769"
+  },
+  "hop::2026-24026": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-18",
+   "last_seen": "2026-11-18",
+   "location": "5 avenue Maxwell 31100 TOULOUSE",
+   "title": "Chargée de Produits ServiceNow F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24026&idOrigine=502&LCID=1036&offerReference=2026-24026"
   },
   "hop::2026-24105": {
    "company": "Groupe Air France (dont HOP!)",
@@ -654,7 +672,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
    "first_seen": "2026-11-06",
-   "last_seen": "2026-11-17",
+   "last_seen": "2026-11-18",
    "location": "Valbonne Sophia Antipolis",
    "title": "Stage - Développeur Fullstack F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25619&idOrigine=502&LCID=1036&offerReference=2026-25619"
@@ -672,7 +690,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
    "first_seen": "2026-11-12",
-   "last_seen": "2026-11-17",
+   "last_seen": "2026-11-18",
    "location": "Air France Industries - 2 avenue du Maréchal Devaux, 94310 Orly",
    "title": "Technicien Supérieur Bureau Technique Equipements Moteurs F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25622&idOrigine=502&LCID=1036&offerReference=2026-25622"
@@ -906,7 +924,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
    "first_seen": "2026-11-03",
-   "last_seen": "2026-11-05",
+   "last_seen": "2026-11-18",
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Stage Transformation/ Performance Economique des opérations F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25761&idOrigine=502&LCID=1036&offerReference=2026-25761"
@@ -1072,6 +1090,42 @@
    "location": "29 Rte de l'Arpenteur, 95700 Roissy-en-France",
    "title": "STAGE – Performances de Planification Maintenance Flotte Airbus (CDG) F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25859&idOrigine=502&LCID=1036&offerReference=2026-25859"
+  },
+  "hop::2026-25868": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-18",
+   "last_seen": "2026-11-18",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "STAGE – Bac +5 – Pilotage et optimisation des demandes de pièces pour des besoins opérationnels F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25868&idOrigine=502&LCID=1036&offerReference=2026-25868"
+  },
+  "hop::2026-25870": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-18",
+   "last_seen": "2026-11-18",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage - Reporting environnemental / carbone F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25870&idOrigine=502&LCID=1036&offerReference=2026-25870"
+  },
+  "hop::2026-25871": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-18",
+   "last_seen": "2026-11-18",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage - Adaptation au changement climatique F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25871&idOrigine=502&LCID=1036&offerReference=2026-25871"
+  },
+  "hop::2026-25875": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-18",
+   "last_seen": "2026-11-18",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage Data Science – Revenue Management / Prédiction de la demande et optimisation de l'overbooking F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25875&idOrigine=502&LCID=1036&offerReference=2026-25875"
   },
   "transavia::2606569-52370301": {
    "company": "Transavia France",
@@ -1628,7 +1682,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-18",
-   "new_week": 4
+   "new_week": 10
   },
   "transavia": {
    "count": 41,
