@@ -312,7 +312,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
    "first_seen": "2026-11-06",
-   "last_seen": "2026-11-17",
+   "last_seen": "2026-11-19",
    "location": "Villeneuve le Roi",
    "title": "Mécanicienne/Mécanicien d'usinage tourneur fraiseur F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23076&idOrigine=502&LCID=1036&offerReference=2025-23076"
@@ -469,6 +469,15 @@
    "location": "zone aéroportuaire : CDG - ORLY et Villeneuve le Roi",
    "title": "Manager d'équipe de production aéronautique F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24464&idOrigine=502&LCID=1036&offerReference=2026-24464"
+  },
+  "hop::2026-24605": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "location": "VLR",
+   "title": "Technicienne / Technicien Traitement de Surfaces F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24605&idOrigine=502&LCID=1036&offerReference=2026-24605"
   },
   "hop::2026-24787": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1100,6 +1109,15 @@
    "title": "STAGE – Performances de Planification Maintenance Flotte Airbus (CDG) F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25859&idOrigine=502&LCID=1036&offerReference=2026-25859"
   },
+  "hop::2026-25864": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Analyste de la performance opérationnelle F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25864&idOrigine=502&LCID=1036&offerReference=2026-25864"
+  },
   "hop::2026-25868": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -1559,6 +1577,15 @@
    "title": "Technicien Régulation Planning PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4673545-technicien-regulation-planning-pn-hf-94390-orly"
   },
+  "transavia::4676373-52369277": {
+   "company": "Transavia France",
+   "contract": "CDI",
+   "first_seen": "2026-11-19",
+   "last_seen": "2026-11-19",
+   "location": "Orly",
+   "title": "Ingénieur Sécurité des Vols – Pôle Analyse Événementielle & Systémique H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4676373-ingenieur-securite-des-vols-pole-analyse-evenementielle-systemique-hf-94390-orly"
+  },
   "transavia::4682017-52371741": {
    "company": "Transavia France",
    "contract": "Stage",
@@ -1691,13 +1718,13 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-19",
-   "new_week": 11
+   "new_week": 13
   },
   "transavia": {
-   "count": 40,
+   "count": 41,
    "initialized": true,
    "last_ok": "2026-11-19",
-   "new_week": 2
+   "new_week": 3
   }
  },
  "version": 1,
