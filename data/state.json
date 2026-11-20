@@ -681,7 +681,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
    "first_seen": "2026-11-09",
-   "last_seen": "2026-11-18",
+   "last_seen": "2026-11-20",
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Technicienne/Technicien bureau technique metrologie F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25590&idOrigine=502&LCID=1036&offerReference=2026-25590"
@@ -1099,6 +1099,15 @@
    "location": "5 av. Maxwell - 31100 TOULOUSE",
    "title": "STAGE - Architecture du système d'information de la production des personnels navigants F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25816&idOrigine=502&LCID=1036&offerReference=2026-25816"
+  },
+  "hop::2026-25822": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-20",
+   "last_seen": "2026-11-20",
+   "location": "Valbonne",
+   "title": "Chef de Quart Informatique F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25822&idOrigine=502&LCID=1036&offerReference=2026-25822"
   },
   "hop::2026-25859": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1718,7 +1727,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-20",
-   "new_week": 13
+   "new_week": 14
   },
   "transavia": {
    "count": 41,
