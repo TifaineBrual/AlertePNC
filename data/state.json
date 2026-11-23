@@ -452,6 +452,15 @@
    "title": "Mécanicienne/ mécanicien cabine Toulouse F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23769&idOrigine=502&LCID=1036&offerReference=2026-23769"
   },
+  "hop::2026-23802": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Technical Support Representative - Bureau Technique F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23802&idOrigine=502&LCID=1036&offerReference=2026-23802"
+  },
   "hop::2026-23907": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -496,6 +505,15 @@
    "location": "ORLY",
    "title": "Technicienne/Technicien Planning Structure Maintenance Avion H/F",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24147&idOrigine=502&LCID=1036&offerReference=2026-24147"
+  },
+  "hop::2026-24188": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Juriste Protection des données personnelles F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24188&idOrigine=502&LCID=1036&offerReference=2026-24188"
   },
   "hop::2026-24283": {
    "company": "Groupe Air France (dont HOP!)",
@@ -614,6 +632,15 @@
    "title": "Instructeur Systèmes & Cellule B1 F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24953&idOrigine=502&LCID=1036&offerReference=2026-24953"
   },
+  "hop::2026-24954": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Référente / Référent Formation Maintenance Systèmes & Cellule B1 F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24954&idOrigine=502&LCID=1036&offerReference=2026-24954"
+  },
   "hop::2026-25143": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -731,6 +758,15 @@
    "title": "Agent logistique magasin F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25402&idOrigine=502&LCID=1036&offerReference=2026-25402"
   },
+  "hop::2026-25429": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "Roissy Charles de Gaulle",
+   "title": "STAGE - PMO projet eLogbook E&M F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25429&idOrigine=502&LCID=1036&offerReference=2026-25429"
+  },
   "hop::2026-25467": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -811,6 +847,15 @@
    "location": "Air France Industries - 2 avenue du Maréchal Devaux, 94310 Orly",
    "title": "Technicien Supérieur Bureau Technique Equipements Moteurs F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25622&idOrigine=502&LCID=1036&offerReference=2026-25622"
+  },
+  "hop::2026-25627": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "29 Route de l'arpenteur, 95700, Roissy-en-France",
+   "title": "Chargé(e) de Transformation et Performance F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25627&idOrigine=502&LCID=1036&offerReference=2026-25627"
   },
   "hop::2026-25635": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1199,6 +1244,15 @@
    "title": "STAGE - Architecture du système d'information de la production des personnels navigants F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25816&idOrigine=502&LCID=1036&offerReference=2026-25816"
   },
+  "hop::2026-25821": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "Orly",
+   "title": "STAGE - Assistant Responsable Amélioration Continue F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25821&idOrigine=502&LCID=1036&offerReference=2026-25821"
+  },
   "hop::2026-25822": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
@@ -1207,6 +1261,15 @@
    "location": "Valbonne",
    "title": "Chef de Quart Informatique F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25822&idOrigine=502&LCID=1036&offerReference=2026-25822"
+  },
+  "hop::2026-25830": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Acheteuse/Acheteur Expérimenté(e) - Informatique & Télécoms F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25830&idOrigine=502&LCID=1036&offerReference=2026-25830"
   },
   "hop::2026-25855": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1279,6 +1342,15 @@
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Stage Data Science – Revenue Management / Prédiction de la demande et optimisation de l'overbooking F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25875&idOrigine=502&LCID=1036&offerReference=2026-25875"
+  },
+  "hop::2026-25908": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-23",
+   "last_seen": "2026-11-23",
+   "location": "12 Rue du Tarteret 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Stage - Assistant(e) chef de projet G1XL2030 : transformation digitale de l'entrepôt fret de CDG F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25908&idOrigine=502&LCID=1036&offerReference=2026-25908"
   },
   "transavia::2606569-52370301": {
    "company": "Transavia France",
@@ -1785,7 +1857,9 @@
   },
   "aircaraibes": {
    "count": 11,
+   "failures": 1,
    "initialized": true,
+   "last_error": "sitemap illisible (StartTag: invalid element name, line 1, column 2)",
    "last_ok": "2026-11-23",
    "new_week": 1
   },
@@ -1833,7 +1907,9 @@
   },
   "frenchbee_ats": {
    "count": 2,
+   "failures": 1,
    "initialized": true,
+   "last_error": "sitemap illisible (StartTag: invalid element name, line 1, column 2)",
    "last_ok": "2026-11-23",
    "new_week": 0
   },
@@ -1844,7 +1920,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-23",
-   "new_week": 27
+   "new_week": 35
   },
   "transavia": {
    "count": 41,
