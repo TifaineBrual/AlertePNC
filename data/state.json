@@ -555,7 +555,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-18",
+   "last_seen": "2026-11-26",
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Cheffe/chef de projet Sécurité des réseaux industriels et objets connectés F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24797&idOrigine=502&LCID=1036&offerReference=2026-24797"
@@ -640,6 +640,15 @@
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "Référente / Référent Formation Maintenance Systèmes & Cellule B1 F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24954&idOrigine=502&LCID=1036&offerReference=2026-24954"
+  },
+  "hop::2026-24955": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Référente / Référent Formation Maintenance Systèmes avionique B2 F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=24955&idOrigine=502&LCID=1036&offerReference=2026-24955"
   },
   "hop::2026-25042": {
    "company": "Groupe Air France (dont HOP!)",
@@ -861,7 +870,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
    "first_seen": "2026-11-23",
-   "last_seen": "2026-11-24",
+   "last_seen": "2026-11-26",
    "location": "29 Route de l'arpenteur, 95700, Roissy-en-France",
    "title": "Chargé(e) de Transformation et Performance F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25627&idOrigine=502&LCID=1036&offerReference=2026-25627"
@@ -1261,6 +1270,15 @@
    "location": "5 av. Maxwell - 31100 TOULOUSE",
    "title": "STAGE - Architecture du système d'information de la production des personnels navigants F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25816&idOrigine=502&LCID=1036&offerReference=2026-25816"
+  },
+  "hop::2026-25819": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "location": "Toulouse La Barigoude",
+   "title": "STAGE DATA ENGINEER - MODERNISATION DE PIPELINE DATA SQL SUR GCP (DATAFORM) F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25819&idOrigine=502&LCID=1036&offerReference=2026-25819"
   },
   "hop::2026-25821": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1997,7 +2015,7 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-26",
-   "new_week": 43
+   "new_week": 45
   },
   "transavia": {
    "count": 40,
