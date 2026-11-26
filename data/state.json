@@ -272,6 +272,15 @@
    "title": "Industrial Relations Business Partner - France & Switzerland",
    "url": "http://easyjet.taleo.net/careersection/2/jobdetail.ftl?lang=en&job=17218"
   },
+  "frenchbee_ats::11593-N2Y0Nm5hbzZ3dw": {
+   "company": "French Bee",
+   "contract": "",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "location": "Paray-Vieille-Poste",
+   "title": "Stagiaire Traffic Manager",
+   "url": "https://recrutement.frenchbee.com/fr/offer/11593-N2Y0Nm5hbzZ3dw"
+  },
   "frenchbee_ats::11593-NG1ndTBianlxbA": {
    "company": "French Bee",
    "contract": "CDD",
@@ -884,6 +893,15 @@
    "title": "Stagiaire Devops Integration F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25635&idOrigine=502&LCID=1036&offerReference=2026-25635"
   },
+  "hop::2026-25646": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "location": "2 avenue du Maréchal Devaux, 94390 Orly",
+   "title": "STAGE - Ingénieur(e) Qualité & Process – Bureau technique moteur F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25646&idOrigine=502&LCID=1036&offerReference=2026-25646"
+  },
   "hop::2026-25649": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -1388,6 +1406,15 @@
    "title": "Stage Data Science – Revenue Management / Prédiction de la demande et optimisation de l'overbooking F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25875&idOrigine=502&LCID=1036&offerReference=2026-25875"
   },
+  "hop::2026-25876": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "RECONVERSION - MAINTENANCE AÉRONAUTIQUE - PARCOURS CQPM",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25876&idOrigine=502&LCID=1036&offerReference=2026-25876"
+  },
   "hop::2026-25901": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "VIE",
@@ -1441,6 +1468,15 @@
    "location": "HOP! Site de Roissy CDG",
    "title": "HOP! - Stagiaire Ingénieur(e) ADV, Outils et Data F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25923&idOrigine=502&LCID=1036&offerReference=2026-25923"
+  },
+  "hop::2026-25949": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-26",
+   "last_seen": "2026-11-26",
+   "location": "Roissy CDG - Zone Fret - G1XL",
+   "title": "Stage - Digitalisation des flux de marchandises dans la gare de fret G1XL d'Air France Cargo F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25949&idOrigine=502&LCID=1036&offerReference=2026-25949"
   },
   "transavia::2606569-52370301": {
    "company": "Transavia France",
@@ -2003,10 +2039,10 @@
    "new_week": 0
   },
   "frenchbee_ats": {
-   "count": 1,
+   "count": 2,
    "initialized": true,
    "last_ok": "2026-11-26",
-   "new_week": 0
+   "new_week": 1
   },
   "frenchbee_pnc": {
    "new_week": 0
@@ -2015,11 +2051,13 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-26",
-   "new_week": 45
+   "new_week": 48
   },
   "transavia": {
    "count": 40,
+   "failures": 1,
    "initialized": true,
+   "last_error": "ReadTimeout",
    "last_ok": "2026-11-26",
    "new_week": 4
   }
