@@ -1329,7 +1329,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
    "first_seen": "2026-11-20",
-   "last_seen": "2026-11-23",
+   "last_seen": "2026-11-27",
    "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
    "title": "RESPONSABLE COMPTABLE IMMOBILISATIONS AERONAUTIQUES F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25855&idOrigine=502&LCID=1036&offerReference=2026-25855"
@@ -1351,6 +1351,15 @@
    "location": "2 rue du Maréchal Devaux 94390 Orly",
    "title": "STAGE - Automaticien/Dessinateur/Projeteur MRO LAB Factory F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25862&idOrigine=502&LCID=1036&offerReference=2026-25862"
+  },
+  "hop::2026-25863": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "CDI",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "location": "45 rue de Paris 95747 ROISSY CHARLES DE GAULLE CEDEX",
+   "title": "Cheffe / Chef de Projets Immobiliers F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25863&idOrigine=502&LCID=1036&offerReference=2026-25863"
   },
   "hop::2026-25864": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1486,6 +1495,15 @@
    "location": "29 rte de l'arpenteur 95700 roissy-en-france",
    "title": "Stage – Amélioration de l'outil des consignes de l'activité hangar avion flottes Airbus F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25942&idOrigine=502&LCID=1036&offerReference=2026-25942"
+  },
+  "hop::2026-25943": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "location": "29 rte de l'arpenteur 95700 roissy-en-france",
+   "title": "Stage – Projet d'optimisation du dimensionnement des ressources F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25943&idOrigine=502&LCID=1036&offerReference=2026-25943"
   },
   "hop::2026-25949": {
    "company": "Groupe Air France (dont HOP!)",
@@ -1999,6 +2017,15 @@
    "location": "Orly",
    "title": "STAGE - AMO Digital Workplace M365",
    "url": "https://recrutement.transavia.com/fr/annonce/4711412-stage-amo-digital-workplace-m365-94390-orly"
+  },
+  "transavia::4712341-50585421": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "location": "Orly",
+   "title": "Stage - Ingénieur Support & Engineering Dispatch H/F",
+   "url": "https://recrutement.transavia.com/fr/annonce/4712341-stage-ingenieur-support-engineering-dispatch-hf-94390-orly"
   }
  },
  "sources": {
@@ -2078,13 +2105,13 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-27",
-   "new_week": 50
+   "new_week": 52
   },
   "transavia": {
-   "count": 41,
+   "count": 16,
    "initialized": true,
    "last_ok": "2026-11-27",
-   "new_week": 5
+   "new_week": 6
   }
  },
  "version": 1,
