@@ -447,7 +447,7 @@
    "company": "Groupe Air France (dont HOP!)",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-10-30",
+   "last_seen": "2026-11-27",
    "location": "Roissy",
    "title": "Infirmière du Travail à temps plein F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=23592&idOrigine=502&LCID=1036&offerReference=2026-23592"
@@ -1469,6 +1469,24 @@
    "title": "HOP! - Stagiaire Ingénieur(e) ADV, Outils et Data F/H",
    "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25923&idOrigine=502&LCID=1036&offerReference=2026-25923"
   },
+  "hop::2026-25941": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "location": "29 Route de l'arpenteur, 95700 Roissy-en-France",
+   "title": "Stage – Projet de déploiement de la démarche 5S F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25941&idOrigine=502&LCID=1036&offerReference=2026-25941"
+  },
+  "hop::2026-25942": {
+   "company": "Groupe Air France (dont HOP!)",
+   "contract": "Convention de stage",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "location": "29 rte de l'arpenteur 95700 roissy-en-france",
+   "title": "Stage – Amélioration de l'outil des consignes de l'activité hangar avion flottes Airbus F/H",
+   "url": "https://recrutement.airfrance.com/Pages/Offre/detailoffre.aspx?idOffre=25942&idOrigine=502&LCID=1036&offerReference=2026-25942"
+  },
   "hop::2026-25949": {
    "company": "Groupe Air France (dont HOP!)",
    "contract": "Convention de stage",
@@ -1482,7 +1500,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Suivi Technique Avionique H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/2606569-suivi-technique-avionique-hf-orly"
@@ -1491,7 +1509,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Représentant Technique H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/2830739-representant-technique-hf-94390-orly"
@@ -1509,7 +1527,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Responsable Suivi Technique H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/3558915-responsable-suivi-technique-hf-orly"
@@ -1518,7 +1536,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Responsable Sécurité & Conformité Maintenance H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/3616509-responsable-securite-conformite-maintenance-hf-94390-orly"
@@ -1527,7 +1545,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Coordinateur MCC H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/3740823-coordinateur-mcc-hf-orly"
@@ -1536,7 +1554,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Coordinateur Technique Phase-out B737 H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/3882567-coordinateur-technique-phase-out-b737-hf-94390-orly"
@@ -1545,7 +1563,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Solution Architect – Domaines Corporate & Commercial H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4136551-solution-architect-domaines-corporate-commercial-hf-94390-orly"
@@ -1554,7 +1572,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Tech Lead Data Engineering & Intégration (H/F)",
    "url": "https://recrutement.transavia.com/fr/annonce/4206763-tech-lead-data-engineering-integration-hf-94390-orly"
@@ -1563,7 +1581,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Leader Logistique AOG Desk H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4209279-leader-logistique-aog-desk-hf-94390-orly"
@@ -1608,7 +1626,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Agent Planning Technique & Suivi de Navigabilité H/F (horaires décalés)",
    "url": "https://recrutement.transavia.com/fr/annonce/4494953-agent-planning-technique-suivi-de-navigabilite-hf-horaires-decales-orly"
@@ -1617,7 +1635,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Chef de projet IT - Opérations Aériennes H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4501389-chef-de-projet-it-operations-aeriennes-hf-94390-orly"
@@ -1626,7 +1644,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Chef de projet IT - Commercial H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4501515-chef-de-projet-it-commercial-hf-94390-orly"
@@ -1635,7 +1653,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Agent Planning Technique & Suivi de Navigabilité H/F (horaires administratifs)",
    "url": "https://recrutement.transavia.com/fr/annonce/4509239-agent-planning-technique-suivi-de-navigabilite-hf-horaires-administratifs-orly"
@@ -1644,7 +1662,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Data Engineer H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4511069-data-engineer-hf-94390-orly"
@@ -1653,7 +1671,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Technicien Support Navigabilité & Transitions H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4518257-technicien-support-navigabilite-transitions-hf-94310-orly"
@@ -1662,7 +1680,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Ingénieur Conformité Sécurité Maintenance H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4521211-stage-ingenieur-conformite-securite-maintenance-hf-94390-orly"
@@ -1671,7 +1689,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Responsable Opérationnel des Escales H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4523475-responsable-operationnel-des-escales-hf-94390-orly"
@@ -1689,7 +1707,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Coordinateur Chantiers Externalisés H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4544273-coordinateur-chantiers-externalises-hf-94310-orly"
@@ -1725,7 +1743,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Responsable Support Production PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4594709-responsable-support-production-pn-hf-94390-orly"
@@ -1743,7 +1761,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Adjoint Responsable Paie H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4609127-adjoint-responsable-paie-hf-94390-orly"
@@ -1761,7 +1779,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Cadre Engineering Moteurs & APU H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4635547-cadre-engineering-moteurs-apu-hf-94310-orly"
@@ -1770,7 +1788,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-11-10",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Technicien Logistique AOG Desk H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4645053-technicien-logistique-aog-desk-hf-94390-orly"
@@ -1779,7 +1797,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Chef de Projet Développement Offre Commerciale H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4648681-chef-de-projet-developpement-offre-commerciale-hf-94390-orly"
@@ -1797,7 +1815,7 @@
    "company": "Transavia France",
    "contract": "CDD",
    "first_seen": "2026-10-29",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Chef de Projets audiovisuels & graphiques H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4650105-chef-de-projets-audiovisuels-graphiques-hf-94390-orly"
@@ -1806,7 +1824,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Analyste Outils & Méthodes Logistique PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4653061-stage-analyste-outils-methodes-logistique-pn-hf-94390-orly"
@@ -1815,7 +1833,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Chargé de projet Outils & Méthodes Planification PN (H/F)",
    "url": "https://recrutement.transavia.com/fr/annonce/4653109-stage-charge-de-projet-outils-methodes-planification-pn-hf-94390-orly"
@@ -1824,7 +1842,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Chargé de projet Outils & Méthodes Régulation PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4653369-stage-charge-de-projet-outils-methodes-regulation-pn-hf-94390-orly"
@@ -1833,7 +1851,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Ingénieur Support Projet Exploitation H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4653453-stage-ingenieur-support-projet-exploitation-hf-94390-orly"
@@ -1842,7 +1860,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Ingénieur Bureau d'Etudes - EFB H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4654169-stage-ingenieur-bureau-detudes-efb-hf-94390-orly"
@@ -1851,7 +1869,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Ingénieur Bureau d'Etudes - GED H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4654187-stage-ingenieur-bureau-detudes-ged-hf-94390-orly"
@@ -1860,7 +1878,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Ingénieur Gestion du Risque Fatigue H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4656379-stage-ingenieur-gestion-du-risque-fatigue-hf-94390-orly"
@@ -1869,7 +1887,7 @@
    "company": "Transavia France",
    "contract": "CDD",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Représentant commercial H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4658009-representant-commercial-hf-94390-orly"
@@ -1896,7 +1914,7 @@
    "company": "Transavia France",
    "contract": "CDD",
    "first_seen": "2026-11-02",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Technicien Régulation Planning PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4673545-technicien-regulation-planning-pn-hf-94390-orly"
@@ -1905,7 +1923,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-11-19",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Ingénieur Sécurité des Vols – Pôle Analyse Événementielle & Systémique H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4676373-ingenieur-securite-des-vols-pole-analyse-evenementielle-systemique-hf-94390-orly"
@@ -1914,7 +1932,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-11-12",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Ingénieur Formation PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4682017-stage-ingenieur-formation-pn-hf-94390-orly"
@@ -1932,7 +1950,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-11-10",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Ingénieur Méthodes & Etudes Production PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4687123-ingenieur-methodes-etudes-production-pn-hf-94390-orly"
@@ -1941,7 +1959,7 @@
    "company": "Transavia France",
    "contract": "CDI",
    "first_seen": "2026-11-13",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Développeur backend– Domaine Commercial (H/F)",
    "url": "https://recrutement.transavia.com/fr/annonce/4692543-developpeur-backend-domaine-commercial-hf-94390-orly"
@@ -1950,7 +1968,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-11-17",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "STAGE - Support opérationnel Orly H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4697029-stage-support-operationnel-orly-hf-94390-orly"
@@ -1959,7 +1977,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-11-17",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Analyste Revenue Management Pricing H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4697183-stage-analyste-revenue-management-pricing-hf-94390-orly"
@@ -1968,10 +1986,19 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-11-24",
-   "last_seen": "2026-11-26",
+   "last_seen": "2026-11-27",
    "location": "Orly",
    "title": "Stage - Ingénieur Méthodes et Outils DOA",
    "url": "https://recrutement.transavia.com/fr/annonce/4706491-stage-ingenieur-methodes-et-outils-doa-94390-orly"
+  },
+  "transavia::4711412-52369347": {
+   "company": "Transavia France",
+   "contract": "Stage",
+   "first_seen": "2026-11-27",
+   "last_seen": "2026-11-27",
+   "location": "Orly",
+   "title": "STAGE - AMO Digital Workplace M365",
+   "url": "https://recrutement.transavia.com/fr/annonce/4711412-stage-amo-digital-workplace-m365-94390-orly"
   }
  },
  "sources": {
@@ -1997,7 +2024,7 @@
    "new_week": 1
   },
   "aircorsica": {
-   "count": 3,
+   "count": 2,
    "initialized": true,
    "last_ok": "2026-11-27",
    "new_week": 0
@@ -2051,15 +2078,13 @@
    "count": 20,
    "initialized": true,
    "last_ok": "2026-11-27",
-   "new_week": 48
+   "new_week": 50
   },
   "transavia": {
-   "count": 40,
-   "failures": 2,
+   "count": 41,
    "initialized": true,
-   "last_error": "HTTP 502",
-   "last_ok": "2026-11-26",
-   "new_week": 4
+   "last_ok": "2026-11-27",
+   "new_week": 5
   }
  },
  "version": 1,
