@@ -1842,7 +1842,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-10-26",
-   "last_seen": "2026-11-27",
+   "last_seen": "2026-11-28",
    "location": "Orly",
    "title": "Stage - Analyste Outils & Méthodes Logistique PN H/F",
    "url": "https://recrutement.transavia.com/fr/annonce/4653061-stage-analyste-outils-methodes-logistique-pn-hf-94390-orly"
@@ -2004,7 +2004,7 @@
    "company": "Transavia France",
    "contract": "Stage",
    "first_seen": "2026-11-24",
-   "last_seen": "2026-11-27",
+   "last_seen": "2026-11-28",
    "location": "Orly",
    "title": "Stage - Ingénieur Méthodes et Outils DOA",
    "url": "https://recrutement.transavia.com/fr/annonce/4706491-stage-ingenieur-methodes-et-outils-doa-94390-orly"
@@ -2108,7 +2108,7 @@
    "new_week": 52
   },
   "transavia": {
-   "count": 16,
+   "count": 18,
    "initialized": true,
    "last_ok": "2026-11-28",
    "new_week": 6
